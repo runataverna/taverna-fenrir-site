@@ -35,7 +35,7 @@ img{max-width:100%;display:block}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.7)}50%{box-shadow:0 0 0 20px rgba(201,162,39,0)}}
 .entrada-hint{margin-top:22px;font-size:.78rem;color:#ccc;letter-spacing:1.5px;text-shadow:0 2px 8px rgba(0,0,0,.9);text-transform:uppercase}
 
-/* OVERLAYS (intro e transição) */
+/* OVERLAYS */
 .overlay-video{position:fixed;inset:0;z-index:1500;background:#000;display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .6s}
 .overlay-video.active{display:flex;opacity:1}
 .overlay-video iframe{width:100vw;height:100vh;border:0;pointer-events:none}
@@ -61,11 +61,17 @@ img{max-width:100%;display:block}
 .menu-lista a{display:block;padding:12px 20px;color:#e0e0e0;font-size:.9rem;border-left:3px solid transparent;transition:all .2s;cursor:pointer}
 .menu-lista a:hover{background:rgba(201,162,39,.1);border-left-color:#c9a227;color:#c9a227}
 
+/* HERO */
+.hero-runa{position:relative;min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;background:#000 url('assets/img/entrada-taverna.jpg') center/cover no-repeat;padding:60px 20px 40px;margin-bottom:20px}
+.hero-runa::before{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,rgba(0,0,0,.85) 80%);z-index:0}
+.hero-runa-conteudo{position:relative;z-index:1;max-width:600px}
+.hero-runa h1{font-size:2.2rem;letter-spacing:3px;margin-bottom:14px;text-shadow:0 2px 15px rgba(0,0,0,.9)}
+.hero-runa p{color:#ccc;font-style:italic;margin-bottom:24px;font-size:1rem;text-shadow:0 2px 8px rgba(0,0,0,.9)}
+.btn-historia{display:inline-block;background:#c9a227;color:#0a0a0a;padding:16px 38px;border:none;border-radius:30px;font-family:'Cinzel',serif;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all .3s}
+.btn-historia:hover{background:#d4af37;transform:scale(1.03)}
+
 /* HALL */
-.hall{padding:40px 20px 60px;max-width:1100px;margin:0 auto}
-.hall-hero{text-align:center;padding:40px 20px 30px}
-.hall-hero h1{font-size:2rem;letter-spacing:3px;margin-bottom:10px}
-.hall-hero p{color:#aaa;font-style:italic}
+.hall{padding:20px 20px 60px;max-width:1100px;margin:0 auto}
 .hall-titulo{font-size:1.4rem;margin:40px 0 8px;text-align:center;letter-spacing:3px}
 .hall-sub{text-align:center;color:#888;font-size:.9rem;margin-bottom:30px}
 .grid-portas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
@@ -97,7 +103,7 @@ img{max-width:100%;display:block}
 .card h3{font-size:1.15rem;margin-bottom:10px}
 .card p{font-size:.9rem;color:#bbb}
 
-/* SLOT GRID (imagens automáticas) */
+/* SLOT GRID */
 .slot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin:24px 0}
 .slot{aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:linear-gradient(135deg,#1a0a0a,#2a1515);border:1px solid rgba(183,139,72,.25);display:none}
 .slot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -105,19 +111,21 @@ img{max-width:100%;display:block}
 .slot-empty{grid-column:1/-1;text-align:center;color:#666;font-style:italic;font-size:.85rem;padding:30px 20px;border:1px dashed rgba(201,162,39,.2);border-radius:10px}
 
 /* CONTOS */
-.contos{display:flex;flex-direction:column;gap:16px}
-.conto{background:rgba(139,0,0,.06);border:1px solid rgba(183,139,72,.35);border-radius:10px;padding:20px;box-shadow:0 4px 20px rgba(0,0,0,.4);cursor:pointer;transition:all .3s}
-.conto:hover{border-color:#c9a227;transform:translateY(-2px)}
-.conto h3{font-size:1.12rem;margin-bottom:8px}
-.conto p{font-size:.88rem;color:#bbb;margin-bottom:12px}
-.conto-footer{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.ler-conto{color:#c9a227;font-weight:500;font-size:.88rem}
-.btn-curtir{display:inline-flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(201,162,39,.3);color:#888;padding:5px 12px;border-radius:20px;cursor:pointer;font-family:'Roboto',sans-serif;font-size:.82rem;transition:all .3s}
-.btn-curtir .runa-icon{font-size:1rem;transition:all .3s}
-.btn-curtir:hover{border-color:#c9a227;color:#c9a227}
-.btn-curtir.curtido{border-color:#c9a227;background:rgba(201,162,39,.12);color:#c9a227}
-.btn-curtir.curtido .runa-icon{color:#e8c04a;text-shadow:0 0 12px rgba(232,192,74,.9),0 0 20px rgba(201,162,39,.5);animation:acender .6s ease}
+.contos{display:flex;flex-direction:column;gap:18px}
+.conto-card{background:rgba(139,0,0,.06);border:1px solid rgba(183,139,72,.35);border-radius:12px;padding:22px;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:all .3s;display:flex;flex-direction:column}
+.conto-card:hover{border-color:#c9a227}
+.conto-tag{display:inline-block;font-size:.72rem;color:#7ec9a3;border:1px solid rgba(126,201,163,.35);border-radius:20px;padding:4px 14px;margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;width:fit-content}
+.conto-card h3{font-size:1.25rem;margin-bottom:10px}
+.conto-card p{font-size:.9rem;color:#bbb;margin-bottom:16px;flex-grow:1}
+.conto-marca{display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.35);border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:12px 16px;margin-bottom:14px;cursor:pointer;transition:all .3s}
+.conto-marca:hover{border-color:#c9a227;background:rgba(0,0,0,.55)}
+.conto-marca .runa-icon{font-family:'Cinzel',serif;color:#c9a227;font-size:1.3rem;transition:all .4s}
+.conto-marca .marca-texto{flex-grow:1;color:#c9a227;font-size:.88rem}
+.conto-marca .marca-count{color:#c9a227;font-size:.95rem;font-weight:600;font-family:'Cinzel',serif}
+.conto-marca.curtido .runa-icon{color:#e8c04a;text-shadow:0 0 14px rgba(232,192,74,.95),0 0 24px rgba(201,162,39,.6);animation:acender .6s ease}
 @keyframes acender{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
+.ler-conto{color:#c9a227;font-weight:600;font-size:.95rem;font-family:'Cinzel',serif;letter-spacing:.5px;cursor:pointer;width:fit-content}
+.ler-conto:hover{text-decoration:underline}
 
 /* SOBRE A RUNA */
 .sobre-grid{display:grid;grid-template-columns:1fr;gap:30px;align-items:start}
@@ -138,26 +146,28 @@ img{max-width:100%;display:block}
 .btn-player-runa{display:inline-flex;align-items:center;gap:10px;background:#c9a227;color:#0a0a0a;padding:14px 28px;border:none;border-radius:30px;font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;cursor:pointer;margin:40px auto 0;transition:all .3s}
 .btn-player-runa:hover{background:#d4af37}
 
-/* VENDA / BOTÃO VERMELHO */
-.btn-venda{display:inline-flex;align-items:center;justify-content:center;background:#8b0000;color:#fff;padding:14px 28px;border:1px solid #c9a227;border-radius:30px;font-family:'Cinzel',serif;font-size:.9rem;font-weight:700;text-decoration:none;margin:20px auto 0;transition:all .3s;letter-spacing:.5px}
+/* VITRINE / CARROSSEL */
+.vitrine{margin:30px 0 10px}
+.vitrine-titulo{font-family:'Cinzel',serif;color:#c9a227;font-size:1.05rem;text-align:center;letter-spacing:2px;margin-bottom:14px}
+.carrossel{position:relative;background:#000;border-radius:12px;overflow:hidden;border:1px solid rgba(183,139,72,.4);aspect-ratio:16/9}
+.carrossel-track{display:flex;transition:transform .4s ease;height:100%}
+.carrossel-slide{min-width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#000;position:relative}
+.carrossel-slide img{width:100%;height:100%;object-fit:cover}
+.carrossel-slide iframe{width:100%;height:100%;border:0}
+.carrossel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.75);color:#c9a227;border:1px solid #c9a227;width:42px;height:42px;border-radius:50%;font-size:1.4rem;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;padding-bottom:4px}
+.carrossel-btn.prev{left:10px}
+.carrossel-btn.next{right:10px}
+.carrossel-indicadores{display:flex;justify-content:center;gap:8px;padding:12px 0;background:rgba(0,0,0,.7)}
+.carrossel-indicadores span{width:8px;height:8px;border-radius:50%;background:rgba(201,162,39,.4);cursor:pointer;transition:all .3s}
+.carrossel-indicadores span.active{background:#c9a227;width:22px;border-radius:4px}
+
+/* BOTÃO VENDA */
+.btn-venda{display:inline-flex;align-items:center;justify-content:center;background:#8b0000;color:#fff;padding:14px 32px;border:1px solid #c9a227;border-radius:30px;font-family:'Cinzel',serif;font-size:.95rem;font-weight:700;text-decoration:none;margin:20px auto 0;transition:all .3s;letter-spacing:.5px}
 .btn-venda:hover{background:#a00000}
 .centro{text-align:center}
 
 /* NOTA */
 .nota-prototipo{text-align:center;font-size:.8rem;color:#666;font-style:italic;margin-top:24px;padding:10px;border-top:1px dashed rgba(201,162,39,.2)}
-
-/* CARROSSEL ARTE */
-.carrossel{position:relative;margin:20px 0;background:#000;border-radius:10px;overflow:hidden;border:1px solid rgba(183,139,72,.35)}
-.carrossel-slides{display:flex;transition:transform .4s ease}
-.slide{min-width:100%;position:relative}
-.slide .placeholder{aspect-ratio:16/9;background:linear-gradient(135deg,#1a0a0a,#2a1515);display:flex;align-items:center;justify-content:center;color:#666;font-style:italic;font-size:.9rem}
-.legenda{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.95),transparent);color:#e0e0e0;padding:30px 20px 15px;font-size:.88rem;font-style:italic;text-align:center}
-.carrossel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.7);color:#c9a227;border:1px solid #c9a227;width:42px;height:42px;border-radius:50%;font-size:1.2rem;cursor:pointer;z-index:10}
-.carrossel-btn.prev{left:10px}
-.carrossel-btn.next{right:10px}
-.indicadores{display:flex;justify-content:center;gap:8px;padding:14px 0;background:rgba(0,0,0,.85)}
-.indicadores span{width:8px;height:8px;border-radius:50%;background:rgba(201,162,39,.4);cursor:pointer;transition:all .3s}
-.indicadores span.active{background:#c9a227;width:22px;border-radius:4px}
 
 /* PLAYER */
 .player-musica{position:fixed;bottom:20px;right:20px;background:rgba(10,10,10,.92);border:1px solid #c9a227;border-radius:30px;padding:8px 16px;display:none;align-items:center;gap:12px;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.6)}
@@ -165,15 +175,13 @@ img{max-width:100%;display:block}
 .player-musica button{background:transparent;border:none;color:#c9a227;font-size:1.2rem;cursor:pointer}
 .player-musica span{color:#c9a227;font-size:.9rem}
 
-/* MODAL */
+/* MODAL HISTÓRIA */
 .historia-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:2000;overflow-y:auto;padding:20px}
 .historia-modal.active{display:block}
 .historia-box{max-width:700px;margin:40px auto;background:#0f0f0f;border:1px solid rgba(201,162,39,.35);border-radius:12px;padding:30px 25px;position:relative}
-.historia-fechar{position:absolute;top:15px;right:15px;background:transparent;border:1px solid #c9a227;color:#c9a227;width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer}
+.historia-fechar{position:absolute;top:15px;right:15px;background:transparent;border:1px solid #c9a227;color:#c9a227;width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:5}
 .historia-box h2{font-size:1.55rem;margin-bottom:6px;padding-right:40px}
 .historia-sub{color:#888;font-size:.82rem;letter-spacing:1px;margin-bottom:18px;text-transform:uppercase}
-.historia-galeria{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px}
-.historia-galeria img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;border:1px solid rgba(201,162,39,.25)}
 .historia-texto{font-size:1rem;line-height:1.75;color:#ddd;margin-bottom:20px;white-space:pre-line}
 .historia-rodape{font-style:italic;color:#888;font-size:.85rem;text-align:center;margin-bottom:20px;border-top:1px dashed rgba(201,162,39,.2);padding-top:14px}
 .historia-audio{background:rgba(201,162,39,.1);border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:15px;display:none;align-items:center;gap:15px;margin-bottom:25px}
@@ -213,7 +221,7 @@ footer{background:#050505;border-top:1px solid rgba(201,162,39,.2);padding:40px 
 
 <!-- INTRO -->
 <div class="overlay-video" id="introWrap">
-  <div class="overlay-fallback" id="introFallback"></div>
+  <div class="overlay-fallback"></div>
   <div class="wrap-iframe"><iframe id="introIframe" allow="autoplay; encrypted-media" title="Intro"></iframe></div>
   <button class="btn-pular" onclick="finalizarIntro()">Pular intro →</button>
 </div>
@@ -236,12 +244,15 @@ footer{background:#050505;border-top:1px solid rgba(201,162,39,.2);padding:40px 
 
 <!-- HALL -->
 <section class="hall" id="hall">
-  <div class="hall-hero">
-    <h1>A casa de Runa está aberta.</h1>
-    <p>Escolha uma porta. Cada uma guarda uma história.</p>
+  <div class="hero-runa">
+    <div class="hero-runa-conteudo">
+      <h1>A casa de Runa está aberta.</h1>
+      <p>O fogo está aceso. Escolha uma porta.</p>
+      <button class="btn-historia" onclick="irParaPortal('contos')">Ouvir as histórias</button>
+    </div>
   </div>
   <h2 class="hall-titulo">Nove portas, uma taverna</h2>
-  <p class="hall-sub">Toque em uma porta. Uma transição te leva ao ambiente.</p>
+  <p class="hall-sub">Toque em uma porta. Cada uma guarda uma história.</p>
   <div class="grid-portas" id="gridPortas"></div>
 
   <footer>
@@ -359,6 +370,20 @@ footer{background:#050505;border-top:1px solid rgba(201,162,39,.2);padding:40px 
 
   <div class="centro">
     <button class="btn-player-runa" onclick="ouvirHistoriaRuna()">▶ Ouvir a Runa contar a história dela</button>
+  </div>
+
+  <!-- VITRINE: O PINGENTE -->
+  <div class="vitrine">
+    <h3 class="vitrine-titulo">O Pingente de Mjolnir</h3>
+    <div class="carrossel" data-carrossel="pingente">
+      <div class="carrossel-track"></div>
+      <button class="carrossel-btn prev" onclick="moverCarrossel('pingente',-1)">‹</button>
+      <button class="carrossel-btn next" onclick="moverCarrossel('pingente',1)">›</button>
+      <div class="carrossel-indicadores" data-ind="pingente"></div>
+    </div>
+    <div class="centro">
+      <a class="btn-venda" href="https://meli.la/2d46Yr4" target="_blank" rel="noopener">Adquirir Relíquia →</a>
+    </div>
   </div>
 
   <h3 class="hall-titulo" style="margin-top:60px">A vida em imagens</h3>
@@ -490,13 +515,13 @@ footer{background:#050505;border-top:1px solid rgba(201,162,39,.2);padding:40px 
   <span>♪</span>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL HISTÓRIA -->
 <div class="historia-modal" id="historiaModal">
   <div class="historia-box">
     <button class="historia-fechar" onclick="fecharHistoria()">✕</button>
     <h2 id="historiaTitulo"></h2>
     <div class="historia-sub" id="historiaSub"></div>
-    <div class="historia-galeria" id="historiaGaleria"></div>
+    <div id="historiaVitrine"></div>
     <div class="historia-texto" id="historiaTexto"></div>
     <div class="historia-rodape" id="historiaRodape"></div>
     <div class="historia-audio" id="historiaAudioBox">
@@ -519,28 +544,25 @@ footer{background:#050505;border-top:1px solid rgba(201,162,39,.2);padding:40px 
 <audio id="boasVindas" src="assets/audio/boas-vindas.mp3" preload="auto"></audio>
 
 <script>
-// ============================================
-// CONFIGURAÇÃO DAS PORTAS
-// Altere durações/IDs aqui se quiser ajustar depois
-// ============================================
+// ===== CONFIG =====
 const PORTAS = [
-  { id:'contos',     titulo:'Contos',                   tag:'Histórias',  desc:'Noites junto ao fogo: batalhas, juramentos e a caneca que nunca esfria.', video:null,           duracao:0,     link:null },
-  { id:'sobre',      titulo:'Sobre a Runa',             tag:'Ela mesma',  desc:'A guerreira que trocou a espada pelo avental — a história completa na voz dela.', video:'s4RftBijF0Q', duracao:500,   link:null },
-  { id:'universo',   titulo:'Universo Viking',          tag:'Mundo',      desc:'Rotas, clãs, navios e costumes que moldaram a guerreira taberneira.', video:'1LZkHAPm5GQ', duracao:10000, link:'https://meli.la/2YmDDte' },
-  { id:'mitologia',  titulo:'Mitologia Nórdica',        tag:'Mitos',      desc:'Yggdrasil, os Nove Mundos, Fenrir e os deuses que observam a taverna.', video:'0Gs4CzPLMwM', duracao:800,   link:'https://meli.la/1oByRB2' },
-  { id:'aneis',      titulo:'Anéis & Pingentes',        tag:'Relíquias',  desc:'Peças ligadas às histórias: o pingente da raiz, o ferro do fiorde.', video:'Dm3Ta_c9DZs', duracao:500,   link:'https://meli.la/2d46Yr4' },
-  { id:'facas',      titulo:'Facas & Utensílios',       tag:'Do balcão',  desc:'Ferro batido, fio firme — o kit da taverna.', video:'WX1lHp6vH1c', duracao:500,   link:'https://meli.la/1BjvLGd' },
-  { id:'casacos',    titulo:'Casacos',                  tag:'Vestir',     desc:'Contra a neve lá fora: camadas quentes com espírito do norte.', video:'Z38aRgWU9Wg', duracao:500,   link:'https://meli.la/2E1qZ6V' },
-  { id:'heavymetal', titulo:'Heavy Metal & Camisetas',  tag:'Som & Vestir', desc:'A trilha da casa e as runas para vestir.', video:'GLe-29BBcws', duracao:500,   link:'https://meli.la/272cpsh' },
-  { id:'arte',       titulo:'Arte Conceitual',          tag:'Bastidores', desc:'O processo criativo por trás da Runa — esboços e estudos.', video:null,           duracao:0,     link:null }
+  { id:'contos',     titulo:'Contos',                   tag:'Histórias',   desc:'Noites junto ao fogo: batalhas, juramentos e a caneca que nunca esfria.', video:null,           duracao:0,     link:null },
+  { id:'sobre',      titulo:'Sobre a Runa',             tag:'Ela mesma',   desc:'A guerreira que trocou a espada pelo avental — a história completa na voz dela.', video:'s4RftBijF0Q', duracao:5000,  link:null },
+  { id:'universo',   titulo:'Universo Viking',          tag:'Mundo',       desc:'Rotas, clãs, navios e costumes que moldaram a guerreira taberneira.', video:'1LZkHAPm5GQ', duracao:10000, link:'https://meli.la/2YmDDte' },
+  { id:'mitologia',  titulo:'Mitologia Nórdica',        tag:'Mitos',       desc:'Yggdrasil, os Nove Mundos, Fenrir e os deuses que observam a taverna.', video:'0Gs4CzPLMwM', duracao:8000,  link:'https://meli.la/1oByRB2' },
+  { id:'aneis',      titulo:'Anéis & Pingentes',        tag:'Relíquias',   desc:'Peças ligadas às histórias: o pingente da raiz, o ferro do fiorde.', video:'Dm3Ta_c9DZs', duracao:5000,  link:'https://meli.la/2d46Yr4' },
+  { id:'facas',      titulo:'Facas & Utensílios',       tag:'Do balcão',   desc:'Ferro batido, fio firme — o kit da taverna.', video:'WX1lHp6vH1c', duracao:5000,  link:'https://meli.la/1BjvLGd' },
+  { id:'casacos',    titulo:'Casacos',                  tag:'Vestir',      desc:'Contra a neve lá fora: camadas quentes com espírito do norte.', video:'Z38aRgWU9Wg', duracao:5000,  link:'https://meli.la/2E1qZ6V' },
+  { id:'heavymetal', titulo:'Heavy Metal & Camisetas',  tag:'Som & Vestir',desc:'A trilha da casa e as runas para vestir.', video:'GLe-29BBcws', duracao:5000,  link:'https://meli.la/272cpsh' },
+  { id:'arte',       titulo:'Arte Conceitual',          tag:'Bastidores',  desc:'O processo criativo por trás da Runa — esboços e estudos.', video:null,           duracao:0,     link:null }
 ];
 
 const VIDEO_INTRO_ID = 'ma_aCbNxNQc';
 const DELAY_BOAS_VINDAS = 900;
 const DELAY_FIM_INTRO = 2500;
 const DELAY_MUSICA_SUBIR = 25000;
+
 const LS_MUSICA_TEMPO = 'tf_musica_tempo';
-const LS_MUSICA_ESTADO = 'tf_musica_estado';
 const LS_CURTIDAS = 'tf_curtidas';
 const LS_CURTIDAS_USER = 'tf_curtidas_user';
 
@@ -548,6 +570,7 @@ let musicaLiberada = false;
 let audioRunaTocando = false;
 let salaAtual = null;
 let historiaAtual = 0;
+const carrosselIndex = { caneca:0, bardo:0, pingente:0 };
 
 // ===== REFS =====
 const $ = id => document.getElementById(id);
@@ -555,13 +578,6 @@ const musica = $('musicaAmbiente');
 const boasVindas = $('boasVindas');
 const audioRuna = $('audioRuna');
 const btnMusica = $('btnMusica');
-const introWrap = $('introWrap');
-const introIframe = $('introIframe');
-const transicaoWrap = $('transicaoWrap');
-const transicaoIframe = $('transicaoIframe');
-const transicaoTitulo = $('transicaoTitulo');
-const btnVoltar = $('btnVoltar');
-const navbar = $('navbar');
 
 // ===== FADE =====
 function fadeVolume(el, target, duration=600){
@@ -578,24 +594,24 @@ function fadeVolume(el, target, duration=600){
 // ===== MÚSICA PERSISTENTE =====
 function restaurarMusica(){
   const t = parseFloat(localStorage.getItem(LS_MUSICA_TEMPO) || '0');
-  if (t > 0 && isFinite(t)) {
+  if (t > 0 && isFinite(t) && t < musica.duration) {
     try { musica.currentTime = t; } catch(e){}
   }
 }
-setInterval(()=>{
+function salvarTempoMusica(){
   if (!musica.paused && musica.currentTime > 0) {
     localStorage.setItem(LS_MUSICA_TEMPO, musica.currentTime.toFixed(2));
-    localStorage.setItem(LS_MUSICA_ESTADO, 'tocando');
   }
-}, 5000);
-musica.addEventListener('play', ()=> localStorage.setItem(LS_MUSICA_ESTADO,'tocando'));
-musica.addEventListener('pause', ()=> localStorage.setItem(LS_MUSICA_ESTADO,'pausada'));
+}
+setInterval(salvarTempoMusica, 5000);
+window.addEventListener('beforeunload', salvarTempoMusica);
+document.addEventListener('visibilitychange', ()=>{ if(document.hidden) salvarTempoMusica(); });
 
 // ===== ENTRAR =====
 function entrar(){
   $('entrada').classList.add('hidden');
-  introWrap.classList.add('active');
-  introIframe.src = `https://www.youtube.com/embed/${VIDEO_INTRO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_INTRO_ID}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0`;
+  $('introWrap').classList.add('active');
+  $('introIframe').src = `https://www.youtube.com/embed/${VIDEO_INTRO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_INTRO_ID}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0`;
 
   setTimeout(()=>{
     restaurarMusica();
@@ -605,7 +621,7 @@ function entrar(){
     musica.volume = 0.05;
     musica.play().catch(e=>console.log('mus',e));
     $('app').classList.add('visible');
-    navbar.classList.add('visible');
+    $('navbar').classList.add('visible');
     $('playerMusicaBox').classList.add('visible');
   }, DELAY_BOAS_VINDAS);
 
@@ -617,8 +633,8 @@ function entrar(){
 }
 
 function finalizarIntro(){
-  introIframe.src = '';
-  introWrap.classList.remove('active');
+  $('introIframe').src = '';
+  $('introWrap').classList.remove('active');
 }
 
 // ===== NAVEGAÇÃO =====
@@ -627,7 +643,6 @@ function irParaPortal(id){
   if(!porta) return;
   $('menuLista').classList.remove('aberto');
 
-  // Fecha sala atual
   if (salaAtual) {
     const el = $('sala-'+salaAtual);
     if (el) el.classList.remove('ativa');
@@ -638,24 +653,19 @@ function irParaPortal(id){
     const el = $('sala-'+id);
     if(el) el.classList.add('ativa');
     salaAtual = id;
-    btnVoltar.classList.add('visible');
+    $('btnVoltar').classList.add('visible');
     window.scrollTo(0,0);
   };
 
-  // Se não tem vídeo, abre direto
-  if (!porta.video || porta.duracao <= 0){
-    abrirSala();
-    return;
-  }
+  if (!porta.video || porta.duracao <= 0){ abrirSala(); return; }
 
-  // Mostra transição
-  transicaoTitulo.textContent = porta.titulo;
-  transicaoIframe.src = `https://www.youtube.com/embed/${porta.video}?autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0`;
-  transicaoWrap.classList.add('active');
+  $('transicaoTitulo').textContent = porta.titulo;
+  $('transicaoIframe').src = `https://www.youtube.com/embed/${porta.video}?autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0`;
+  $('transicaoWrap').classList.add('active');
 
   setTimeout(()=>{
-    transicaoWrap.classList.remove('active');
-    transicaoIframe.src = '';
+    $('transicaoWrap').classList.remove('active');
+    $('transicaoIframe').src = '';
     abrirSala();
   }, porta.duracao);
 }
@@ -667,7 +677,7 @@ function voltarAoHall(){
     salaAtual = null;
   }
   $('hall').style.display = 'block';
-  btnVoltar.classList.remove('visible');
+  $('btnVoltar').classList.remove('visible');
   window.scrollTo(0,0);
 }
 
@@ -677,8 +687,7 @@ function toggleMenu(){ $('menuLista').classList.toggle('aberto'); }
 function renderizarPortas(){
   const grid = $('gridPortas');
   const menu = $('menuLista');
-  grid.innerHTML = '';
-  menu.innerHTML = '';
+  grid.innerHTML = ''; menu.innerHTML = '';
   PORTAS.forEach((p,i)=>{
     const btn = document.createElement('button');
     btn.className = 'porta';
@@ -700,33 +709,58 @@ function renderizarPortas(){
 
 // ===== CONTOS =====
 const historias = [
-  { titulo:'A caneca que nunca esfria', subtitulo:'Conto I · Noite de neve',
+  {
+    titulo:'A caneca que nunca esfria', subtitulo:'Conto I · Noite de neve',
     texto:'A neve batia na porta como quem pede licença, e o viajante entrou a rir-se do frio. «Quentinho, dizes?»\n\nRuna não respondeu: pousou a caneca de carvalho no balcão e deixou o hidromel acender-se num sopro azul. Dizem que o fogo da Taverna Fenrir não queima a mão de quem chega em paz — só aquece a coragem.\n\nO viajante bebeu de um gole, tossiu, riu, e pediu outra. Runa, de braços cruzados, murmurou a frase que a casa inteira já conhece.\n\nDesde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o frio lá fora é real, mas o fogo aqui dentro é teimoso.',
     rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens:['assets/img/caneca-bardo2.png','assets/img/caneca-bardo3.png','assets/img/caneca-bardo4.jpg'],
     audio:null,
-    link:'https://meli.la/1pQy38B', linkTexto:'Conhecer a caneca que nunca esfria' },
-  { titulo:'Bardo e a sua caneca', subtitulo:'Conto V · O cliente fiel',
+    link:'https://meli.la/1pQy38B', linkTexto:'Obter essa relíquia',
+    carrossel:[
+      { tipo:'img', src:'assets/img/runacaneca1.jpg' },
+      { tipo:'video', id:'D1ak9p9LXsg' },
+      { tipo:'img', src:'assets/img/runacaneca2.png' },
+      { tipo:'img', src:'assets/img/runacaneca4.jpg' }
+    ]
+  },
+  {
+    titulo:'Bardo e a sua caneca', subtitulo:'Conto V · O cliente fiel',
     texto:'Senta. Essa história é sobre um velho cliente. O nome dele é Bardo. Não é anão, não é ferreiro, não é deus. É um velho teimoso que aparece aqui toda quinta-feira, senta no mesmo canto, e pede a mesma coisa: hidromel na caneca dele.\n\nE ele tem uma caneca específica. Não aceita outra.\n\n— Runa, essa caneca aqui tem história — ele diz. E tem. Ele comprou de um mercador que passou por aqui há uns dez invernos. Pagou caro.\n\nO que eu sei é que ele chega, senta, e a caneca já está esperando. Uma vez eu perguntei por que ele gostava tanto daquela caneca. Ele respondeu:\n\n— Porque ela é minha. E porque, quando eu seguro ela, eu lembro de quem eu era antes de ficar velho.\n\nTem coisas que a gente carrega não pelo valor. Carrega pelo peso.',
     rodape:'contado por Runa, atrás do balcão.',
-    imagens:['assets/img/caneca-bardo1.png'],
     audio:null,
-    link:'https://meli.la/1pQy38B', linkTexto:'Conhecer a caneca de Bardo' },
-  { titulo:'Sobre a Runa', subtitulo:'A história completa na voz dela',
+    link:'https://meli.la/1TCwkER', linkTexto:'Obter essa relíquia',
+    carrossel:[
+      { tipo:'img', src:'assets/img/caneca-bardo0.png' },
+      { tipo:'img', src:'assets/img/caneca-bardo1.png' },
+      { tipo:'img', src:'assets/img/caneca-bardo2.png' },
+      { tipo:'img', src:'assets/img/caneca-bardo3.png' },
+      { tipo:'img', src:'assets/img/caneca-bardo4.jpg' }
+    ]
+  },
+  {
+    titulo:'Sobre a Runa', subtitulo:'A história completa na voz dela',
     texto:'A história completa dela, contada por ela mesma, atrás do balcão.\n\nUma guerreira que perdeu a família, encontrou o bando do Lobo Cinzento, buscou vingança, descobriu o vazio e escolheu construir uma taverna.\n\nOuça na voz dela.',
-    rodape:'', imagens:[], audio:'assets/audio/runa-historia-completa-v1.mp3', link:null, linkTexto:null },
-  { titulo:'Brokkr e Eitri', subtitulo:'O conto dos anões',
+    rodape:'', audio:'assets/audio/runa-historia-completa-v1.mp3', link:null, linkTexto:null, carrossel:null
+  },
+  {
+    titulo:'Brokkr e Eitri', subtitulo:'O conto dos anões',
     texto:'Senta que essa é antiga, de antes dos homens contarem o tempo direito.\n\nDois irmãos anões, Brokkr e Eitri, os melhores ferreiros dos Nove Mundos, apostaram com Loki que fariam tesouros maiores que todos os que os deuses já tinham visto. Eitri moldava o metal e Brokkr trabalhava o fole sem parar.\n\nLoki, disfarçado de moscardo, picava o pescoço e as pálpebras de Brokkr para ele largar o fole — o sangue escorria, mas ele não parou.\n\nÉ por isso que eu carrego o pingente no peito. Não é enfeite. É lembrança de que coisa boa nasce no fogo, com teimosia e um irmão ao lado soprando o fole.',
-    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', imagens:[], audio:null, link:null, linkTexto:null },
-  { titulo:'Juramento sob Yggdrasil', subtitulo:'Conto IV · A raiz',
+    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', audio:null, link:null, linkTexto:null, carrossel:null
+  },
+  {
+    titulo:'Juramento sob Yggdrasil', subtitulo:'Conto IV · A raiz',
     texto:'Antes de abrir a taverna, Runa gravou uma runa na raiz da árvore e jurou: nenhum ferido fica lá fora.\n\nA taverna inteira é a lição aprendida.',
-    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', imagens:[], audio:null, link:null, linkTexto:null },
-  { titulo:'Neve e sangue na porta', subtitulo:'Conto III · O inverno do lobo',
+    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', audio:null, link:null, linkTexto:null, carrossel:null
+  },
+  {
+    titulo:'Neve e sangue na porta', subtitulo:'Conto III · O inverno do lobo',
     texto:'O uivo desceu da montanha e apagou as tochas do cais. Os mercenários riram; os pescadores rezaram.\n\nRuna limpou o balcão, pendurou a espada ao alcance da mão e manteve a porta aberta. «Quem entra com sangue na bota, limpa na esteira», disse.\n\nQuando o lobo calou-se, a neve cobria tudo — menos a soleira.',
-    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', imagens:[], audio:null, link:null, linkTexto:null },
-  { titulo:'Como Runa aprendeu as runas', subtitulo:'Conto II · A faca de entalhe',
+    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', audio:null, link:null, linkTexto:null, carrossel:null
+  },
+  {
+    titulo:'Como Runa aprendeu as runas', subtitulo:'Conto II · A faca de entalhe',
     texto:'Antes da espada, a faca de entalhe: a vidente do bando ensinou Runa a ler as runas na madeira, na neve e no silêncio.\n\n«A espada decide depressa. A runa decide certo.»',
-    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', imagens:[], audio:null, link:null, linkTexto:null }
+    rodape:'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ', audio:null, link:null, linkTexto:null, carrossel:null
+  }
 ];
 
 // ===== CURTIDAS =====
@@ -735,21 +769,15 @@ function seedCount(titulo){
   for (let i=0;i<titulo.length;i++) h = (h*31 + titulo.charCodeAt(i)) % 997;
   return 3000 + (h % 500);
 }
-
-function lerCurtidas(){
-  try { return JSON.parse(localStorage.getItem(LS_CURTIDAS) || '{}'); } catch(e){ return {}; }
-}
-function lerCurtidasUsuario(){
-  try { return JSON.parse(localStorage.getItem(LS_CURTIDAS_USER) || '[]'); } catch(e){ return []; }
-}
-function salvarCurtidas(obj){ localStorage.setItem(LS_CURTIDAS, JSON.stringify(obj)); }
-function salvarCurtidasUsuario(arr){ localStorage.setItem(LS_CURTIDAS_USER, JSON.stringify(arr)); }
+function lerCurtidas(){ try { return JSON.parse(localStorage.getItem(LS_CURTIDAS) || '{}'); } catch(e){ return {}; } }
+function lerCurtidasUsuario(){ try { return JSON.parse(localStorage.getItem(LS_CURTIDAS_USER) || '[]'); } catch(e){ return []; } }
+function salvarCurtidas(o){ localStorage.setItem(LS_CURTIDAS, JSON.stringify(o)); }
+function salvarCurtidasUsuario(a){ localStorage.setItem(LS_CURTIDAS_USER, JSON.stringify(a)); }
 
 function getCount(idx){
   const c = lerCurtidas();
   if (c['h'+idx] === undefined) {
-    const seed = seedCount(historias[idx].titulo);
-    c['h'+idx] = seed;
+    c['h'+idx] = seedCount(historias[idx].titulo);
     salvarCurtidas(c);
   }
   return c['h'+idx];
@@ -768,15 +796,15 @@ function curtir(idx, ev){
 }
 
 function atualizarBotaoCurtir(idx, animar){
-  const btn = document.querySelector(`.btn-curtir[data-idx="${idx}"]`);
-  if (!btn) return;
-  btn.querySelector('.curtir-count').textContent = getCount(idx).toLocaleString('pt-BR');
+  const el = document.querySelector(`.conto-marca[data-idx="${idx}"]`);
+  if (!el) return;
+  el.querySelector('.marca-count').textContent = getCount(idx).toLocaleString('pt-BR');
   const ja = lerCurtidasUsuario().includes('h'+idx);
-  btn.classList.toggle('curtido', ja);
+  el.classList.toggle('curtido', ja);
   if (animar) {
-    btn.classList.remove('curtido');
-    void btn.offsetWidth;
-    btn.classList.add('curtido');
+    el.classList.remove('curtido');
+    void el.offsetWidth;
+    el.classList.add('curtido');
   }
 }
 
@@ -786,16 +814,16 @@ function renderizarContos(){
     const count = getCount(i).toLocaleString('pt-BR');
     const curtido = lerCurtidasUsuario().includes('h'+i);
     return `
-      <div class="conto" onclick="abrirHistoria(${i})">
+      <div class="conto-card" onclick="abrirHistoria(${i})">
+        <span class="conto-tag">${h.subtitulo || ''}</span>
         <h3>${h.titulo}</h3>
         <p>${h.texto.substring(0,140).replace(/\n/g,' ')}...</p>
-        <div class="conto-footer">
-          <span class="ler-conto">Ler o conto →</span>
-          <button class="btn-curtir ${curtido?'curtido':''}" data-idx="${i}" onclick="curtir(${i}, event)">
-            <span class="runa-icon">ᚱ</span>
-            <span class="curtir-count">${count}</span>
-          </button>
+        <div class="conto-marca ${curtido?'curtido':''}" data-idx="${i}" onclick="curtir(${i}, event)">
+          <span class="runa-icon">ᛉ</span>
+          <span class="marca-texto">Deixe sua marca nesta história</span>
+          <span class="marca-count">${count}</span>
         </div>
+        <span class="ler-conto">Ler o conto →</span>
       </div>`;
   }).join('');
 }
@@ -809,12 +837,24 @@ function abrirHistoria(idx){
   $('historiaTexto').textContent = h.texto;
   $('historiaRodape').textContent = h.rodape || '';
 
-  const gal = $('historiaGaleria');
-  if (h.imagens && h.imagens.length){
-    gal.innerHTML = h.imagens.map(src=>`<img src="${src}" alt="${h.titulo}" onerror="this.style.display='none'">`).join('');
-    gal.style.display = 'grid';
-  } else {
-    gal.innerHTML = ''; gal.style.display = 'none';
+  // Vitrine no modal
+  const vt = $('historiaVitrine');
+  vt.innerHTML = '';
+  if (h.carrossel && h.carrossel.length){
+    const idCar = 'caneca-' + idx;
+    vt.innerHTML = `
+      <div class="vitrine" style="margin-top:0">
+        <div class="carrossel" data-carrossel="${idCar}">
+          <div class="carrossel-track"></div>
+          <button class="carrossel-btn prev" onclick="moverCarrossel('${idCar}',-1)">‹</button>
+          <button class="carrossel-btn next" onclick="moverCarrossel('${idCar}',1)">›</button>
+          <div class="carrossel-indicadores" data-ind="${idCar}"></div>
+        </div>
+      </div>`;
+    // Registra carrossel dinamicamente
+    carrosselData[idCar] = h.carrossel;
+    carrosselIndex[idCar] = 0;
+    setTimeout(()=>{ construirCarrossel(idCar); }, 50);
   }
 
   const audioBox = $('historiaAudioBox');
@@ -870,31 +910,117 @@ function ouvirHistoriaRuna(){ abrirHistoria(2); }
 
 function toggleMusica(){
   if (musica.paused){ musica.play(); btnMusica.textContent='❚❚'; }
-  else { musica.pause(); btnMusica.textContent='▶'; }
+  else { musica.pause(); btnMusica.textContent='▶'; salvarTempoMusica(); }
 }
+
+// ===== CARROSSEL =====
+const carrosselData = {
+  pingente: [
+    { tipo:'img', src:'assets/img/runapingente1.png' },
+    { tipo:'video', id:'ACjrIQGb0tk' },
+    { tipo:'img', src:'assets/img/runapingente2.png' },
+    { tipo:'img', src:'assets/img/runapingente3.png' },
+    { tipo:'img', src:'assets/img/runapingente4.png' }
+  ]
+};
+
+function construirCarrossel(id){
+  const el = document.querySelector(`.carrossel[data-carrossel="${id}"]`);
+  if (!el) return;
+  const track = el.querySelector('.carrossel-track');
+  const indicadores = el.parentElement.querySelector(`.carrossel-indicadores[data-ind="${id}"]`) || el.querySelector('.carrossel-indicadores');
+  const items = carrosselData[id] || [];
+  track.innerHTML = '';
+  if (indicadores) indicadores.innerHTML = '';
+  items.forEach((item, i)=>{
+    const slide = document.createElement('div');
+    slide.className = 'carrossel-slide';
+    if (item.tipo === 'img'){
+      const img = document.createElement('img');
+      img.src = item.src;
+      img.alt = id + '-' + i;
+      img.onerror = ()=> slide.style.display='none';
+      slide.appendChild(img);
+    } else if (item.tipo === 'video'){
+      const ifr = document.createElement('iframe');
+      ifr.src = `https://www.youtube.com/embed/${item.id}?autoplay=0&mute=1&loop=1&playlist=${item.id}&controls=1&modestbranding=1&playsinline=1&rel=0`;
+      ifr.allow = 'autoplay; encrypted-media';
+      slide.appendChild(ifr);
+    }
+    track.appendChild(slide);
+    if (indicadores){
+      const dot = document.createElement('span');
+      if (i===0) dot.classList.add('active');
+      dot.onclick = ()=> irSlide(id, i);
+      indicadores.appendChild(dot);
+    }
+  });
+  atualizarCarrossel(id);
+}
+
+function moverCarrossel(id, dir){
+  const items = carrosselData[id] || [];
+  let idx = carrosselIndex[id] || 0;
+  idx += dir;
+  if (idx < 0) idx = items.length - 1;
+  if (idx >= items.length) idx = 0;
+  carrosselIndex[id] = idx;
+  atualizarCarrossel(id);
+}
+
+function irSlide(id, i){
+  carrosselIndex[id] = i;
+  atualizarCarrossel(id);
+}
+
+function atualizarCarrossel(id){
+  const el = document.querySelector(`.carrossel[data-carrossel="${id}"]`);
+  if (!el) return;
+  const track = el.querySelector('.carrossel-track');
+  const idx = carrosselIndex[id] || 0;
+  track.style.transform = `translateX(-${idx*100}%)`;
+  const indicadores = el.parentElement.querySelector(`.carrossel-indicadores[data-ind="${id}"]`) || el.querySelector('.carrossel-indicadores');
+  if (indicadores){
+    indicadores.querySelectorAll('span').forEach((s,i)=> s.classList.toggle('active', i===idx));
+  }
+}
+
+// Swipe mobile no carrossel
+document.addEventListener('touchstart', (e)=>{
+  const car = e.target.closest('.carrossel');
+  if (!car) return;
+  car._startX = e.touches[0].clientX;
+}, { passive:true });
+document.addEventListener('touchend', (e)=>{
+  const car = e.target.closest('.carrossel');
+  if (!car || !car._startX) return;
+  const diff = e.changedTouches[0].clientX - car._startX;
+  car._startX = null;
+  if (Math.abs(diff) > 50){
+    const id = car.dataset.carrossel;
+    moverCarrossel(id, diff > 0 ? -1 : 1);
+  }
+}, { passive:true });
 
 // ===== SLOTS AUTOMÁTICOS =====
 function popularSlots(){
   document.querySelectorAll('.slot-grid').forEach(grid=>{
     const prefix = grid.dataset.prefix;
     const count = parseInt(grid.dataset.count || '6');
-    // Placeholder escondido se alguma imagem carregar
+    if (grid.dataset.pronto) return;
+    grid.dataset.pronto = '1';
     const emptyMsg = document.createElement('p');
     emptyMsg.className = 'slot-empty';
     emptyMsg.innerHTML = `Espaço reservado — suba <em>${prefix}1.png</em> em <em>assets/img/</em>`;
     grid.appendChild(emptyMsg);
-    let algumaCarregou = false;
-
+    let alguma = false;
     for (let i=1;i<=count;i++){
       const slot = document.createElement('div');
       slot.className = 'slot';
       const img = document.createElement('img');
       img.alt = prefix+i;
       let tentouJpg = false;
-      img.onload = ()=>{
-        slot.classList.add('visivel');
-        if (!algumaCarregou){ algumaCarregou = true; emptyMsg.style.display='none'; }
-      };
+      img.onload = ()=>{ slot.classList.add('visivel'); if(!alguma){alguma=true; emptyMsg.style.display='none';} };
       img.onerror = ()=>{
         if (!tentouJpg){ tentouJpg = true; img.src = `assets/img/${prefix}${i}.jpg`; }
         else { slot.remove(); }
@@ -910,6 +1036,7 @@ function popularSlots(){
 renderizarPortas();
 renderizarContos();
 popularSlots();
+setTimeout(()=> construirCarrossel('pingente'), 300);
 </script>
 </body>
-</html>
+  </html>
