@@ -658,16 +658,51 @@ const Taverna = (() => {
 
   function ouvirHistoriaRuna() {
     const audio = audioRuna();
+    const btn = document.querySelector('.btn-player-runa');
     if (!audio) return;
+
     if (audioRunaTocando) {
-      audio.pause(); audio.currentTime = 0; audioRunaTocando = false;
+      // PAUSAR
+      audio.pause();
+      audio.currentTime = 0;
+      audioRunaTocando = false;
+      if (btn) btn.innerHTML = '▶ Ouvir a Runa contar a história dela';
       if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     } else {
-      audio.src = SOBRE_RUNA.audio;
+      // TOCAR
+      const srcFinal = SOBRE_RUNA.audio;
+      if (!audio.src || !audio.src.endsWith(srcFinal)) {
+        audio.src = srcFinal;
+      }
       audio.volume = 1;
-      audio.play().catch(e => console.log('audio:', e.name));
-      audioRunaTocando = true;
-      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
+
+      // Se já está carregado, toca direto
+      if (audio.readyState >= 2) {
+        tocarHistoriaRuna(audio, btn);
+      } else {
+        // Se ainda não carregou, espera
+        const onReady = () => {
+          audio.removeEventListener('canplay', onReady);
+          tocarHistoriaRuna(audio, btn);
+        };
+        audio.addEventListener('canplay', onReady);
+        audio.load();
+      }
+    }
+  }
+
+  function tocarHistoriaRuna(audio, btn) {
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        audioRunaTocando = true;
+        if (btn) btn.innerHTML = '❚❚ Pausar história';
+        if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
+      }).catch(e => {
+        console.error('❌ Áudio da Runa falhou:', e.name, e.message);
+        audioRunaTocando = false;
+        if (btn) btn.innerHTML = '▶ Ouvir a Runa contar a história dela';
+      });
     }
   }
 
