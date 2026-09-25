@@ -31,7 +31,7 @@ const CONTOS_ABERTURA = 'runa-contos.jpg';
 // ============================================================
 const CONFIG = {
   intro: 'ma_aCbNxNQc',
-  heroHall: 'ACjrIQGb0tk',
+  heroHall: 'odB5EuYGaCM',
   delays: { boasVindas: 900, fimIntro: 8000, musicaSubir: 25000, ducking: 500 },
   volumes: { musicaPadrao: 0.20, musicaBaixa: 0.05, boasVindas: 0.85 },
   redes: {
