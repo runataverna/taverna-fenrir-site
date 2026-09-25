@@ -1052,5 +1052,27 @@ button { font-family: inherit; }
   .selo-footer img { width: 48px; height: 48px; }
   .selo-footer .selo-icone-fallback { width: 48px; height: 48px; font-size: 1.3rem; }
   .selo-footer span { font-size: .65rem; }
+
   .microconto { flex: 0 0 92%; }
-  }
+  }/* BOTÃO "OUVIR A RUNA" */
+.btn-player-runa {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #c9a227;
+  color: #0a0a0a;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 40px auto 0;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+.btn-player-runa:hover {
+  background: #d4af37;
+  transform: scale(1.03);
+}
