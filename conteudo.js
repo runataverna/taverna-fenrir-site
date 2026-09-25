@@ -1,40 +1,33 @@
 // ============================================================
 // TAVERNA FENRIR — ARQUIVO DE CONTEÚDO
-// Este arquivo contém TODOS os textos do site.
 // Edite aqui. O index.html e script.js não precisam ser tocados.
-// ===========================================================
 // ============================================================
-// CONFIGURAÇÕES GERAIS
+
 // ============================================================
 // DICIONÁRIO DE RUNAS NO TEXTO
 // ============================================================
 const RUNAS_TEXTO = {
-  // Algiz — proteção (azul)
   'proteção': 'algiz', 'protecao': 'algiz', 'abrigo': 'algiz',
   'escudo': 'algiz', 'defender': 'algiz', 'guardar': 'algiz', 'amigo': 'algiz',
-  // Isa — gelo (azul-gelo)
   'gelo': 'isa', 'inverno': 'isa', 'neve': 'isa', 'frio': 'isa',
   'espera': 'isa', 'silêncio': 'isa', 'silencio': 'isa',
-  // Kenaz — tocha (âmbar)
   'fogo': 'kenaz', 'tocha': 'kenaz', 'luz': 'kenaz',
   'aprender': 'kenaz', 'ensinar': 'kenaz',
-  // Fehu — riqueza (dourado)
   'ouro': 'fehu', 'prata': 'fehu', 'riqueza': 'fehu', 'tesouro': 'fehu',
-  // Thurisaz — guerra (vermelho)
   'batalha': 'thurisaz', 'sangue': 'thurisaz', 'machado': 'thurisaz',
   'espada': 'thurisaz', 'luta': 'thurisaz', 'matar': 'thurisaz',
-  // Wunjo — alegria (verde)
   'riso': 'wunjo', 'festa': 'wunjo', 'alegria': 'wunjo',
   'dança': 'wunjo', 'danca': 'wunjo', 'canção': 'wunjo', 'cancao': 'wunjo',
   'brinde': 'wunjo',
-  // Othala — família/lar (âmbar queimado)
   'família': 'othala', 'familia': 'othala', 'lar': 'othala',
   'casa': 'othala', 'pai': 'othala', 'mãe': 'othala', 'mae': 'othala',
-  // Mannaz — o eu (branco aquecido)
   'memória': 'mannaz', 'memoria': 'mannaz', 'alma': 'mannaz'
 };
 
 const CONTOS_ABERTURA = 'runa-contos.jpg';
+
+// ============================================================
+// CONFIGURAÇÕES GERAIS
 // ============================================================
 const CONFIG = {
   intro: 'ma_aCbNxNQc',
@@ -53,11 +46,6 @@ const CONFIG = {
     boasVindas: 0.85
   },
   
-  limiteLinhas: {
-    card: 20,
-    pagina: 40
-  },
-  
   redes: {
     instagram: 'https://www.instagram.com/runataverna',
     facebook: 'https://www.facebook.com/61594517399917/',
@@ -70,11 +58,8 @@ const CONFIG = {
     redesAcima: 'Já faz parte de nossas redes?',
     redesAbaixo: 'Siga nossas redes sociais',
     historiaNaoContada: 'A HISTÓRIA NÃO CONTADA',
-    historiaNaoContadaSub: 'Ainda não é hora de você saber.',
-    simbologiaTitulo: 'O QUE FICOU COMIGO',
-    simbologiaSub: 'Cada uma dessas peças me lembra de alguém. Ou de alguma coisa que eu escolhi não esquecer.',
-    dançaTitulo: 'A DANÇA DAS CHAMAS',
-    dançaSub: 'Pequenas histórias que passam pela taverna.'
+    historiaNaoContadaSub: 'NÃO ABRA ESSA PORTA',
+    lojasTitulo: 'AS SALAS DA TAVERNA'
   }
 };
 
@@ -94,13 +79,50 @@ const PORTAS = [
 ];
 
 // ============================================================
-// OS 7 CONTOS PRINCIPAIS
+// OS CONTOS (abertura + 7 principais)
 // ============================================================
 const CONTOS = [
+  {
+    id: 'abertura',
+    titulo: 'As Runas da Porta',
+    subtitulo: 'Abertura · Antes de entrar',
+    imagemAbertura: 'runa-abertura.jpg',
+    propaganda: null,
+    texto: `Se você chegou até aqui, presta atenção numa coisa antes de entrar.
+
+Toda porta de taverna tem marca. A minha tem sete. Eu gravei cada uma à faca, na madeira da soleira, antes de abrir a casa pela primeira vez.
+
+A primeira é ᛉ Algiz. É a runa da proteção — a mão aberta sobre quem entra. Fica na soleira, virada pra rua. Quem passa por ela não sai do mesmo jeito. Algiz é a runa que eu uso quando alguém chega ferido. E quando alguém chega com medo, também.
+
+A segunda é ᛁ Isa. É a runa do gelo — e do silêncio. Fica no batente esquerdo. Isa não é sobre morte. É sobre a pausa antes da decisão. Quando o mundo trava, é Isa que ensina a esperar.
+
+A terceira é ᚲ Kenaz. É a runa da tocha. Fica acima da lareira, iluminando a casa. Foi a Svala que me ensinou Kenaz. Ela dizia que aprender é acender fogo dentro do peito, e que a gente nunca mais apaga.
+
+A quarta é ᚦ Thurisaz. É a runa da batalha — do martelo do Thor. Fica no batente direito, contra quem chega armado. Não é sobre violência. É sobre saber que ninguém aqui levanta a mão contra ninguém.
+
+A quinta é ᚹ Wunjo. É a runa da alegria. Fica no balcão, bem no centro. É a marca da festa, do riso, do brinde que a gente levanta quando a noite é boa.
+
+A sexta é ᛟ Othala. É a runa da família — do lar. Fica na viga central, onde ninguém toca. Othala é herança. É o que a gente carrega dos que vieram antes.
+
+A sétima é ᛗ Mannaz. É a runa do eu. Fica no coração da casa — onde eu mesma me sento. Mannaz é o que sobra de mim quando a noite acaba. E é por ela que eu ainda estou aqui.
+
+Agora você já sabe as sete. Vai reconhecer elas quando aparecerem.
+
+Senta. A casa é sua.`,
+    rodape: 'gravado na soleira, antes da primeira noite.',
+    imagens: null,
+    video: null,
+    link: null,
+    linkTexto: null,
+    abas: null,
+    audio: null
+  },
   {
     id: 'caneca',
     titulo: 'A caneca que nunca esfria',
     subtitulo: 'Conto I · Noite de neve',
+    imagemAbertura: 'runa-caneca.jpg',
+    propaganda: 'propaganda-caneca.jpg',
     texto: `A neve batia na porta como quem pede licença, e o viajante entrou a rir-se do frio. «Quentinho, dizes?»
 
 Runa não respondeu: pousou a caneca de carvalho no balcão e deixou o hidromel acender-se num sopro azul. Dizem que o fogo da Taverna Fenrir não queima a mão de quem chega em paz — só aquece a coragem.
@@ -109,12 +131,8 @@ O viajante bebeu de um gole, tossiu, riu, e pediu outra. Runa, de braços cruzad
 
 Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o frio lá fora é real, mas o fogo aqui dentro é teimoso.`,
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: [
-      'assets/img/runacaneca1.jpg',
-      'assets/img/runacaneca2.png',
-      'assets/img/runacaneca4.jpg'
-    ],
-    video: 'D1ak9p9LXsg',
+    imagens: null,
+    video: null,
     link: 'https://meli.la/1pQy38B',
     linkTexto: 'Obter essa relíquia',
     abas: null,
@@ -124,6 +142,8 @@ Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o f
     id: 'bardo',
     titulo: 'Bardo e a sua caneca',
     subtitulo: 'Conto V · O cliente fiel',
+    imagemAbertura: 'runa-bardo-conto.jpg',
+    propaganda: 'propaganda-bardo.jpg',
     texto: `Senta. Essa história é sobre um velho cliente. O nome dele é Bardo. Não é anão, não é ferreiro, não é deus. É um velho teimoso que aparece aqui toda quinta-feira, senta no mesmo canto, e pede a mesma coisa: hidromel na caneca dele.
 
 E ele tem uma caneca específica. Não aceita outra.
@@ -136,13 +156,7 @@ O que eu sei é que ele chega, senta, e a caneca já está esperando. Uma vez eu
 
 Tem coisas que a gente carrega não pelo valor. Carrega pelo peso.`,
     rodape: 'contado por Runa, atrás do balcão.',
-    imagens: [
-      'assets/img/caneca-bardo0.png',
-      'assets/img/caneca-bardo1.png',
-      'assets/img/caneca-bardo2.png',
-      'assets/img/caneca-bardo3.png',
-      'assets/img/caneca-bardo4.jpg'
-    ],
+    imagens: null,
     video: null,
     link: 'https://meli.la/1TCwkER',
     linkTexto: 'Obter essa relíquia',
@@ -153,6 +167,8 @@ Tem coisas que a gente carrega não pelo valor. Carrega pelo peso.`,
     id: 'brokkr',
     titulo: 'Brokkr e Eitri',
     subtitulo: 'O conto dos anões',
+    imagemAbertura: 'runa-brokkr.jpg',
+    propaganda: 'propaganda-ferramentas.jpg',
     abas: [
       {
         titulo: 'O martelo que nasceu do fogo',
@@ -212,6 +228,8 @@ E se tiver alguém do seu lado soprando o fole enquanto você trabalha — melho
     id: 'yggdrasil',
     titulo: 'Juramento sob Yggdrasil',
     subtitulo: 'Conto IV · A raiz',
+    imagemAbertura: 'runa-yggdrasil.jpg',
+    propaganda: 'propaganda-jardim.jpg',
     abas: [
       {
         titulo: 'O Juramento',
@@ -259,6 +277,8 @@ Se você quer começar, começa pequeno. Terra boa, paciência, e a mão dispost
     id: 'neve',
     titulo: 'Neve e sangue na porta',
     subtitulo: 'Conto III · O inverno do lobo',
+    imagemAbertura: 'runa-neve.jpg',
+    propaganda: 'propaganda-pratos.jpg',
     abas: [
       {
         titulo: 'A noite em que o lobo uivou',
@@ -318,6 +338,8 @@ Se um dia você tiver uma casa sua, lembra disso: o cuidado com a mesa é cuidad
     id: 'bando',
     titulo: 'O Bando do Lobo Cinzento',
     subtitulo: 'Conto II · A família escolhida',
+    imagemAbertura: 'runa-bando.jpg',
+    propaganda: 'propaganda-presentes.jpg',
     abas: [
       {
         titulo: 'Como eu entrei',
@@ -377,7 +399,7 @@ E ser escolhido, meu caro, é uma das poucas coisas na vida que valem a pena.`
       }
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: ['assets/img/personagens/halvar1.png'],
+    imagens: null,
     video: null,
     link: 'https://meli.la/2WLCGD1',
     linkTexto: 'Conhecer a lista de presentes da Runa',
@@ -387,6 +409,8 @@ E ser escolhido, meu caro, é uma das poucas coisas na vida que valem a pena.`
     id: 'runas',
     titulo: 'Como Runa aprendeu as runas',
     subtitulo: 'Conto VI · A velha do bando',
+    imagemAbertura: 'runa-runas.jpg',
+    propaganda: 'propaganda-oficio.jpg',
     abas: [
       {
         titulo: 'A velha do bando',
@@ -614,7 +638,7 @@ const SOBRE_RUNA = {
 // ============================================================
 const HISTORIA_NAO_CONTADA = {
   titulo: 'A HISTÓRIA NÃO CONTADA',
-  subtitulo: 'Ainda não é hora de você saber.',
+  subtitulo: 'NÃO ABRA ESSA PORTA',
   texto: `Todo mundo que senta aqui sabe da vingança. Sabe da família que enterrei. Sabe do bando que me acolheu e da taverna que construí depois.
 
 Mas tem um pedaço no meio. Um pedaço que eu deixo fora das histórias quando alguém me pede pra contar.
@@ -669,20 +693,19 @@ E talvez você seja esse alguém.`
 };
 
 // ============================================================
-// OS 7 SÍMBOLOS
+// OS 6 SÍMBOLOS
 // ============================================================
 const SIMBOLOS = [
-  { id: 'halvar',    nome: 'Halvar',       icone: '🪢', historia: 'bando',    alt: 'Corda trançada' },
-  { id: 'ulf',       nome: 'Ulf',          icone: '💍', historia: 'historia', alt: 'Pulseira de bronze' },
-  { id: 'svala',     nome: 'Svala',        icone: '🔪', historia: 'runas',    alt: 'Faca de entalhe' },
-  { id: 'bardo',     nome: 'Bardo',        icone: '🍺', historia: 'bardo',    alt: 'Caneca' },
-  { id: 'brokkr',    nome: 'Brokkr & Eitri', icone: '⚒️', historia: 'brokkr', alt: 'Martelo e bigorna' },
-  { id: 'sobreviver', nome: 'A sobrevivente', icone: '🧥', historia: 'casacos', alt: 'Casaco de pele' },
-  { id: 'trovao',    nome: 'Dia do Trovão', icone: '🪙', historia: 'sobre',   alt: 'Pingente Mjolnir' }
+  { id: 'halvar',  nome: 'Halvar',         icone: '🪢', historia: 'bando' },
+  { id: 'brokkr',  nome: 'Brokkr & Eitri', icone: '⚒️', historia: 'brokkr' },
+  { id: 'svala',   nome: 'Svala',          icone: '🪨', historia: 'runas' },
+  { id: 'mjolnir', nome: 'Dia do Trovão',  icone: '⚡', historia: 'sobre' },
+  { id: 'bardo',   nome: 'Bardo',          icone: '🍺', historia: 'bardo' },
+  { id: 'ulf',     nome: 'A Pulseira',     icone: '⭕', historia: 'historia' }
 ];
 
 // ============================================================
-// UNIVERSO VIKING — 5 GRUPOS TEMÁTICOS
+// UNIVERSO VIKING — 5 GRUPOS
 // ============================================================
 const VIKING = {
   intro: 'Do fiorde ao salão: o mundo lá fora que entra pela porta a cada noite.',
@@ -751,7 +774,7 @@ const VIKING = {
 };
 
 // ============================================================
-// MITOLOGIA NÓRDICA — 6 GRUPOS TEMÁTICOS
+// MITOLOGIA NÓRDICA — 6 GRUPOS
 // ============================================================
 const MITOLOGIA = {
   intro: 'A árvore que segura os mundos passa pela adega da taverna.',
@@ -833,7 +856,7 @@ const SALAS_VENDA = {
     titulo: 'Facas & Utensílios',
     subtitulo: 'A cozinha da taverna.',
     imagem: 'runa-facas.jpg',
-    imagemContadora: 'runa-facas.jpg',
+    propaganda: 'propaganda-facas.jpg',
     link: 'https://meli.la/1BjvLGd',
     linkTexto: 'Conhecer a cozinha da Runa',
     texto: `Antes de eu saber manejar uma espada, eu sabia manejar uma colher.
@@ -856,7 +879,7 @@ Escolhe o que combina com a tua cozinha. E usa. Até a peça virar tua.`
     titulo: 'Anéis & Pingentes',
     subtitulo: 'O que se carrega no peito.',
     imagem: 'runa-aneis.jpg',
-    imagemContadora: 'runa-aneis.jpg',
+    propaganda: 'propaganda-aneis.jpg',
     link: 'https://meli.la/2d46Yr4',
     linkTexto: 'Conhecer as relíquias da Runa',
     texto: `Tem uma coisa que a gente esquece quando fala de anel e pingente: na minha época, ninguém usava joia por moda. Não existia vitrine. Não existia tendência. Se você via um homem com um anel, ele tinha uma história. Se você via uma mulher com um colar, ele carregava um nome. O metal era só o que segurava a memória no lugar.
@@ -887,7 +910,7 @@ Assim como eu carrego a minha. Assim como você vai carregar a tua.`
     titulo: 'Casacos',
     subtitulo: 'O frio que não perdoa.',
     imagem: 'runa-casacos.jpg',
-    imagemContadora: 'runa-casacos.jpg',
+    propaganda: 'propaganda-casacos.jpg',
     link: 'https://meli.la/2E1qZ6V',
     linkTexto: 'Conhecer os casacos da Runa',
     texto: `No norte, quem não se cobre, morre.
@@ -904,17 +927,13 @@ Não é ciência complicada. É prática de quem viveu.
 
 Escolhi pra vocês algumas peças que eu mesma usaria numa estrada de inverno. Nada de luxo. Nada de enfeite. Peças de trabalho — feitas pra durar, e pra segurar o frio quando ele vier.
 
-Se você mora no frio, sabe do que eu tô falando. Se você não mora, e vai passar por um inverno de verdade, leva a sério. Um casaco ruim é a diferença entre voltar pra casa e virar estátua de gelo na estrada.`,
-    abas: {
-      feminino: '[A PREENCHER — suba fotos como casacos-fem1.png, casacos-fem2.png...]',
-      masculino: '[A PREENCHER — suba fotos como casacos-masc1.png, casacos-masc2.png...]'
-    }
+Se você mora no frio, sabe do que eu tô falando. Se você não mora, e vai passar por um inverno de verdade, leva a sério. Um casaco ruim é a diferença entre voltar pra casa e virar estátua de gelo na estrada.`
   },
   heavymetal: {
     titulo: 'Heavy Metal & Camisetas',
     subtitulo: 'O que a gente veste e o que a gente canta.',
     imagem: 'runa-heavymetal.jpg',
-    imagemContadora: 'runa-heavymetal.jpg',
+    propaganda: 'propaganda-heavymetal.jpg',
     link: 'https://meli.la/272cpsh',
     linkTexto: 'Conhecer a tribo da Runa',
     texto: `Tem uma ideia errada que corre por aí, de que viking era um bando de gente suja coberta de trapo. Não era. A gente se importava com o que vestia. Muito.
@@ -942,5 +961,5 @@ Aqui, a gente canta o que a gente é.`
 };
 
 // ============================================================
-// FIM DO ARQUIVO DE CONTEÚDO
+// FIM
 // ============================================================
