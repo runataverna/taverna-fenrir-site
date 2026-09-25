@@ -1,5 +1,5 @@
 /* ============================================================
-   TAVERNA FENRIR — LÓGICA v3
+   TAVERNA FENRIR — LÓGICA v4
    ============================================================ */
 
 const Taverna = (() => {
@@ -11,6 +11,7 @@ const Taverna = (() => {
   let audioRunaTocando = false;
   let salaAtual = null;
   let contoAtual = null;
+  let abaAtual = 0;
 
   const $ = id => document.getElementById(id);
   const $$ = sel => document.querySelectorAll(sel);
@@ -36,13 +37,15 @@ const Taverna = (() => {
   }
 
   // ============================================================
-  // DESBLOQUEIO DE ÁUDIO (Web Audio API)
+  // DESBLOQUEIO DE ÁUDIO
   // ============================================================
   function desbloquearAudio() {
     const AC = window.AudioContext || window.webkitAudioContext;
     if (AC) {
-      const ctx = new AC();
-      if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+      try {
+        const ctx = new AC();
+        if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+      } catch(e) {}
     }
   }
 
@@ -63,34 +66,43 @@ const Taverna = (() => {
   // ENTRAR
   // ============================================================
   function entrar() {
-    $('entrada').classList.add('hidden');
-    $('introWrap').classList.add('active');
+    // Glow de entrada
+    const glow = $('glowEntrada');
+    if (glow) {
+      glow.classList.add('ativo');
+      setTimeout(() => glow.classList.remove('ativo'), 1700);
+    }
 
-    desbloquearAudio();
-    restaurarMusica();
-    musicaLiberada = true;
-    musica().volume = CONFIG.volumes.musicaBaixa;
-    musica().play().catch(e => console.log('mus:', e.name));
+    setTimeout(() => {
+      $('entrada').classList.add('hidden');
+      $('introWrap').classList.add('active');
 
-    const src = `https://www.youtube.com/embed/${CONFIG.intro}?autoplay=1&mute=1&loop=1&playlist=${CONFIG.intro}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3`;
-    $('introIframe').src = src;
+      desbloquearAudio();
+      restaurarMusica();
+      musicaLiberada = true;
+      musica().volume = CONFIG.volumes.musicaBaixa;
+      musica().play().catch(e => console.log('mus:', e.name));
+
+      const src = `https://www.youtube.com/embed/${CONFIG.intro}?autoplay=1&mute=1&loop=1&playlist=${CONFIG.intro}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3`;
+      $('introIframe').src = src;
+    }, 800);
 
     setTimeout(() => {
       $('app').classList.add('visible');
       $('navbar').classList.add('visible');
       $('playerMusicaBox').classList.add('visible');
       ativarHeroVideo();
-    }, 500);
+    }, 1300);
 
     setTimeout(() => {
       finalizarIntro();
       boasVindas().volume = CONFIG.volumes.boasVindas;
       boasVindas().play().catch(e => console.log('bv:', e.name));
-    }, CONFIG.delays.fimIntro);
+    }, CONFIG.delays.fimIntro + 800);
 
     setTimeout(() => {
       if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
-    }, CONFIG.delays.musicaSubir);
+    }, CONFIG.delays.musicaSubir + 800);
   }
 
   function finalizarIntro() {
@@ -170,6 +182,9 @@ const Taverna = (() => {
     if ($('modalHNC').classList.contains('active')) {
       fecharHNC(); return;
     }
+    if ($('lightbox').classList.contains('active')) {
+      fecharLightbox(); return;
+    }
     if (salaAtual) { voltarAoHall(); }
   });
 
@@ -199,19 +214,15 @@ const Taverna = (() => {
   }
 
   // ============================================================
-  // SISTEMA DE RUNAS NO TEXTO
+  // RUNAS NO TEXTO
   // ============================================================
   function aplicarRunasNoTexto(html) {
     if (!html) return html;
-
-    // Nomes próprios → dourado
     const nomes = ['Runa', 'Halvar', 'Svala', 'Ulf', 'Bardo', 'Brokkr', 'Eitri', 'Thor', 'Fenrir', 'Odin', 'Freya', 'Loki'];
     nomes.forEach(nome => {
       const regex = new RegExp(`\\b${nome}\\b`, 'g');
       html = html.replace(regex, `<span class="nome-proprio">${nome}</span>`);
     });
-
-    // Palavras-âncora das runas
     if (typeof RUNAS_TEXTO !== 'undefined') {
       Object.entries(RUNAS_TEXTO).forEach(([palavra, runa]) => {
         const regex = new RegExp(`\\b(${palavra})\\b`, 'gi');
@@ -222,7 +233,7 @@ const Taverna = (() => {
   }
 
   // ============================================================
-  // CURTIDAS (coração → runa → dourado)
+  // CURTIDAS
   // ============================================================
   function seedCount(id) {
     let h = 0;
@@ -240,13 +251,8 @@ const Taverna = (() => {
     return c[id];
   }
 
-  function curtirConto() {
-    if (!contoAtual) return;
-    const id = contoAtual.id;
+  function curtir(id, prefixo, icone, btn, contador, textoEl) {
     const ja = lerCurtidasUser();
-    const icone = $('acaoCurtirIcone');
-    const btn = $('acaoCurtir');
-
     if (ja.includes(id)) return;
 
     const c = lerCurtidas();
@@ -255,36 +261,53 @@ const Taverna = (() => {
     ja.push(id);
     salvarCurtidasUser(ja);
 
-    // Fase 1: coração → runa azul
     icone.textContent = 'ᛗ';
     btn.classList.add('ativo');
 
-    // Fase 2: transição para dourado (3s)
     setTimeout(() => {
       btn.classList.remove('ativo');
       btn.classList.add('marcado');
     }, 3000);
 
-    $('acaoContador').textContent = c[id].toLocaleString('pt-BR');
-    $('acaoTexto').textContent = 'Sua marca foi gravada';
+    contador.textContent = c[id].toLocaleString('pt-BR');
+    textoEl.textContent = 'Sua marca foi gravada';
   }
 
-  function atualizarCurtir(id) {
+  function atualizarCurtir(id, prefixo, icone, btn, contador, textoEl) {
     const c = lerCurtidas();
     if (c[id] === undefined) { c[id] = seedCount(id); salvarCurtidas(c); }
     const ja = lerCurtidasUser().includes(id);
-    const icone = $('acaoCurtirIcone');
-    const btn = $('acaoCurtir');
     if (ja) {
       icone.textContent = 'ᛗ';
       btn.classList.add('marcado');
-      $('acaoTexto').textContent = 'Sua marca foi gravada';
+      textoEl.textContent = 'Sua marca foi gravada';
     } else {
       icone.textContent = '♡';
       btn.classList.remove('ativo', 'marcado');
-      $('acaoTexto').textContent = 'Acenda essa história';
+      textoEl.textContent = 'Acenda essa história';
     }
-    $('acaoContador').textContent = c[id].toLocaleString('pt-BR');
+    contador.textContent = c[id].toLocaleString('pt-BR');
+  }
+
+  function curtirConto() {
+    if (!contoAtual) return;
+    curtir(contoAtual.id,
+      'conto',
+      $('acaoCurtirIcone'),
+      $('acaoCurtir'),
+      $('acaoContador'),
+      $('acaoTexto')
+    );
+  }
+
+  function curtirHNC() {
+    curtir('hnc',
+      'hnc',
+      $('acaoCurtirIconeHNC'),
+      $('acaoCurtirHNC'),
+      $('acaoContadorHNC'),
+      $('acaoTextoHNC')
+    );
   }
 
   // ============================================================
@@ -292,27 +315,32 @@ const Taverna = (() => {
   // ============================================================
   function compartilharConto() {
     if (!contoAtual) return;
-    const url = window.location.origin + window.location.pathname + '#contos';
+    const url = window.location.origin + window.location.pathname + '#' + contoAtual.id;
     const titulo = contoAtual.titulo + ' — Taverna Fenrir';
+    compartilhar(titulo, url);
+  }
+
+  function compartilharHNC() {
+    const url = window.location.origin + window.location.pathname + '#historia-nao-contada';
+    compartilhar('A História Não Contada — Taverna Fenrir', url);
+  }
+
+  function compartilhar(titulo, url) {
     if (navigator.share) {
       navigator.share({ title: titulo, url: url }).catch(() => {});
     } else {
-      navigator.clipboard.writeText(url).then(() => {
-        alert('Link copiado!');
-      }).catch(() => {});
+      navigator.clipboard.writeText(url).then(() => alert('Link copiado!')).catch(() => {});
     }
   }
 
   // ============================================================
-  // RENDERIZAR CONTOS
+  // CONTOS
   // ============================================================
   function renderizarContos() {
-    // Imagem de abertura
     const abertura = $('contosAbertura');
     if (typeof CONTOS_ABERTURA !== 'undefined' && CONTOS_ABERTURA) {
-      abertura.innerHTML = `<img src="${CONTOS_ABERTURA}" alt="Contos" onerror="this.parentElement.innerHTML='<div class=imagem-abertura-placeholder>Suba assets/img/runa-contos.jpg</div>'">`;
+      abertura.innerHTML = `<img src="assets/img/${CONTOS_ABERTURA}" alt="Contos" onerror="this.parentElement.innerHTML='<div class=imagem-abertura-placeholder>Suba assets/img/${CONTOS_ABERTURA}</div>'">`;
     }
-
     const lista = $('listaContos');
     lista.innerHTML = '';
     CONTOS.forEach(c => {
@@ -348,36 +376,34 @@ const Taverna = (() => {
     const c = CONTOS.find(x => x.id === id);
     if (!c) return;
     contoAtual = c;
+    abaAtual = 0;
 
-    // Imagem de abertura
     const img = $('historiaImagemAbertura');
     if (c.imagemAbertura) {
-      img.innerHTML = `<img src="${c.imagemAbertura}" alt="${c.titulo}" onerror="this.parentElement.innerHTML='<div class=historia-imagem-abertura-placeholder>Suba ${c.imagemAbertura}</div>'">`;
-    } else {
-      img.innerHTML = '';
-    }
+      img.innerHTML = `<img src="assets/img/${c.imagemAbertura}" alt="${c.titulo}" onerror="this.parentElement.innerHTML='<div class=historia-imagem-abertura-placeholder>Suba assets/img/${c.imagemAbertura}</div>'">`;
+    } else { img.innerHTML = ''; }
 
     $('historiaTitulo').textContent = c.titulo;
     $('historiaSub').textContent = c.subtitulo;
 
-    // Texto
-    const texto = c.abas ? c.abas[0].texto : c.texto;
-    let textoHtml = aplicarRunasNoTexto(texto);
-    // Drop cap no primeiro parágrafo
-    textoHtml = textoHtml.replace(/^([A-ZÁÉÍÓÚÂÊÔÃÕÇ])/, '<span class="drop-cap-inicio">$1</span>');
-    $('historiaTexto').innerHTML = textoHtml;
-
-    // Propaganda
-    const prop = $('historiaPropaganda');
-    if (c.propaganda) {
-      prop.innerHTML = `<img src="${c.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba ${c.propaganda}</div>'">`;
-      prop.style.display = 'block';
+    const navAbas = $('historiaAbasNav');
+    navAbas.innerHTML = '';
+    if (c.abas && c.abas.length > 1) {
+      c.abas.forEach((aba, i) => {
+        const b = document.createElement('button');
+        b.textContent = aba.titulo;
+        b.className = i === 0 ? 'ativa' : '';
+        b.onclick = () => { abaAtual = i; renderizarAba(); };
+        navAbas.appendChild(b);
+      });
+      navAbas.style.display = 'flex';
     } else {
-      prop.innerHTML = ''; prop.style.display = 'none';
+      navAbas.style.display = 'none';
     }
 
-    // Curtir
-    atualizarCurtir(id);
+    $('btnHistoriaProxima').textContent = (c.abas && c.abas.length > 1) ? 'Avançar →' : 'Fechar ✕';
+
+    renderizarAba();
 
     // Áudio
     const audioBox = $('historiaAudioBox');
@@ -388,12 +414,50 @@ const Taverna = (() => {
     if (c.audio) { audioBox.classList.add('visible'); audioRuna().src = c.audio; }
     else { audioBox.classList.remove('visible'); }
 
-    // Selos
+    // Curtir
+    atualizarCurtir(c.id, 'conto', $('acaoCurtirIcone'), $('acaoCurtir'), $('acaoContador'), $('acaoTexto'));
+
+    // Selos e redes
     renderizarSelos('historiaSelos');
     renderizarRedes('historiaRedes');
+    renderizarRedes('hncRedes');
 
     $('historiaModal').classList.add('active');
     history.pushState({ modal: id }, '', '#' + id);
+  }
+
+  function renderizarAba() {
+    const c = contoAtual;
+    if (!c) return;
+    const texto = c.abas ? c.abas[abaAtual].texto : c.texto;
+    let textoHtml = aplicarRunasNoTexto(texto);
+    textoHtml = textoHtml.replace(/^([A-ZÁÉÍÓÚÂÊÔÃÕÇ])/, '<span class="drop-cap-inicio">$1</span>');
+    $('historiaTexto').innerHTML = textoHtml;
+
+    const navAbas = $('historiaAbasNav');
+    navAbas.querySelectorAll('button').forEach((b, i) => {
+      b.classList.toggle('ativa', i === abaAtual);
+    });
+
+    // Propaganda
+    const prop = $('historiaPropaganda');
+    if (c.propaganda) {
+      prop.innerHTML = `<img src="assets/img/${c.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba assets/img/${c.propaganda}</div>'">`;
+      prop.style.display = 'block';
+    } else {
+      prop.innerHTML = ''; prop.style.display = 'none';
+    }
+
+    // Link de venda (só na última aba)
+    const linkBox = $('historiaLinkBox');
+    const ultimaAba = !c.abas || abaAtual === c.abas.length - 1;
+    if (c.link && c.linkTexto && ultimaAba) {
+      $('historiaLink').href = c.link;
+      $('historiaLink').textContent = c.linkTexto + ' →';
+      linkBox.classList.add('visivel');
+    } else {
+      linkBox.classList.remove('visivel');
+    }
   }
 
   function fecharHistoria() {
@@ -402,6 +466,16 @@ const Taverna = (() => {
     $('historiaAudioBtn').textContent = '▶';
     if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     contoAtual = null;
+    abaAtual = 0;
+  }
+
+  function proximaAba() {
+    if (contoAtual && contoAtual.abas && abaAtual < contoAtual.abas.length - 1) {
+      abaAtual++;
+      renderizarAba();
+    } else {
+      fecharHistoria();
+    }
   }
 
   function toggleHistoriaAudio() {
@@ -430,8 +504,7 @@ const Taverna = (() => {
     SIMBOLOS.forEach(s => {
       const div = document.createElement('div');
       div.className = 'selo';
-      const imgOuFallback = `<img src="assets/img/selos/${s.id}.png" alt="${s.nome}" onerror="this.outerHTML='<div class=selo-icone-fallback>${s.icone}</div>'">`;
-      div.innerHTML = `${imgOuFallback}<div class="selo-nome">${s.nome}</div>`;
+      div.innerHTML = `<img src="assets/img/selos/${s.id}.png" alt="${s.nome}" onerror="this.outerHTML='<div class=selo-icone-fallback>${s.icone}</div>'"><div class="selo-nome">${s.nome}</div>`;
       div.onclick = () => {
         fecharHistoria();
         setTimeout(() => {
@@ -451,8 +524,7 @@ const Taverna = (() => {
     SIMBOLOS.forEach(s => {
       const div = document.createElement('div');
       div.className = 'selo-footer';
-      const imgOuFallback = `<img src="assets/img/selos/${s.id}.png" alt="${s.nome}" onerror="this.outerHTML='<div class=selo-icone-fallback>${s.icone}</div>'">`;
-      div.innerHTML = `${imgOuFallback}<span>${s.nome}</span>`;
+      div.innerHTML = `<img src="assets/img/selos/${s.id}.png" alt="${s.nome}" onerror="this.outerHTML='<div class=selo-icone-fallback>${s.icone}</div>'"><span>${s.nome}</span>`;
       div.onclick = () => {
         if (s.historia === 'historia') { abrirHistoriaNaoContada(); }
         else if (s.historia === 'sobre') { irParaPortal('sobre'); }
@@ -462,9 +534,6 @@ const Taverna = (() => {
     });
   }
 
-  // ============================================================
-  // LOJAS DO FOOTER
-  // ============================================================
   function renderizarLojasFooter() {
     const el = $('footerLojas');
     if (!el) return;
@@ -573,10 +642,34 @@ const Taverna = (() => {
       else if (m.tipo === 'assinatura') html += `<p class="assinatura">${txt}</p>`;
     });
     html += `</div>`;
+
+    // Vídeo propaganda 1:1 + link
+    if (s.videoPropaganda) {
+      html += `
+        <div class="sobre-video-propaganda">
+          <iframe src="https://www.youtube.com/embed/${s.videoPropaganda}?autoplay=1&mute=1&loop=1&playlist=${s.videoPropaganda}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3" allow="autoplay; encrypted-media" title="Runa e o pingente"></iframe>
+        </div>
+        <div class="sobre-link-centro">
+          <a class="btn-venda" href="${s.linkPropaganda}" target="_blank" rel="noopener">${s.linkPropagandaTexto} →</a>
+        </div>`;
+    }
     c.innerHTML = html;
   }
 
-  function ouvirHistoriaRuna() { abrirHistoria('runas'); }
+  function ouvirHistoriaRuna() {
+    const audio = audioRuna();
+    if (!audio) return;
+    if (audioRunaTocando) {
+      audio.pause(); audio.currentTime = 0; audioRunaTocando = false;
+      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
+    } else {
+      audio.src = SOBRE_RUNA.audio;
+      audio.volume = 1;
+      audio.play().catch(e => console.log('audio:', e.name));
+      audioRunaTocando = true;
+      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
+    }
+  }
 
   // ============================================================
   // VIKING / MITOLOGIA / LOJAS
@@ -591,8 +684,7 @@ const Taverna = (() => {
       div.className = 'grupo-mae';
       let cards = '';
       g.cards.forEach(cd => {
-        cards += `<div class="card"><h3>${cd.titulo}</h3><p>${cd.texto}</p>
-          ${cd.voceSabia && cd.voceSabia !== '[A PREENCHER]' ? `<div class="voce-sabia"><strong>💡 VOCÊ SABIA?</strong>${cd.voceSabia}</div>` : ''}</div>`;
+        cards += `<div class="card"><h3>${cd.titulo}</h3><p>${cd.texto}</p>${cd.voceSabia && cd.voceSabia !== '[A PREENCHER]' ? `<div class="voce-sabia"><strong>💡 VOCÊ SABIA?</strong>${cd.voceSabia}</div>` : ''}</div>`;
       });
       div.innerHTML = `<h3 class="grupo-mae-titulo">${g.titulo}</h3><p class="grupo-mae-sub">${g.subtitulo}</p><div class="cards">${cards}</div>`;
       c.appendChild(div);
@@ -610,8 +702,7 @@ const Taverna = (() => {
       div.className = 'grupo-mae';
       let cards = '';
       g.cards.forEach(cd => {
-        cards += `<div class="card"><h3>${cd.titulo}</h3><p>${cd.texto}</p>
-          ${cd.voceSabia && cd.voceSabia !== '[A PREENCHER]' ? `<div class="voce-sabia"><strong>💡 VOCÊ SABIA?</strong>${cd.voceSabia}</div>` : ''}</div>`;
+        cards += `<div class="card"><h3>${cd.titulo}</h3><p>${cd.texto}</p>${cd.voceSabia && cd.voceSabia !== '[A PREENCHER]' ? `<div class="voce-sabia"><strong>💡 VOCÊ SABIA?</strong>${cd.voceSabia}</div>` : ''}</div>`;
       });
       div.innerHTML = `<h3 class="grupo-mae-titulo">${g.titulo}</h3><p class="grupo-mae-sub">${g.subtitulo}</p><div class="cards">${cards}</div>`;
       c.appendChild(div);
@@ -629,7 +720,7 @@ const Taverna = (() => {
       $(id + 'Texto').innerHTML = aplicarRunasNoTexto(v.texto);
       const prop = $(id + 'Propaganda');
       if (prop && v.propaganda) {
-        prop.innerHTML = `<img src="${v.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba ${v.propaganda}</div>'">`;
+        prop.innerHTML = `<img src="assets/img/${v.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba assets/img/${v.propaganda}</div>'">`;
       }
       $(id + 'Link').href = v.link;
       $(id + 'Link').textContent = v.linkTexto + ' →';
@@ -648,6 +739,7 @@ const Taverna = (() => {
   function abrirHistoriaNaoContada() {
     $('hncTexto').innerHTML = aplicarRunasNoTexto(HISTORIA_NAO_CONTADA.texto);
     renderizarRedes('hncRedes');
+    atualizarCurtir('hnc', 'hnc', $('acaoCurtirIconeHNC'), $('acaoCurtirHNC'), $('acaoContadorHNC'), $('acaoTextoHNC'));
     $('modalHNC').classList.add('active');
     history.pushState({ hnc: true }, '', '#historia-nao-contada');
   }
@@ -706,10 +798,10 @@ const Taverna = (() => {
   return {
     entrar, finalizarIntro, irParaPortal, voltarAoHall, toggleMenu,
     abrirHistoria, fecharHistoria, toggleHistoriaAudio, ouvirHistoriaRuna,
-    curtirConto, compartilharConto,
+    curtirConto, curtirHNC, compartilharConto, compartilharHNC,
     abrirHistoriaNaoContada, fecharHNC,
     abrirLightbox, fecharLightbox,
-    toggleMusica, init
+    toggleMusica, proximaAba, init
   };
 })();
 
@@ -717,4 +809,4 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', Taverna.init);
 } else {
   Taverna.init();
-}
+       }
