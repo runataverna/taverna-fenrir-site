@@ -17,7 +17,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Uncial+Antiqua&family=Texturina:ital,wght@0,300;0;400;0,500;1,400&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Uncial+Antiqua&family=Texturina:ital,wght@0,300;0,400;0,500;1,400&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -37,6 +37,9 @@
     <div class="entrada-hint">Toque para atravessar · a porta só abre ao teu chamado</div>
   </div>
 </div>
+
+<!-- EFEITO DE LUMINOSIDADE (transição da entrada para intro) -->
+<div class="glow-entrada" id="glowEntrada"></div>
 
 <!-- INTRO -->
 <div class="overlay-video" id="introWrap">
@@ -78,7 +81,9 @@
       <div class="hero-citacao">Eu não disse que era quentinho.</div>
       <div class="hero-conteudo">
         <h1>A casa de Runa está aberta.</h1>
-        <button class="btn-historia" onclick="Taverna.irParaPortal('contos')">OUVIR AS HISTÓRIAS</button>
+        <button class="btn-historia" onclick="Taverna.irParaPortal('contos')">
+          <span class="btn-historia-icone">▶</span> OUVIR AS HISTÓRIAS
+        </button>
         <p class="hero-sub">O fogo está aceso. Escolha uma porta.</p>
         <div class="setas"><span>⌄</span><span>⌄</span></div>
       </div>
@@ -105,7 +110,7 @@
   </section>
 
   <!-- SALA: CONTOS -->
-  <section class="sala" id="sala-contos">
+  <section class="sala sala-leitura" id="sala-contos">
     <div class="sala-header">
       <h2>Contos do Fogo</h2>
       <p>Histórias contadas no balcão, entre uma caneca e outra.</p>
@@ -115,13 +120,15 @@
     <div class="lista-contos" id="listaContos"></div>
     <div class="danca-chamas">
       <h3 class="hall-titulo">A DANÇA DAS CHAMAS</h3>
-      <p class="hall-sub">Pequenas histórias que passam pela taverna.</p>
-      <div class="microcontos" id="listaMicrocontos"></div>
+      <p class="hall-sub">Pequenas histórias que passam pela taverna. Deslize para os lados.</p>
+      <div class="microcontos-wrapper">
+        <div class="microcontos" id="listaMicrocontos"></div>
+      </div>
     </div>
   </section>
 
   <!-- SALA: SOBRE A RUNA -->
-  <section class="sala" id="sala-sobre">
+  <section class="sala sala-leitura" id="sala-sobre">
     <div class="sala-header">
       <h2>Sobre a Runa</h2>
       <p>Contada por ela mesma, atrás do balcão.</p>
@@ -131,7 +138,7 @@
   </section>
 
   <!-- SALA: UNIVERSO VIKING -->
-  <section class="sala" id="sala-universo">
+  <section class="sala sala-leitura" id="sala-universo">
     <div class="sala-header">
       <h2>Universo Viking</h2>
       <p id="universoIntro"></p>
@@ -142,7 +149,7 @@
   </section>
 
   <!-- SALA: MITOLOGIA NÓRDICA -->
-  <section class="sala" id="sala-mitologia">
+  <section class="sala sala-leitura" id="sala-mitologia">
     <div class="sala-header">
       <h2>Mitologia Nórdica</h2>
       <p id="mitologiaIntro"></p>
@@ -153,7 +160,7 @@
   </section>
 
   <!-- SALA: ANÉIS -->
-  <section class="sala" id="sala-aneis">
+  <section class="sala sala-venda" id="sala-aneis">
     <div class="sala-header">
       <h2 id="aneisTitulo">Anéis & Pingentes</h2>
       <p id="aneisSubtitulo"></p>
@@ -168,7 +175,7 @@
   </section>
 
   <!-- SALA: FACAS -->
-  <section class="sala" id="sala-facas">
+  <section class="sala sala-venda" id="sala-facas">
     <div class="sala-header">
       <h2 id="facasTitulo">Facas & Utensílios</h2>
       <p id="facasSubtitulo"></p>
@@ -183,7 +190,7 @@
   </section>
 
   <!-- SALA: CASACOS -->
-  <section class="sala" id="sala-casacos">
+  <section class="sala sala-venda" id="sala-casacos">
     <div class="sala-header">
       <h2 id="casacosTitulo">Casacos</h2>
       <p id="casacosSubtitulo"></p>
@@ -191,6 +198,7 @@
     </div>
     <div class="imagem-abertura" id="casacosAbertura"></div>
     <div class="venda-texto" id="casacosTexto"></div>
+    <div class="imagem-propaganda" id="casacosPropaganda"></div>
     <h3 class="hall-titulo">Feminino</h3>
     <div class="slot-grid" data-prefix="casacos-fem" data-count="6"></div>
     <h3 class="hall-titulo">Masculino</h3>
@@ -201,7 +209,7 @@
   </section>
 
   <!-- SALA: HEAVY METAL -->
-  <section class="sala" id="sala-heavymetal">
+  <section class="sala sala-venda" id="sala-heavymetal">
     <div class="sala-header">
       <h2 id="heavymetalTitulo">Heavy Metal & Camisetas</h2>
       <p id="heavymetalSubtitulo"></p>
@@ -216,16 +224,16 @@
   </section>
 
   <!-- SALA: ARTE CONCEITUAL -->
-  <section class="sala" id="sala-arte">
+  <section class="sala sala-leitura" id="sala-arte">
     <div class="sala-header">
       <h2>Arte Conceitual</h2>
-      <p>O processo criativo por trás da Runa — esboços e estudos.</p>
+      <p>Onde tudo começou. Esboços que nunca entraram nas histórias oficiais — mas sem eles, a Runa não existiria.</p>
       <div class="runa-divider">ᚲ ᚷ ᚹ</div>
     </div>
     <div class="slot-grid" data-prefix="conceito" data-count="30"></div>
   </section>
 
-  <!-- FOOTER GERAL (fora das salas, aparece em todas) -->
+  <!-- FOOTER GERAL -->
   <footer class="footer-geral" id="footerGeral">
 
     <div class="footer-selos" id="footerSelos"></div>
@@ -266,8 +274,12 @@
     <h2 id="historiaTitulo"></h2>
     <div class="historia-sub" id="historiaSub"></div>
 
-    <div class="historia-texto" id="historiaTexto"></div>
+    <div class="historia-abas-nav" id="historiaAbasNav"></div>
 
+    <div class="historia-texto" id="historiaTexto"></div>
+    <div class="historia-rodape" id="historiaRodape"></div>
+
+    <!-- BALÕES CURTIR / COMPARTILHAR -->
     <div class="historia-acoes">
       <div class="historia-acoes-baloes">
         <button class="acao-balao acao-curtir" id="acaoCurtir" onclick="Taverna.curtirConto()" aria-label="Curtir">
@@ -281,22 +293,33 @@
       <p class="acao-texto" id="acaoTexto">Acenda essa história</p>
     </div>
 
+    <!-- PROPAGANDA -->
     <div class="imagem-propaganda" id="historiaPropaganda"></div>
 
+    <!-- LINK DE VENDA -->
+    <div class="historia-link" id="historiaLinkBox">
+      <a class="btn-venda" id="historiaLink" target="_blank" rel="noopener"></a>
+    </div>
+
+    <!-- ÁUDIO -->
     <div class="historia-audio" id="historiaAudioBox">
       <button id="historiaAudioBtn" onclick="Taverna.toggleHistoriaAudio()">▶</button>
       <span>Ouça a Runa contar esta história</span>
     </div>
 
+    <!-- NAVEGAÇÃO -->
     <div class="historia-nav" id="historiaNav">
       <button id="btnHistoriaAnterior" onclick="Taverna.fecharHistoria()">← Voltar ao Salão</button>
+      <button id="btnHistoriaProxima" onclick="Taverna.proximaAba()">Fechar ✕</button>
     </div>
 
+    <!-- SELOS -->
     <div class="historia-selo-bloco">
       <h4 class="selo-titulo">Conheça nossos selos</h4>
       <div class="selo-grid" id="historiaSelos"></div>
     </div>
 
+    <!-- SOCIAL -->
     <div class="historia-social">
       <p class="redes-acima">Já faz parte de nossas redes?</p>
       <div class="redes" id="historiaRedes"></div>
@@ -312,6 +335,20 @@
     <h2 class="hnc-modal-titulo">A HISTÓRIA NÃO CONTADA</h2>
     <p class="hnc-modal-sub">NÃO ABRA ESSA PORTA</p>
     <div class="historia-texto hnc-texto" id="hncTexto"></div>
+
+    <div class="historia-acoes">
+      <div class="historia-acoes-baloes">
+        <button class="acao-balao acao-curtir" id="acaoCurtirHNC" onclick="Taverna.curtirHNC()" aria-label="Curtir">
+          <span class="acao-icone" id="acaoCurtirIconeHNC">♡</span>
+        </button>
+        <button class="acao-balao acao-compartilhar" onclick="Taverna.compartilharHNC()" aria-label="Compartilhar">
+          <span class="acao-icone">↗</span>
+        </button>
+        <span class="acao-contador" id="acaoContadorHNC">0</span>
+      </div>
+      <p class="acao-texto" id="acaoTextoHNC">Acenda essa história</p>
+    </div>
+
     <div class="historia-social">
       <p class="redes-acima">Cada mensagem é um voto pra que essa história seja contada.</p>
       <div class="redes" id="hncRedes"></div>
@@ -334,4 +371,4 @@
 <script src="script.js"></script>
 
 </body>
-         </html>
+          </html>
