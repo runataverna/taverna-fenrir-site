@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#1a0f08">
 
 <title>Taverna Fenrir — A Casa de Runa</title>
 <meta name="description" content="Contos, mitologia nórdica e o universo viking de Runa, a taberneira. Histórias contadas junto ao fogo.">
 <meta name="author" content="Taverna Fenrir">
-
 <meta property="og:type" content="website">
 <meta property="og:title" content="Taverna Fenrir — A Casa de Runa">
 <meta property="og:description" content="O fogo está aceso e teu lugar está guardado.">
@@ -18,56 +17,46 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Uncial+Antiqua&family=Texturina:ital,wght@0,300;0;400;0,500;1,400&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ============================================================
-     TELA DE ENTRADA
-     ============================================================ -->
+<!-- ENTRADA -->
 <div class="entrada" id="entrada">
   <div class="entrada-overlay"></div>
   <div class="entrada-conteudo">
     <div class="entrada-kicker">TAVERNA FENRIR · A FRENTE NA NEVE</div>
     <div class="entrada-imagem">
       <img src="assets/img/entrada-taverna.jpg" alt="Taverna Fenrir na neve"
-           onerror="this.outerHTML='&lt;div class=&quot;entrada-imagem-placeholder&quot;&gt;Suba assets/img/entrada-taverna.jpg&lt;/div&gt;'">
+           onerror="this.outerHTML='<div class=&quot;entrada-imagem-placeholder&quot;>Suba assets/img/entrada-taverna.jpg</div>'">
     </div>
     <p class="entrada-frase">O fogo está aceso e teu lugar está guardado. <strong>Entra.</strong></p>
-    <button class="btn-entrar" onclick="Taverna.entrar()" aria-label="Entrar na taverna">
-      ENTRAR NA TAVERNA
-    </button>
+    <button class="btn-entrar" onclick="Taverna.entrar()">ENTRAR NA TAVERNA</button>
     <div class="entrada-hint">Toque para atravessar · a porta só abre ao teu chamado</div>
   </div>
 </div>
 
-<!-- ============================================================
-     INTRO (vídeo de abertura)
-     ============================================================ -->
+<!-- INTRO -->
 <div class="overlay-video" id="introWrap">
-  <div class="overlay-fallback" style="background-image:url('assets/img/entrada-taverna.jpg')"></div>
+  <div class="overlay-fallback"></div>
   <div class="wrap-iframe">
-    <iframe id="introIframe" allow="autoplay; encrypted-media" title="Intro da Taverna Fenrir"></iframe>
+    <iframe id="introIframe" allow="autoplay; encrypted-media" title="Intro"></iframe>
   </div>
   <button class="btn-pular" onclick="Taverna.finalizarIntro()">Pular intro →</button>
 </div>
 
-<!-- ============================================================
-     TRANSIÇÃO ENTRE SALAS
-     ============================================================ -->
+<!-- TRANSIÇÃO -->
 <div class="overlay-video" id="transicaoWrap">
-  <div class="overlay-fallback" id="transicaoFallback"></div>
+  <div class="overlay-fallback"></div>
   <div class="wrap-iframe">
     <iframe id="transicaoIframe" allow="autoplay; encrypted-media" title="Transição"></iframe>
   </div>
   <div class="transicao-titulo" id="transicaoTitulo"></div>
 </div>
 
-<!-- ============================================================
-     APP
-     ============================================================ -->
+<!-- APP -->
 <div id="app">
 
   <!-- NAVBAR -->
@@ -78,98 +67,60 @@
     <div class="menu-lista" id="menuLista"></div>
   </nav>
 
-  <!-- ============================================================
-       HALL PRINCIPAL
-       ============================================================ -->
+  <!-- HALL -->
   <section class="hall" id="hall">
 
-    <!-- Hero com vídeo da Runa -->
+    <!-- HERO -->
     <div class="hero-runa">
-      <div class="hero-fallback" style="background-image:url('assets/img/entrada-taverna.jpg')"></div>
+      <div class="hero-fallback"></div>
       <iframe id="heroIframe" allow="autoplay; encrypted-media" title="Runa no balcão"></iframe>
       <div class="hero-overlay"></div>
+      <div class="hero-citacao">Eu não disse que era quentinho.</div>
       <div class="hero-conteudo">
         <h1>A casa de Runa está aberta.</h1>
-        <p>O fogo está aceso. Escolha uma porta.</p>
-        <button class="btn-historia" onclick="Taverna.irParaPortal('contos')">
-          Ouvir as histórias
-        </button>
-        <div class="setas">
-          <span>⌄</span>
-          <span>⌄</span>
-        </div>
+        <button class="btn-historia" onclick="Taverna.irParaPortal('contos')">OUVIR AS HISTÓRIAS</button>
+        <p class="hero-sub">O fogo está aceso. Escolha uma porta.</p>
+        <div class="setas"><span>⌄</span><span>⌄</span></div>
       </div>
     </div>
 
-    <!-- Título das 9 portas -->
+    <!-- TÍTULO DAS PORTAS -->
     <h2 class="hall-titulo">Nove portas, uma taverna</h2>
     <p class="hall-sub">Toque em uma porta. Uma transição te leva ao ambiente.</p>
 
-    <!-- Grid das 9 portas (renderizado pelo JS) -->
+    <!-- GRID PORTAS -->
     <div class="grid-portas" id="gridPortas"></div>
 
-    <!-- ============================================================
-         A HISTÓRIA NÃO CONTADA (só aparece no Hall)
-         ============================================================ -->
+    <!-- A HISTÓRIA NÃO CONTADA (só no Hall) -->
     <div class="historia-nao-contada" onclick="Taverna.abrirHistoriaNaoContada()">
       <div class="hnc-glow"></div>
-      <h2 class="hnc-titulo" id="hncTitulo">A HISTÓRIA NÃO CONTADA</h2>
-      <p class="hnc-sub" id="hncSubtitulo">Ainda não é hora de você saber.</p>
+      <h2 class="hnc-titulo">A HISTÓRIA NÃO CONTADA</h2>
+      <p class="hnc-sub">NÃO ABRA ESSA PORTA</p>
       <div class="hnc-cta">
         <span>Toque para entrar</span>
         <span class="hnc-seta">→</span>
       </div>
     </div>
 
-    <!-- ============================================================
-         OS 7 SÍMBOLOS
-         ============================================================ -->
-    <div class="simbologia" id="simbologia">
-      <h3 class="simbologia-titulo" id="simbologiaTitulo">O QUE FICOU COMIGO</h3>
-      <p class="simbologia-sub" id="simbologiaSub"></p>
-      <div class="simbologia-grid" id="simbologiaGrid"></div>
-    </div>
-
-    <!-- ============================================================
-         RODAPÉ SOCIAL
-         ============================================================ -->
-    <footer class="rodape">
-      <p class="redes-acima" id="redesAcima">Já faz parte de nossas redes?</p>
-      <div class="redes" id="redesSociais"></div>
-      <p class="redes-abaixo" id="redesAbaixo">Siga nossas redes sociais</p>
-      <div class="copyright">© Taverna Fenrir. Conto de fantasia — qualquer semelhança com deuses é proposital.</div>
-    </footer>
-
   </section>
 
-  <!-- ============================================================
-       SALA: CONTOS
-       ============================================================ -->
+  <!-- SALA: CONTOS -->
   <section class="sala" id="sala-contos">
     <div class="sala-header">
       <h2>Contos do Fogo</h2>
       <p>Histórias contadas no balcão, entre uma caneca e outra.</p>
       <div class="runa-divider">ᛟ ᚾ ᛁ</div>
     </div>
-
-    <div class="runa-contadora">
-      <img src="assets/img/runa-contadora.jpg" alt="Runa contadora"
-           onerror="this.parentElement.innerHTML='&lt;div class=&quot;runa-contadora-placeholder&quot;&gt;Suba assets/img/runa-contadora.jpg&lt;/div&gt;'">
-    </div>
-
+    <div class="imagem-abertura" id="contosAbertura"></div>
     <div class="lista-contos" id="listaContos"></div>
-
-    <!-- A Dança das Chamas (microcontos) -->
     <div class="danca-chamas">
-      <h3 class="hall-titulo" id="dancaTitulo">A DANÇA DAS CHAMAS</h3>
-      <p class="hall-sub" id="dancaSub"></p>
+      <h3 class="hall-titulo">A DANÇA DAS CHAMAS</h3>
+      <p class="hall-sub">Pequenas histórias que passam pela taverna.</p>
       <div class="microcontos" id="listaMicrocontos"></div>
     </div>
   </section>
 
-  <!-- ============================================================
-       SALA: SOBRE A RUNA
-       ============================================================ -->
+  <!-- SALA: SOBRE A RUNA -->
   <section class="sala" id="sala-sobre">
     <div class="sala-header">
       <h2>Sobre a Runa</h2>
@@ -179,105 +130,66 @@
     <div id="sobreRunaConteudo"></div>
   </section>
 
-  <!-- ============================================================
-       SALA: UNIVERSO VIKING
-       ============================================================ -->
+  <!-- SALA: UNIVERSO VIKING -->
   <section class="sala" id="sala-universo">
     <div class="sala-header">
       <h2>Universo Viking</h2>
       <p id="universoIntro"></p>
       <div class="runa-divider">ᛏ ᛒ ᛗ</div>
     </div>
-    <div class="runa-contadora">
-      <img src="assets/img/runa-contadora.jpg" alt="Runa contadora"
-           onerror="this.parentElement.innerHTML='&lt;div class=&quot;runa-contadora-placeholder&quot;&gt;Suba assets/img/runa-contadora.jpg&lt;/div&gt;'">
-    </div>
+    <div class="imagem-abertura" id="universoAbertura"></div>
     <div id="universoGrupos"></div>
   </section>
 
-  <!-- ============================================================
-       SALA: MITOLOGIA NÓRDICA
-       ============================================================ -->
+  <!-- SALA: MITOLOGIA NÓRDICA -->
   <section class="sala" id="sala-mitologia">
     <div class="sala-header">
       <h2>Mitologia Nórdica</h2>
       <p id="mitologiaIntro"></p>
       <div class="runa-divider">ᚺ ᚾ ᛁ</div>
     </div>
-    <div class="runa-contadora">
-      <img src="assets/img/runa-contadora.jpg" alt="Runa contadora"
-           onerror="this.parentElement.innerHTML='&lt;div class=&quot;runa-contadora-placeholder&quot;&gt;Suba assets/img/runa-contadora.jpg&lt;/div&gt;'">
-    </div>
+    <div class="imagem-abertura" id="mitologiaAbertura"></div>
     <div id="mitologiaGrupos"></div>
   </section>
 
-  <!-- ============================================================
-       SALA: ANÉIS & PINGENTES
-       ============================================================ -->
+  <!-- SALA: ANÉIS -->
   <section class="sala" id="sala-aneis">
     <div class="sala-header">
       <h2 id="aneisTitulo">Anéis & Pingentes</h2>
       <p id="aneisSubtitulo"></p>
       <div class="runa-divider">ᛉ ᛟ ᛒ</div>
     </div>
-    <div class="vendedora-imagem">
-      <img src="assets/img/runa-aneis.jpg" alt="Runa vendedora"
-           onerror="this.parentElement.innerHTML='&lt;div class=&quot;vendedora-placeholder&quot;&gt;Suba assets/img/runa-aneis.jpg&lt;/div&gt;'">
-    </div>
+    <div class="imagem-abertura" id="aneisAbertura"></div>
     <div class="venda-texto" id="aneisTexto"></div>
-    <div class="venda-carrossel">
-      <div class="carrossel" data-carrossel="aneis">
-        <div class="carrossel-track"></div>
-        <button class="carrossel-btn prev" onclick="Taverna.moverCarrossel('aneis',-1)">‹</button>
-        <button class="carrossel-btn next" onclick="Taverna.moverCarrossel('aneis',1)">›</button>
-      </div>
-      <div class="carrossel-indicadores" data-ind="aneis"></div>
-    </div>
+    <div class="imagem-propaganda" id="aneisPropaganda"></div>
     <div class="centro">
       <a class="btn-venda" id="aneisLink" target="_blank" rel="noopener"></a>
     </div>
   </section>
 
-  <!-- ============================================================
-       SALA: FACAS & UTENSÍLIOS
-       ============================================================ -->
+  <!-- SALA: FACAS -->
   <section class="sala" id="sala-facas">
     <div class="sala-header">
       <h2 id="facasTitulo">Facas & Utensílios</h2>
       <p id="facasSubtitulo"></p>
       <div class="runa-divider">ᚦ ᛚ ᚷ</div>
     </div>
-    <div class="vendedora-imagem">
-      <img src="assets/img/runa-facas.jpg" alt="Runa na cozinha"
-           onerror="this.parentElement.innerHTML='&lt;div class=&quot;vendedora-placeholder&quot;&gt;Suba assets/img/runa-facas.jpg&lt;/div&gt;'">
-    </div>
+    <div class="imagem-abertura" id="facasAbertura"></div>
     <div class="venda-texto" id="facasTexto"></div>
-    <div class="venda-carrossel">
-      <div class="carrossel" data-carrossel="facas">
-        <div class="carrossel-track"></div>
-        <button class="carrossel-btn prev" onclick="Taverna.moverCarrossel('facas',-1)">‹</button>
-        <button class="carrossel-btn next" onclick="Taverna.moverCarrossel('facas',1)">›</button>
-      </div>
-      <div class="carrossel-indicadores" data-ind="facas"></div>
-    </div>
+    <div class="imagem-propaganda" id="facasPropaganda"></div>
     <div class="centro">
       <a class="btn-venda" id="facasLink" target="_blank" rel="noopener"></a>
     </div>
   </section>
 
-  <!-- ============================================================
-       SALA: CASACOS
-       ============================================================ -->
+  <!-- SALA: CASACOS -->
   <section class="sala" id="sala-casacos">
     <div class="sala-header">
       <h2 id="casacosTitulo">Casacos</h2>
       <p id="casacosSubtitulo"></p>
       <div class="runa-divider">ᛁ ᛊ ᚨ</div>
     </div>
-    <div class="vendedora-imagem">
-      <img src="assets/img/runa-casacos.jpg" alt="Runa com casaco"
-           onerror="this.parentElement.innerHTML='&lt;div class=&quot;vendedora-placeholder&quot;&gt;Suba assets/img/runa-casacos.jpg&lt;/div&gt;'">
-    </div>
+    <div class="imagem-abertura" id="casacosAbertura"></div>
     <div class="venda-texto" id="casacosTexto"></div>
     <h3 class="hall-titulo">Feminino</h3>
     <div class="slot-grid" data-prefix="casacos-fem" data-count="6"></div>
@@ -288,36 +200,22 @@
     </div>
   </section>
 
-  <!-- ============================================================
-       SALA: HEAVY METAL & CAMISETAS
-       ============================================================ -->
+  <!-- SALA: HEAVY METAL -->
   <section class="sala" id="sala-heavymetal">
     <div class="sala-header">
       <h2 id="heavymetalTitulo">Heavy Metal & Camisetas</h2>
       <p id="heavymetalSubtitulo"></p>
       <div class="runa-divider">ᚦ ᚢ ᚱ</div>
     </div>
-    <div class="vendedora-imagem">
-      <img src="assets/img/runa-heavymetal.jpg" alt="Runa com tambor"
-           onerror="this.parentElement.innerHTML='&lt;div class=&quot;vendedora-placeholder&quot;&gt;Suba assets/img/runa-heavymetal.jpg&lt;/div&gt;'">
-    </div>
+    <div class="imagem-abertura" id="heavymetalAbertura"></div>
     <div class="venda-texto" id="heavymetalTexto"></div>
-    <div class="venda-carrossel">
-      <div class="carrossel" data-carrossel="heavymetal">
-        <div class="carrossel-track"></div>
-        <button class="carrossel-btn prev" onclick="Taverna.moverCarrossel('heavymetal',-1)">‹</button>
-        <button class="carrossel-btn next" onclick="Taverna.moverCarrossel('heavymetal',1)">›</button>
-      </div>
-      <div class="carrossel-indicadores" data-ind="heavymetal"></div>
-    </div>
+    <div class="imagem-propaganda" id="heavymetalPropaganda"></div>
     <div class="centro">
       <a class="btn-venda" id="heavymetalLink" target="_blank" rel="noopener"></a>
     </div>
   </section>
 
-  <!-- ============================================================
-       SALA: ARTE CONCEITUAL
-       ============================================================ -->
+  <!-- SALA: ARTE CONCEITUAL -->
   <section class="sala" id="sala-arte">
     <div class="sala-header">
       <h2>Arte Conceitual</h2>
@@ -327,56 +225,92 @@
     <div class="slot-grid" data-prefix="conceito" data-count="30"></div>
   </section>
 
-</div><!-- /app -->
+  <!-- FOOTER GERAL (fora das salas, aparece em todas) -->
+  <footer class="footer-geral" id="footerGeral">
 
-<!-- ============================================================
-     PLAYER DE MÚSICA FLUTUANTE
-     ============================================================ -->
+    <div class="footer-selos" id="footerSelos"></div>
+
+    <div class="footer-linha"></div>
+
+    <div class="footer-lojas">
+      <h3 class="footer-titulo">AS SALAS DA TAVERNA</h3>
+      <div class="footer-lojas-lista" id="footerLojas"></div>
+    </div>
+
+    <div class="footer-linha"></div>
+
+    <div class="footer-redes">
+      <p class="redes-acima">Já faz parte de nossas redes?</p>
+      <div class="redes" id="footerRedes"></div>
+      <p class="redes-abaixo">Siga nossas redes sociais</p>
+    </div>
+
+    <div class="copyright">© Taverna Fenrir. Conto de fantasia — qualquer semelhança com deuses é proposital.</div>
+
+  </footer>
+
+</div>
+
+<!-- PLAYER DE MÚSICA -->
 <div class="player-musica" id="playerMusicaBox">
-  <button id="btnMusica" onclick="Taverna.toggleMusica()" aria-label="Play/Pause música">❚❚</button>
+  <button id="btnMusica" onclick="Taverna.toggleMusica()" aria-label="Play/Pause">❚❚</button>
   <span>♪</span>
 </div>
 
-<!-- ============================================================
-     MODAL DE CONTO
-     ============================================================ -->
+<!-- MODAL DE CONTO -->
 <div class="historia-modal" id="historiaModal">
   <div class="historia-box">
-    <button class="historia-fechar" onclick="Taverna.fecharHistoria()" aria-label="Fechar">✕</button>
+    <button class="historia-fechar" onclick="Taverna.fecharHistoria()">✕</button>
+
+    <div class="historia-imagem-abertura" id="historiaImagemAbertura"></div>
     <h2 id="historiaTitulo"></h2>
     <div class="historia-sub" id="historiaSub"></div>
-    <div class="historia-abas-nav" id="historiaAbasNav"></div>
-    <div id="historiaVitrine"></div>
+
     <div class="historia-texto" id="historiaTexto"></div>
-    <div class="historia-rodape" id="historiaRodape"></div>
+
+    <div class="historia-acoes">
+      <div class="historia-acoes-baloes">
+        <button class="acao-balao acao-curtir" id="acaoCurtir" onclick="Taverna.curtirConto()" aria-label="Curtir">
+          <span class="acao-icone" id="acaoCurtirIcone">♡</span>
+        </button>
+        <button class="acao-balao acao-compartilhar" onclick="Taverna.compartilharConto()" aria-label="Compartilhar">
+          <span class="acao-icone">↗</span>
+        </button>
+        <span class="acao-contador" id="acaoContador">0</span>
+      </div>
+      <p class="acao-texto" id="acaoTexto">Acenda essa história</p>
+    </div>
+
+    <div class="imagem-propaganda" id="historiaPropaganda"></div>
+
     <div class="historia-audio" id="historiaAudioBox">
       <button id="historiaAudioBtn" onclick="Taverna.toggleHistoriaAudio()">▶</button>
       <span>Ouça a Runa contar esta história</span>
     </div>
+
     <div class="historia-nav" id="historiaNav">
-      <button id="btnHistoriaAnterior" onclick="Taverna.abaAnterior()">← Voltar</button>
-      <button id="btnHistoriaProxima" onclick="Taverna.proximaAba()">Avançar →</button>
+      <button id="btnHistoriaAnterior" onclick="Taverna.fecharHistoria()">← Voltar ao Salão</button>
     </div>
+
     <div class="historia-selo-bloco">
       <h4 class="selo-titulo">Conheça nossos selos</h4>
       <div class="selo-grid" id="historiaSelos"></div>
     </div>
+
     <div class="historia-social">
-      <p class="redes-acima" id="historiaRedesAcima">Já faz parte de nossas redes?</p>
+      <p class="redes-acima">Já faz parte de nossas redes?</p>
       <div class="redes" id="historiaRedes"></div>
-      <p class="redes-abaixo" id="historiaRedesAbaixo">Siga nossas redes sociais</p>
+      <p class="redes-abaixo">Siga nossas redes sociais</p>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
-     MODAL DA HISTÓRIA NÃO CONTADA
-     ============================================================ -->
+<!-- MODAL DA HISTÓRIA NÃO CONTADA -->
 <div class="historia-modal" id="modalHNC">
   <div class="historia-box hnc-box">
-    <button class="historia-fechar" onclick="Taverna.fecharHNC()" aria-label="Fechar">✕</button>
-    <h2 class="hnc-modal-titulo" id="hncModalTitulo">A HISTÓRIA NÃO CONTADA</h2>
-    <p class="hnc-modal-sub" id="hncModalSub">Ainda não é hora de você saber.</p>
+    <button class="historia-fechar" onclick="Taverna.fecharHNC()">✕</button>
+    <h2 class="hnc-modal-titulo">A HISTÓRIA NÃO CONTADA</h2>
+    <p class="hnc-modal-sub">NÃO ABRA ESSA PORTA</p>
     <div class="historia-texto hnc-texto" id="hncTexto"></div>
     <div class="historia-social">
       <p class="redes-acima">Cada mensagem é um voto pra que essa história seja contada.</p>
@@ -385,18 +319,19 @@
   </div>
 </div>
 
-<!-- ============================================================
-     ÁUDIOS
-     ============================================================ -->
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="Taverna.fecharLightbox()">
+  <button class="lightbox-fechar" onclick="Taverna.fecharLightbox();event.stopPropagation()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ÁUDIOS -->
 <audio id="musicaAmbiente" src="assets/audio/musica-ambiente.mp3" loop preload="auto"></audio>
 <audio id="audioRuna" src="assets/audio/runa-historia-completa-v1.mp3" preload="metadata"></audio>
 <audio id="boasVindas" src="assets/audio/boas-vindas.mp3" preload="auto"></audio>
 
-<!-- ============================================================
-     SCRIPTS
-     ============================================================ -->
 <script src="conteudo.js"></script>
 <script src="script.js"></script>
 
 </body>
-</html>
+         </html>
