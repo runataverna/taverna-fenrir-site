@@ -31,21 +31,9 @@ const CONTOS_ABERTURA = 'runa-contos.jpg';
 // ============================================================
 const CONFIG = {
   intro: 'ma_aCbNxNQc',
-  heroHall: 'NI6QqgCbql4',
-  
-  delays: {
-    boasVindas: 900,
-    fimIntro: 8000,
-    musicaSubir: 25000,
-    ducking: 500
-  },
-  
-  volumes: {
-    musicaPadrao: 0.20,
-    musicaBaixa: 0.05,
-    boasVindas: 0.85
-  },
-  
+  heroHall: 'ACjrIQGb0tk',
+  delays: { boasVindas: 900, fimIntro: 8000, musicaSubir: 25000, ducking: 500 },
+  volumes: { musicaPadrao: 0.20, musicaBaixa: 0.05, boasVindas: 0.85 },
   redes: {
     instagram: 'https://www.instagram.com/runataverna',
     facebook: 'https://www.facebook.com/61594517399917/',
@@ -53,13 +41,14 @@ const CONFIG = {
     youtube: 'https://youtube.com/@runatavernafenrir',
     email: 'runa.fenrir.oficial@gmail.com'
   },
-  
   textos: {
     redesAcima: 'Já faz parte de nossas redes?',
     redesAbaixo: 'Siga nossas redes sociais',
     historiaNaoContada: 'A HISTÓRIA NÃO CONTADA',
     historiaNaoContadaSub: 'NÃO ABRA ESSA PORTA',
-    lojasTitulo: 'AS SALAS DA TAVERNA'
+    lojasTitulo: 'AS SALAS DA TAVERNA',
+    mitologiaIntro: 'Yggdrasil, Thor e Fenrir abrem as portas da casa. Novos deuses chegam toda semana.',
+    vikingIntro: 'Um povo novo a cada semana. O norte não cabe num só conto.'
   }
 };
 
@@ -67,15 +56,15 @@ const CONFIG = {
 // AS 9 PORTAS DO HALL
 // ============================================================
 const PORTAS = [
-  { id: 'contos',      num: 1, titulo: 'Contos',                    tag: 'Histórias',     desc: 'Noites junto ao fogo: batalhas, juramentos e a caneca que nunca esfria.', video: null,           duracao: 0,     img: 'runa-contadora.jpg' },
+  { id: 'contos',      num: 1, titulo: 'Contos',                    tag: 'Histórias',     desc: 'Noites junto ao fogo: batalhas, juramentos e a caneca que nunca esfria.', video: 'iQ_rePerQKo', duracao: 8000,  img: 'runa-contos.jpg' },
   { id: 'sobre',       num: 2, titulo: 'Sobre a Runa',              tag: 'Ela mesma',     desc: 'A guerreira que trocou a espada pelo avental — a história completa na voz dela.', video: 's4RftBijF0Q', duracao: 8000,  img: 'runa-retrato.jpg' },
-  { id: 'universo',    num: 3, titulo: 'Universo Viking',           tag: 'Mundo',         desc: 'Rotas, clãs, navios e costumes que moldaram a guerreira taberneira.', video: '1LZkHAPm5GQ', duracao: 13000, img: 'runa-contadora.jpg' },
-  { id: 'mitologia',   num: 4, titulo: 'Mitologia Nórdica',         tag: 'Mitos',         desc: 'Yggdrasil, os Nove Mundos, Fenrir e os deuses que observam a taverna.', video: '0Gs4CzPLMwM', duracao: 11000, img: 'runa-contadora.jpg' },
-  { id: 'aneis',       num: 5, titulo: 'Anéis & Pingentes',         tag: 'Relíquias',     desc: 'Peças ligadas às histórias: o pingente da raiz, o ferro do fiorde.', video: 'Dm3Ta_c9DZs', duracao: 8000,  img: 'runa-aneis.jpg' },
+  { id: 'universo',    num: 3, titulo: 'Universo Viking',           tag: 'Mundo',         desc: 'Rotas, clãs, navios e costumes que moldaram a guerreira taberneira.', video: '1LZkHAPm5GQ', duracao: 13000, img: 'runa-viking.jpg' },
+  { id: 'mitologia',   num: 4, titulo: 'Mitologia Nórdica',         tag: 'Mitos',         desc: 'Yggdrasil, os Nove Mundos, Fenrir e os deuses que observam a taverna.', video: '0Gs4CzPLMwM', duracao: 11000, img: 'runa-mitologia.jpg' },
+  { id: 'aneis',       num: 5, titulo: 'Anéis & Pingentes',         tag: 'Relíquias',     desc: 'Peças ligadas às histórias: o pingente da raiz, o ferro do fiorde.', video: 'kVn2eI32yyU', duracao: 8000,  img: 'runa-aneis.jpg' },
   { id: 'facas',       num: 6, titulo: 'Facas & Utensílios',        tag: 'Do balcão',     desc: 'Ferro batido, fio firme — o kit da taverna.', video: 'WX1lHp6vH1c', duracao: 8000,  img: 'runa-facas.jpg' },
-  { id: 'casacos',     num: 7, titulo: 'Casacos',                   tag: 'Vestir',        desc: 'Contra a neve lá fora: camadas quentes com espírito do norte.', video: 'Z38aRgWU9Wg', duracao: 8000,  img: 'runa-casacos.jpg' },
+  { id: 'casacos',     num: 7, titulo: 'Casacos',                   tag: 'Vestir',        desc: 'Contra a neve lá fora: camadas quentes com espírito do norte.', video: 'Z38aRgWU9Wg', duracao: 11000, img: 'runa-casacos.jpg' },
   { id: 'heavymetal',  num: 8, titulo: 'Heavy Metal & Camisetas',   tag: 'Som & Vestir',  desc: 'A trilha da casa e as runas para vestir.', video: 'GLe-29BBcws', duracao: 8000,  img: 'runa-heavymetal.jpg' },
-  { id: 'arte',        num: 9, titulo: 'Arte Conceitual',           tag: 'Bastidores',    desc: 'O processo criativo por trás da Runa — esboços e estudos.', video: null,           duracao: 0,     img: 'runa-contadora.jpg' }
+  { id: 'arte',        num: 9, titulo: 'Arte Conceitual',           tag: 'Bastidores',    desc: 'Onde tudo começou. Esboços que nunca entraram nas histórias oficiais.', video: '49CYH2HEyoY', duracao: 12000, img: 'runa-arte.jpg' }
 ];
 
 // ============================================================
@@ -110,12 +99,7 @@ Agora você já sabe as sete. Vai reconhecer elas quando aparecerem.
 
 Senta. A casa é sua.`,
     rodape: 'gravado na soleira, antes da primeira noite.',
-    imagens: null,
-    video: null,
-    link: null,
-    linkTexto: null,
-    abas: null,
-    audio: null
+    imagens: null, video: null, link: null, linkTexto: null, abas: null, audio: null
   },
   {
     id: 'caneca',
@@ -131,12 +115,7 @@ O viajante bebeu de um gole, tossiu, riu, e pediu outra. Runa, de braços cruzad
 
 Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o frio lá fora é real, mas o fogo aqui dentro é teimoso.`,
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null,
-    video: null,
-    link: 'https://meli.la/1pQy38B',
-    linkTexto: 'Obter essa relíquia',
-    abas: null,
-    audio: null
+    imagens: null, video: null, link: 'https://meli.la/1pQy38B', linkTexto: 'Obter essa relíquia', abas: null, audio: null
   },
   {
     id: 'bardo',
@@ -156,12 +135,7 @@ O que eu sei é que ele chega, senta, e a caneca já está esperando. Uma vez eu
 
 Tem coisas que a gente carrega não pelo valor. Carrega pelo peso.`,
     rodape: 'contado por Runa, atrás do balcão.',
-    imagens: null,
-    video: null,
-    link: 'https://meli.la/1TCwkER',
-    linkTexto: 'Obter essa relíquia',
-    abas: null,
-    audio: null
+    imagens: null, video: null, link: 'https://meli.la/1TCwkER', linkTexto: 'Obter essa relíquia', abas: null, audio: null
   },
   {
     id: 'brokkr',
@@ -218,11 +192,7 @@ E se tiver alguém do seu lado soprando o fole enquanto você trabalha — melho
       }
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null,
-    video: null,
-    link: 'https://meli.la/32RTZd9',
-    linkTexto: 'Conhecer as ferramentas da Runa',
-    audio: null
+    imagens: null, video: null, link: 'https://meli.la/32RTZd9', linkTexto: 'Conhecer as ferramentas da Runa', audio: null
   },
   {
     id: 'yggdrasil',
@@ -267,18 +237,14 @@ Se você quer começar, começa pequeno. Terra boa, paciência, e a mão dispost
       }
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null,
-    video: null,
-    link: 'https://meli.la/1xdP4cC',
-    linkTexto: 'Conhecer o Kit de Jardinagem da Runa',
-    audio: null
+    imagens: null, video: null, link: 'https://meli.la/1xdP4cC', linkTexto: 'Conhecer o Kit de Jardinagem da Runa', audio: null
   },
   {
     id: 'neve',
     titulo: 'Neve e sangue na porta',
     subtitulo: 'Conto III · O inverno do lobo',
     imagemAbertura: 'runa-neve.jpg',
-    propaganda: 'propaganda-pratos.jpg',
+    propaganda: 'propaganda-mantas.jpg',
     abas: [
       {
         titulo: 'A noite em que o lobo uivou',
@@ -328,11 +294,7 @@ Se um dia você tiver uma casa sua, lembra disso: o cuidado com a mesa é cuidad
       }
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null,
-    video: null,
-    link: 'https://meli.la/2bpS7YK',
-    linkTexto: 'Conhecer a mesa da Runa',
-    audio: null
+    imagens: null, video: null, link: 'https://meli.la/1UxNvkB', linkTexto: 'Conhecer a mesa da Runa', audio: null
   },
   {
     id: 'bando',
@@ -399,11 +361,7 @@ E ser escolhido, meu caro, é uma das poucas coisas na vida que valem a pena.`
       }
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null,
-    video: null,
-    link: 'https://meli.la/2WLCGD1',
-    linkTexto: 'Conhecer a lista de presentes da Runa',
-    audio: null
+    imagens: null, video: null, link: 'https://meli.la/2WLCGD1', linkTexto: 'Conhecer a lista de presentes da Runa', audio: null
   },
   {
     id: 'runas',
@@ -500,11 +458,7 @@ Se você quiser começar, começa por onde eu comecei. Uma faca de entalhe, um p
       }
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null,
-    video: null,
-    link: 'https://meli.la/2CYf4XY',
-    linkTexto: 'Conhecer o ofício da Runa',
-    audio: null
+    imagens: null, video: null, link: 'https://meli.la/2CYf4XY', linkTexto: 'Conhecer o ofício da Runa', audio: null
   }
 ];
 
@@ -575,15 +529,14 @@ const SOBRE_RUNA = {
     'Corset de couro escuro, braçadeiras de couro'
   ],
   personalidade: [
-    'Fofa sem ser ingênua',
-    'Bruta sem ser grosseira',
-    'Sexy sem ser vulgar',
-    'Forte sem precisar provar força',
-    'Inteligente sem ser arrogante',
-    'Irônica quando apropriado',
-    'Sensível sem ser frágil'
+    'Fofa sem ser ingênua', 'Bruta sem ser grosseira', 'Sexy sem ser vulgar',
+    'Forte sem precisar provar força', 'Inteligente sem ser arrogante',
+    'Irônica quando apropriado', 'Sensível sem ser frágil'
   ],
   audio: 'assets/audio/runa-historia-completa-v1.mp3',
+  videoPropaganda: 'LW2SnwzstJM',
+  linkPropaganda: 'https://meli.la/2d46Yr4',
+  linkPropagandaTexto: 'Conhecer o pingente da Runa',
   monologo: [
     { tipo: 'p', texto: 'E não, eu não disse que era quentinho.' },
     { tipo: 'p', texto: 'Antes de eu te contar qualquer coisa, você precisa entender uma coisa: eu não nasci dona de taverna. Eu nasci numa vila pequena, no norte, onde o inverno dura mais que a vida. Tinha pai, tinha mãe, tinha um irmão mais novo que ria de tudo.' },
@@ -634,62 +587,58 @@ const SOBRE_RUNA = {
 };
 
 // ============================================================
-// A HISTÓRIA NÃO CONTADA
+// A HISTÓRIA NÃO CONTADA (versão suave, sem spoiler)
 // ============================================================
 const HISTORIA_NAO_CONTADA = {
   titulo: 'A HISTÓRIA NÃO CONTADA',
   subtitulo: 'NÃO ABRA ESSA PORTA',
-  texto: `Todo mundo que senta aqui sabe da vingança. Sabe da família que enterrei. Sabe do bando que me acolheu e da taverna que construí depois.
+  texto: `Todo mundo que senta aqui já ouviu alguma coisa sobre mim.
 
-Mas tem um pedaço no meio. Um pedaço que eu deixo fora das histórias quando alguém me pede pra contar.
+Vocês sabem da vingança. Sabem da família que enterrei. Sabem do bando do Lobo Cinzento, que me acolheu quando eu não tinha mais ninguém. Sabem das runas, que a Svala me ensinou. Sabem do pingente de Mjolnir, que carrego no peito desde o Dia do Trovão. Sabem que troquei a guerra pelo avental, e que essa taverna nasceu de uma escolha.
 
-Começa no Dia do Trovão.
+Vocês sabem quase tudo.
 
-Vocês já ouviram essa parte. Vocês sabem do céu que escureceu. Dos raios que rasgaram as nuvens e dizimaram o campo inimigo. Sabem que eu vi algo — uma silhueta entre a luz e a chuva — e que depois encontrei o pingente no meio dos corpos. Sabem o que eu não sei até hoje: se aquilo era Thor, ou se era só o cansaço me enganando.
+Quase.
 
-O que vocês não sabem é o que aconteceu naquela mesma noite.
+Tem um pedaço no meio. Um pedaço que eu deixo de fora quando alguém me pede pra contar minha história. Não porque é segredo. Porque algumas coisas eu ainda não aprendi a dizer em voz alta.
 
-Depois da batalha, o bando fez o que todo bando faz quando sobrevive: acendeu a fogueira, abriu os barris e cantou. Cantei também. Não por alegria — por alívio de estar viva. Mas a cabeça não tava lá. Tava no campo. No raio. Na silhueta. Em tudo que eu não entendia.
+Esse pedaço começa no bando.
 
-Foi uma noite de tambores.
+Eu já contei como cheguei lá. Contei do Halvar, que me olhou por um tempo que parecia um ano e disse só "ela fica". Contei da Svala, da faca de entalhe, do jeito que ela ensinava sem explicar duas vezes. Contei dos anos de frio, de fome, de aprender a remar e a segurar um machado.
 
-Tinha um batedor no bando. O Kalf. Tocava com as mãos nuas até sangrar. E tinha uma velha que puxava um canto grave, gutural, que subia pelas paredes do salão como se a terra estivesse cantando junto. Todo mundo se levantou. Todo mundo pulou. Todo mundo gritou junto. Era o som que fazia o chão tremer. Era a música que falava com a parte de mim que ainda tinha raiva.
+O que eu não contei foi o resto.
 
-E no meio daquela festa, entre o fogo e o suor e o barulho, eu vi ele.
+No bando, tinha um homem. Não vou dizer o nome dele. Não porque ele não mereça ser lembrado — mas porque o nome dele é meu. É a única coisa que eu tenho que é só minha.
 
-Sentado num canto da fogueira, quieto, com um chifre de hidromel na mão e o olhar perdido em algum lugar que eu não alcançava. Não tava comemorando. Tava observando. Como se estivesse vendo algo que ninguém mais via.
+Ele não era bonito. Não era gentil. Não era nada que vocês chamariam de herói. Era um homem quieto, com o olhar voltado para algum lugar que eu nunca alcancei. Falava pouco. Sorria menos. Lutava como quem já perdeu tudo e não tinha mais medo de nada.
 
-Ele olhou pra mim. Eu olhei pra ele. Ficou assim. Nada mais.
+Ninguém no bando entendia ele. Eu também não entendia.
 
-Não teve palavra. Não teve chegança. Não teve nada. Só dois olhos cansados se reconhecendo no meio de uma festa que não era deles.
+Mas a gente se reconheceu.
 
-Depois disso, a gente começou a lutar junto. Ele não me defendia — mas ele me respeitava. Segurava um flanco, eu segurava o outro. A gente não precisava combinar. A gente já sabia.
+Não foi num momento bonito. Foi no meio de uma festa, depois de uma batalha, com tambores e fogo e gente gritando. Eu olhei pra ele. Ele olhou pra mim. Ficou assim. Nada mais. E naquele olhar a gente já sabia.
 
-Aprendi a lutar de verdade com ele. Não com espada — espada era coisa de rico, de gente que podia comprar aço bom. Na minha época, a gente lutava com o que tinha. Machado. Ferramenta de campo que também servia de arma. Machado era o que cortava lenha e cortava gente no mesmo dia.
+Vocês sabem como é isso, né? Quando alguém te olha e não precisa dizer nada porque você já entendeu tudo.
 
-Anos se passaram. Anos de batalha, de frio, de silêncio. E numa outra noite, numa outra fogueira — depois de uma vitória que quase nos custou a vida — a gente fez um juramento. Não foi com palavra bonita. Não foi com testemunha. Foi com uma pulseira de bronze trançada à mão, que ele tirou do próprio braço e colocou no meu. E eu entendi. Não precisava de mais nada.
+A gente começou a lutar junto. Não como quem protege. Como quem confia. Ele segurava um flanco, eu segurava o outro. A gente não combinava nada. A gente já sabia.
 
-Na nossa tradição, quando alguém te entrega uma pulseira, é porque te escolheu. Pra ficar. Pra ir junto. Pra carregar o que vier depois.
+Foram anos. Anos de estrada, de batalha, de silêncio. Anos em que ele foi a única pessoa pra quem eu não precisava fingir nada. Nem força. Nem medo. Nem raiva. Nada.
+
+E depois, numa outra noite, numa outra fogueira, ele me deu uma coisa. Uma pulseira de bronze. Trançada à mão. Do jeito que a gente fazia quando queria dizer algo que a boca não dava conta.
+
+Na nossa tradição, uma pulseira entregue assim é uma promessa. É dizer "eu tô contigo, aconteça o que acontecer." É um juramento sem testemunha, sem deus, sem papel. Só entre duas pessoas.
 
 Eu carrego essa pulseira até hoje.
 
-E carrego o resto também. O resto que eu não conto.
+E carrego o resto também.
 
-Porque antes de eu completar os vinte e três invernos — antes de eu encontrar os homens que mataram minha família — eles nos pegaram numa emboscada. Ele e eu. E mais alguns do bando.
+Porque depois do juramento, aconteceu uma coisa. Uma coisa que eu não vou contar agora. Não hoje. Talvez nunca. Ou talvez só quando você tiver sentado aqui, na frente do fogo, e me pedir de um jeito que eu não consiga negar.
 
-Não vou te contar como foi. Só vou dizer o que sobrou. Ele segurou a linha sozinho, pra que o resto do grupo pudesse recuar. Fez o que poucos homens conseguem fazer: enfrentou o que não devia, pra que outros pudessem viver.
+Se você quer ouvir essa história — a história inteira, com nome, com data, com o que aconteceu de verdade naquela emboscada — precisa me dizer. Aqui na taverna, ou lá fora, nas suas redes. Comente. Acenda essa história.
 
-E quando a batalha acabou, eu encontrei os homens que mataram minha família do outro lado do campo. Cumpri o que eu tinha jurado aos doze anos. Mas não senti nada. Nada. Porque o que eu sentia mesmo já tinha ficado naquele campo, com ele.
+Se o fogo pegar, eu conto.
 
-Saí do bando depois disso. Sem rumo. Sem querer saber de vingança, nem de guerra, nem de nada. Só andando. Até o dia em que encontrei a raiz de Yggdrasil no meio da floresta — e entendi que precisava construir algo. Não destruir mais.
-
-É isso que eu não conto.
-
-Não é porque é segredo. É porque cada vez que eu conto, eu perco ele de novo. E eu não quero perder ele mais vezes do que já perdi.
-
-Se você quer ouvir essa história — a história inteira, com nome, com data, com o que aconteceu de verdade naquela emboscada — precisa me dizer. A taverna escuta. Mas essa história só sai do fogo se alguém pedir.
-
-E talvez você seja esse alguém.`
+A noite é longa. E eu tenho tempo.`
 };
 
 // ============================================================
@@ -705,18 +654,16 @@ const SIMBOLOS = [
 ];
 
 // ============================================================
-// UNIVERSO VIKING — 5 GRUPOS
+// UNIVERSO VIKING
 // ============================================================
 const VIKING = {
-  intro: 'Do fiorde ao salão: o mundo lá fora que entra pela porta a cada noite.',
-  imagem: 'runa-contadora.jpg',
+  intro: 'Um povo novo a cada semana. O norte não cabe num só conto.',
+  imagem: 'runa-viking.jpg',
   link: 'https://meli.la/2YmDDte',
   linkTexto: 'Explorar o Universo Viking',
   grupos: [
     {
-      id: 'povo',
-      titulo: 'O Povo do Norte',
-      subtitulo: 'Quem eram, como se organizavam, como viviam.',
+      id: 'povo', titulo: 'O Povo do Norte', subtitulo: 'Quem eram, como se organizavam, como viviam.',
       cards: [
         { titulo: 'As Raízes do Norte', subtitulo: 'De onde viemos.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
         { titulo: 'A Pirâmide Social', subtitulo: 'Reis, nobres e homens livres.', texto: '[A PREENCHER]', voceSabia: 'O Althing, na Islândia, é considerado o parlamento mais antigo do mundo ainda em funcionamento.' },
@@ -727,9 +674,7 @@ const VIKING = {
       ]
     },
     {
-      id: 'guerra',
-      titulo: 'A Guerra',
-      subtitulo: 'Aço, escudos e o preço da vitória.',
+      id: 'guerra', titulo: 'A Guerra', subtitulo: 'Aço, escudos e o preço da vitória.',
       cards: [
         { titulo: 'Aço e Madeira', subtitulo: 'As armas do dia a dia.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
         { titulo: 'O Muro de Escudos', subtitulo: 'A formação que definia batalhas.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
@@ -739,9 +684,7 @@ const VIKING = {
       ]
     },
     {
-      id: 'rotas',
-      titulo: 'As Rotas',
-      subtitulo: 'Os navios que ligaram o mundo.',
+      id: 'rotas', titulo: 'As Rotas', subtitulo: 'Os navios que ligaram o mundo.',
       cards: [
         { titulo: 'Dracares', subtitulo: 'A máquina de guerra e comércio.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
         { titulo: 'A Linhagem de Ragnar e a Pedra do Sol', subtitulo: 'A ambição de ser maior que o pai.', texto: '[A PREENCHER]', voceSabia: 'A "pedra do sol" (solarsteinn) era um cristal que polarizava a luz, permitindo encontrar a posição do sol mesmo em dias nublados.' },
@@ -750,9 +693,7 @@ const VIKING = {
       ]
     },
     {
-      id: 'inverno',
-      titulo: 'O Inverno',
-      subtitulo: 'Sobreviver à estação mais longa.',
+      id: 'inverno', titulo: 'O Inverno', subtitulo: 'Sobreviver à estação mais longa.',
       cards: [
         { titulo: 'Sobrevivência', subtitulo: 'O maior inimigo era o frio.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
         { titulo: 'A Média de Vida', subtitulo: 'Uma vida breve e intensa.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
@@ -760,9 +701,7 @@ const VIKING = {
       ]
     },
     {
-      id: 'crencas',
-      titulo: 'As Crenças',
-      subtitulo: 'Os deuses no cotidiano do povo.',
+      id: 'crencas', titulo: 'As Crenças', subtitulo: 'Os deuses no cotidiano do povo.',
       cards: [
         { titulo: 'A Fé no Dia a Dia', subtitulo: 'O sagrado no mundano.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
         { titulo: 'Rituais e Ofertas', subtitulo: 'O que se dava aos deuses.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
@@ -774,18 +713,16 @@ const VIKING = {
 };
 
 // ============================================================
-// MITOLOGIA NÓRDICA — 6 GRUPOS
+// MITOLOGIA NÓRDICA
 // ============================================================
 const MITOLOGIA = {
-  intro: 'A árvore que segura os mundos passa pela adega da taverna.',
-  imagem: 'runa-contadora.jpg',
+  intro: 'Yggdrasil, Thor e Fenrir abrem as portas da casa. Novos deuses chegam toda semana.',
+  imagem: 'runa-mitologia.jpg',
   link: 'https://meli.la/1oByRB2',
   linkTexto: 'Conhecer relíquias dos Deuses',
   grupos: [
     {
-      id: 'arvore',
-      titulo: 'A Árvore do Mundo',
-      subtitulo: 'Onde tudo se conecta.',
+      id: 'arvore', titulo: 'A Árvore do Mundo', subtitulo: 'Onde tudo se conecta.',
       cards: [
         { titulo: 'Yggdrasil', subtitulo: 'A árvore que sustenta o cosmos.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
         { titulo: 'Os Nove Reinos', subtitulo: 'Asgard, Midgard, Jotunheim...', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
@@ -793,9 +730,7 @@ const MITOLOGIA = {
       ]
     },
     {
-      id: 'aesir',
-      titulo: 'Os Aesir — Deuses da Guerra',
-      subtitulo: 'Os deuses de Asgard.',
+      id: 'aesir', titulo: 'Os Aesir — Deuses da Guerra', subtitulo: 'Os deuses de Asgard.',
       cards: [
         { titulo: 'Odin, o Pai de Todos', subtitulo: 'Sabedoria a qualquer preço.', texto: '[A PREENCHER]', voceSabia: 'Odin sacrificou um olho no poço de Mimir para obter sabedoria.' },
         { titulo: 'Thor, o Senhor do Trovão', subtitulo: 'O mais forte e o mais amado.', texto: '[A PREENCHER]', voceSabia: 'Thor era o deus dos camponeses — o povo simples o chamava em batalha.' },
@@ -806,9 +741,7 @@ const MITOLOGIA = {
       ]
     },
     {
-      id: 'vanir',
-      titulo: 'Os Vanir — Deuses da Natureza',
-      subtitulo: 'Os deuses da paz.',
+      id: 'vanir', titulo: 'Os Vanir — Deuses da Natureza', subtitulo: 'Os deuses da paz.',
       cards: [
         { titulo: 'Frey, o Senhor da Colheita', subtitulo: 'Deus dos campos e dos reis.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
         { titulo: 'Freya, a Senhora da Magia', subtitulo: 'Metade dos mortos é dela.', texto: '[A PREENCHER]', voceSabia: 'Freya comanda metade dos guerreiros mortos em batalha (a outra metade é de Odin).' },
@@ -816,9 +749,7 @@ const MITOLOGIA = {
       ]
     },
     {
-      id: 'gigantes',
-      titulo: 'Loki, os Gigantes e as Criaturas',
-      subtitulo: 'O que ameaça a ordem dos deuses.',
+      id: 'gigantes', titulo: 'Loki, os Gigantes e as Criaturas', subtitulo: 'O que ameaça a ordem dos deuses.',
       cards: [
         { titulo: 'Loki, o Trapaceiro', subtitulo: 'Deus ou problema?', texto: '[A PREENCHER]', voceSabia: 'Loki é um jötunn (gigante) aceito entre os Aesir — nunca foi totalmente um deles.' },
         { titulo: 'Fenrir, o Lobo', subtitulo: 'O destino preso por correntes.', texto: '[A PREENCHER]', voceSabia: 'Fenrir é o lobo que dá nome à taverna de Runa — o aviso de que até o destino pode sentar à mesa.' },
@@ -828,9 +759,7 @@ const MITOLOGIA = {
       ]
     },
     {
-      id: 'ragnarok',
-      titulo: 'Ragnarok — O Fim e o Recomeço',
-      subtitulo: 'Tudo o que morre, retorna.',
+      id: 'ragnarok', titulo: 'Ragnarok — O Fim e o Recomeço', subtitulo: 'Tudo o que morre, retorna.',
       cards: [
         { titulo: 'Os Sinais do Fim', subtitulo: 'Fimbulwinter, a morte de Baldr.', texto: '[A PREENCHER]', voceSabia: 'Fimbulwinter são três invernos seguidos sem verão — prenúncio do Ragnarok.' },
         { titulo: 'A Última Batalha', subtitulo: 'Odin contra Fenrir.', texto: '[A PREENCHER]', voceSabia: '[A PREENCHER]' },
@@ -838,9 +767,7 @@ const MITOLOGIA = {
       ]
     },
     {
-      id: 'quem-escreveu',
-      titulo: 'Quem Escreveu Tudo Isso',
-      subtitulo: 'A verdade sobre a mitologia.',
+      id: 'quem-escreveu', titulo: 'Quem Escreveu Tudo Isso', subtitulo: 'A verdade sobre a mitologia.',
       cards: [
         { titulo: 'As Eddas e o Cristianismo', subtitulo: 'Quem contou a história dos deuses pagãos.', texto: '[A PREENCHER]', voceSabia: 'A Edda em Prosa foi escrita por Snorri Sturluson, um político cristão islandês, no século XIII — 200 anos depois da Era Viking.' }
       ]
@@ -849,7 +776,7 @@ const MITOLOGIA = {
 };
 
 // ============================================================
-// AS 4 SALAS DE VENDA
+// AS 4 SALAS DE VENDA (textos reescritos, menos vendedores)
 // ============================================================
 const SALAS_VENDA = {
   facas: {
@@ -869,11 +796,9 @@ A primeira coisa que eu fiz quando abri a taverna não foi armar uma parede. Foi
 
 Nunca esqueci.
 
-Hoje, os utensílios que eu escolho pra colocar no balcão seguem essa mesma lógica. Não é sobre ser bonito — é sobre ser usado. Facas que cortam sem esforço. Panelas que aguentam o fogo alto. Colheres que não racham quando o caldo engrossa.
+Os utensílios que eu uso aqui seguem essa mesma lógica. Não é sobre ser bonito — é sobre ser usado. Faca que corta sem esforço. Panela que aguenta o fogo alto. Colher que não racha quando o caldo engrossa.
 
-Nada aqui é enfeite. Tudo aqui é pra estar na mão.
-
-Escolhe o que combina com a tua cozinha. E usa. Até a peça virar tua.`
+Nada aqui é enfeite. Tudo aqui é pra estar na mão.`
   },
   aneis: {
     titulo: 'Anéis & Pingentes',
@@ -884,27 +809,15 @@ Escolhe o que combina com a tua cozinha. E usa. Até a peça virar tua.`
     linkTexto: 'Conhecer as relíquias da Runa',
     texto: `Tem uma coisa que a gente esquece quando fala de anel e pingente: na minha época, ninguém usava joia por moda. Não existia vitrine. Não existia tendência. Se você via um homem com um anel, ele tinha uma história. Se você via uma mulher com um colar, ele carregava um nome. O metal era só o que segurava a memória no lugar.
 
+Na tradição do norte, um anel não era adorno. Era juramento. O anel de braço — o que vocês chamam hoje de pulseira — selava acordos entre homens e entre clãs. E o pingente, pendurado no peito, era a lembrança que a pessoa escolhia carregar pelo resto da vida.
+
 Eu tenho um pingente. Você já viu ele — tá no meu peito desde antes de a taverna existir. É um Mjolnir. Encontrei num campo de batalha, no meio dos corpos, num dia que eu já contei pra vocês. Faz dez invernos isso.
 
 Não sei de quem era. Não sei se a pessoa que usava ele voltou pra casa. Nunca vou saber. Mas carrego esse pingente desde então — não pelo ouro, não pela forma. Carrego porque enquanto ele tá comigo, aquela pessoa continua sendo lembrada. Mesmo que eu nunca tenha sabido o nome dela. Mesmo que ela tenha morrido antes de qualquer um de nós nascer.
 
-Mas tem outra peça. Essa aqui no braço.
-
-No norte, a gente não trocava anel de dedo como vocês fazem hoje. A gente trocava pulseira. Uma pulseira de prata ou de bronze, trançada à mão, que ninguém podia comprar pronta. Homem e mulher trocavam entre si quando faziam um juramento. Não era só casamento — era promessa. Era dizer "eu tô contigo, aconteça o que acontecer. Se eu cair, você carrega isso por mim."
-
-Essa pulseira que eu carrego foi dada num juramento assim.
-
-Não vou contar a história inteira. Não é hoje. Só vou dizer que é a peça mais pesada que eu tenho — e não é por causa da prata.
-
 É isso que um anel faz. Não é sobre brilhar. Não é sobre mostrar. É sobre lembrar. E sobre ser lembrado.
 
-Os que eu escolhi pra colocar aqui são peças que podem carregar algo. Nada muito cheio de detalhe — assim você pode gravar tua runa, ou o nome de alguém. Ou deixar como tá. E lembrar do que quiser lembrar.
-
-Escolhe um. Usa. E que ele te lembre de algo que valha a pena.
-
-Porque um dia, alguém vai olhar pra tua mão — e vai querer saber de quem é.
-
-Assim como eu carrego a minha. Assim como você vai carregar a tua.`
+Os que eu escolhi pra colocar aqui são peças que podem carregar algo. Nada muito cheio de detalhe — assim você pode gravar tua runa, ou o nome de alguém. Ou deixar como tá. E lembrar do que quiser lembrar.`
   },
   casacos: {
     titulo: 'Casacos',
@@ -925,9 +838,7 @@ Pele de lobo aquece mais. Pele de raposa esquenta rápido mas gasta. Lã de ovel
 
 Não é ciência complicada. É prática de quem viveu.
 
-Escolhi pra vocês algumas peças que eu mesma usaria numa estrada de inverno. Nada de luxo. Nada de enfeite. Peças de trabalho — feitas pra durar, e pra segurar o frio quando ele vier.
-
-Se você mora no frio, sabe do que eu tô falando. Se você não mora, e vai passar por um inverno de verdade, leva a sério. Um casaco ruim é a diferença entre voltar pra casa e virar estátua de gelo na estrada.`
+Se você mora no frio, sabe do que eu tô falando. Se não mora, e vai passar por um inverno de verdade, leva a sério. Um casaco ruim é a diferença entre voltar pra casa e virar estátua de gelo na estrada.`
   },
   heavymetal: {
     titulo: 'Heavy Metal & Camisetas',
@@ -951,10 +862,6 @@ Eu não. Eu gostava das que faziam o chão tremer.
 Tinha um batedor no bando, o Kalf, que tocava tambor com as mãos nuas até sangrar. E tinha uma velha que puxava um canto grave, gutural, que subia pelas paredes do salão como se o próprio chão estivesse cantando. Aquilo sim mexia comigo. Aquilo falava com uma parte de mim que as canções serenas não alcançavam. A parte que ainda tinha raiva. A parte que precisava gritar, mesmo quando tudo já tinha sido resolvido.
 
 É isso que eu ainda carrego. Esse som pesado. Essa batida que não pede licença, que vem de dentro, que faz o peito vibrar antes de a cabeça entender.
-
-As peças que eu escolhi pra vocês são assim. Não são roupa de festa. São roupa de quem sente fundo. Pretas, pesadas, com símbolo da casa ou das runas antigas.
-
-Se você também gosta de coisa mais pesada — veste. E me conta depois como foi a festa.
 
 Aqui, a gente canta o que a gente é.`
   }
