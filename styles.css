@@ -231,7 +231,7 @@ button { font-family: inherit; }
 }
 .hero-conteudo {
   position: relative; z-index: 2;
-  padding: 40px 20px 45px; max-width: 640px; width: 100%; /* ← ALTERADO */
+  padding: 40px 20px 70px; max-width: 640px; width: 100%; /* ← ALTERADO */
 }
 .hero-conteudo h1 {
   font-size: 2.2rem; margin-bottom: 26px;
