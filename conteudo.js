@@ -2,10 +2,39 @@
 // TAVERNA FENRIR — ARQUIVO DE CONTEÚDO
 // Este arquivo contém TODOS os textos do site.
 // Edite aqui. O index.html e script.js não precisam ser tocados.
-// ============================================================
-
+// ===========================================================
 // ============================================================
 // CONFIGURAÇÕES GERAIS
+// ============================================================
+// DICIONÁRIO DE RUNAS NO TEXTO
+// ============================================================
+const RUNAS_TEXTO = {
+  // Algiz — proteção (azul)
+  'proteção': 'algiz', 'protecao': 'algiz', 'abrigo': 'algiz',
+  'escudo': 'algiz', 'defender': 'algiz', 'guardar': 'algiz', 'amigo': 'algiz',
+  // Isa — gelo (azul-gelo)
+  'gelo': 'isa', 'inverno': 'isa', 'neve': 'isa', 'frio': 'isa',
+  'espera': 'isa', 'silêncio': 'isa', 'silencio': 'isa',
+  // Kenaz — tocha (âmbar)
+  'fogo': 'kenaz', 'tocha': 'kenaz', 'luz': 'kenaz',
+  'aprender': 'kenaz', 'ensinar': 'kenaz',
+  // Fehu — riqueza (dourado)
+  'ouro': 'fehu', 'prata': 'fehu', 'riqueza': 'fehu', 'tesouro': 'fehu',
+  // Thurisaz — guerra (vermelho)
+  'batalha': 'thurisaz', 'sangue': 'thurisaz', 'machado': 'thurisaz',
+  'espada': 'thurisaz', 'luta': 'thurisaz', 'matar': 'thurisaz',
+  // Wunjo — alegria (verde)
+  'riso': 'wunjo', 'festa': 'wunjo', 'alegria': 'wunjo',
+  'dança': 'wunjo', 'danca': 'wunjo', 'canção': 'wunjo', 'cancao': 'wunjo',
+  'brinde': 'wunjo',
+  // Othala — família/lar (âmbar queimado)
+  'família': 'othala', 'familia': 'othala', 'lar': 'othala',
+  'casa': 'othala', 'pai': 'othala', 'mãe': 'othala', 'mae': 'othala',
+  // Mannaz — o eu (branco aquecido)
+  'memória': 'mannaz', 'memoria': 'mannaz', 'alma': 'mannaz'
+};
+
+const CONTOS_ABERTURA = 'runa-contos.jpg';
 // ============================================================
 const CONFIG = {
   intro: 'ma_aCbNxNQc',
