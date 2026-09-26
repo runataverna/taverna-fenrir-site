@@ -1,12 +1,9 @@
 /* ============================================================
-   TAVERNA FENRIR — LÓGICA v5 (final)
+   TAVERNA FENRIR — LÓGICA (final)
    ============================================================ */
 
 const Taverna = (() => {
 
-  // ============================================================
-  // ESTADO
-  // ============================================================
   let musicaLiberada = false;
   let audioRunaTocando = false;
   let salaAtual = null;
@@ -20,9 +17,7 @@ const Taverna = (() => {
   const boasVindas = () => $('boasVindas');
   const audioRuna = () => $('audioRuna');
 
-  // ============================================================
-  // FADE DE VOLUME
-  // ============================================================
+  // FADE
   function fadeVolume(el, target, duration = 600) {
     if (!el) return;
     if (el._fade) clearInterval(el._fade);
@@ -36,9 +31,6 @@ const Taverna = (() => {
     }, stepTime);
   }
 
-  // ============================================================
-  // DESBLOQUEIO DE ÁUDIO
-  // ============================================================
   function desbloquearAudio() {
     const AC = window.AudioContext || window.webkitAudioContext;
     if (AC) {
@@ -49,9 +41,6 @@ const Taverna = (() => {
     }
   }
 
-  // ============================================================
-  // MÚSICA PERSISTENTE
-  // ============================================================
   function restaurarMusica() {
     const t = parseFloat(localStorage.getItem('tf_musica_tempo') || '0');
     if (t > 0 && isFinite(t)) { try { musica().currentTime = t; } catch(e) {} }
@@ -62,9 +51,7 @@ const Taverna = (() => {
     }
   }
 
-  // ============================================================
   // ENTRAR
-  // ============================================================
   function entrar() {
     const glow = $('glowEntrada');
     if (glow) {
@@ -73,27 +60,36 @@ const Taverna = (() => {
     }
 
     setTimeout(() => {
-      $('entrada').classList.add('hidden');
-      $('app').classList.add('visible');
-      $('navbar').classList.add('visible');
-      $('playerMusicaBox').classList.add('visible');
+      const entrada = $('entrada');
+      if (entrada) entrada.classList.add('hidden');
+      const app = $('app');
+      if (app) app.classList.add('visible');
+      const nav = $('navbar');
+      if (nav) nav.classList.add('visible');
+      const player = $('playerMusicaBox');
+      if (player) player.classList.add('visible');
+
       ativarHeroVideo();
 
       desbloquearAudio();
       restaurarMusica();
       musicaLiberada = true;
-      musica().volume = CONFIG.volumes.musicaBaixa;
-      musica().play().catch(e => console.log('mus:', e.name));
+
+      if (musica()) {
+        musica().volume = CONFIG.volumes.musicaBaixa;
+        musica().play().catch(e => console.log('mus:', e.name));
+      }
 
       setTimeout(() => {
-        boasVindas().volume = CONFIG.volumes.boasVindas;
-        boasVindas().play().catch(e => console.log('bv:', e.name));
+        if (boasVindas()) {
+          boasVindas().volume = CONFIG.volumes.boasVindas;
+          boasVindas().play().catch(e => console.log('bv:', e.name));
+        }
       }, CONFIG.delays.fimIntro);
 
       setTimeout(() => {
-        if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
+        if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
       }, CONFIG.delays.musicaSubir);
-
     }, 800);
   }
 
@@ -104,25 +100,26 @@ const Taverna = (() => {
     }
   }
 
-  // ============================================================
   // NAVEGAÇÃO
-  // ============================================================
   function irParaPortal(id) {
     const porta = PORTAS.find(p => p.id === id);
     if (!porta) return;
-    $('menuLista').classList.remove('aberto');
+    const menu = $('menuLista');
+    if (menu) menu.classList.remove('aberto');
 
     if (salaAtual) {
       const el = $('sala-' + salaAtual);
       if (el) el.classList.remove('ativa');
     }
-    $('hall').style.display = 'none';
+    const hall = $('hall');
+    if (hall) hall.style.display = 'none';
 
     const abrirSala = () => {
       const el = $('sala-' + id);
       if (el) el.classList.add('ativa');
       salaAtual = id;
-      $('btnVoltar').classList.add('visible');
+      const btn = $('btnVoltar');
+      if (btn) btn.classList.add('visible');
       window.scrollTo(0, 0);
       popularSlots();
       history.pushState({ sala: id }, '', '#' + id);
@@ -130,13 +127,16 @@ const Taverna = (() => {
 
     if (!porta.video || porta.duracao <= 0) { abrirSala(); return; }
 
-    $('transicaoTitulo').textContent = porta.titulo;
-    $('transicaoIframe').src = `https://www.youtube.com/embed/${porta.video}?autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3`;
-    $('transicaoWrap').classList.add('active');
+    const titulo = $('transicaoTitulo');
+    if (titulo) titulo.textContent = porta.titulo;
+    const iframe = $('transicaoIframe');
+    if (iframe) iframe.src = `https://www.youtube.com/embed/${porta.video}?autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3`;
+    const wrap = $('transicaoWrap');
+    if (wrap) wrap.classList.add('active');
 
     setTimeout(() => {
-      $('transicaoWrap').classList.remove('active');
-      $('transicaoIframe').src = '';
+      if (wrap) wrap.classList.remove('active');
+      if (iframe) iframe.src = '';
       abrirSala();
     }, porta.duracao);
   }
@@ -147,34 +147,38 @@ const Taverna = (() => {
       if (el) el.classList.remove('ativa');
       salaAtual = null;
     }
-    $('hall').style.display = 'block';
-    $('btnVoltar').classList.remove('visible');
-    if (audioRunaTocando) {
+    const hall = $('hall');
+    if (hall) hall.style.display = 'block';
+    const btn = $('btnVoltar');
+    if (btn) btn.classList.remove('visible');
+    if (audioRunaTocando && audioRuna()) {
       audioRuna().pause(); audioRunaTocando = false;
-      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
+      if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     }
     window.scrollTo(0, 0);
     history.pushState({ sala: null }, '', location.pathname);
   }
 
-  function toggleMenu() { $('menuLista').classList.toggle('aberto'); }
+  function toggleMenu() {
+    const menu = $('menuLista');
+    if (menu) menu.classList.toggle('aberto');
+  }
 
-  // ============================================================
-  // HISTORY API
-  // ============================================================
   window.addEventListener('popstate', () => {
-    if ($('historiaModal').classList.contains('active')) { fecharHistoria(); return; }
-    if ($('modalHNC').classList.contains('active')) { fecharHNC(); return; }
-    if ($('lightbox').classList.contains('active')) { fecharLightbox(); return; }
+    const m1 = $('historiaModal');
+    if (m1 && m1.classList.contains('active')) { fecharHistoria(); return; }
+    const m2 = $('modalHNC');
+    if (m2 && m2.classList.contains('active')) { fecharHNC(); return; }
+    const m3 = $('lightbox');
+    if (m3 && m3.classList.contains('active')) { fecharLightbox(); return; }
     if (salaAtual) { voltarAoHall(); }
   });
 
-  // ============================================================
-  // RENDERIZAR PORTAS
-  // ============================================================
+  // PORTAS
   function renderizarPortas() {
     const grid = $('gridPortas');
     const menu = $('menuLista');
+    if (!grid || !menu) return;
     grid.innerHTML = ''; menu.innerHTML = '';
     PORTAS.forEach((p, i) => {
       const btn = document.createElement('button');
@@ -187,7 +191,6 @@ const Taverna = (() => {
         <span class="seta">Entrar →</span>`;
       btn.onclick = () => irParaPortal(p.id);
       grid.appendChild(btn);
-
       const a = document.createElement('a');
       a.textContent = (i+1) + '. ' + p.titulo;
       a.onclick = () => irParaPortal(p.id);
@@ -195,9 +198,7 @@ const Taverna = (() => {
     });
   }
 
-  // ============================================================
   // RUNAS NO TEXTO
-  // ============================================================
   function aplicarRunasNoTexto(html) {
     if (!html) return html;
     const nomes = ['Runa', 'Halvar', 'Svala', 'Ulf', 'Bardo', 'Brokkr', 'Eitri', 'Thor', 'Fenrir', 'Odin', 'Freya', 'Loki'];
@@ -214,9 +215,7 @@ const Taverna = (() => {
     return html;
   }
 
-  // ============================================================
   // CURTIDAS
-  // ============================================================
   function seedCount(id) {
     let h = 0;
     for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) % 997;
@@ -234,28 +233,23 @@ const Taverna = (() => {
   }
 
   function curtir(id, icone, btn, contador, textoEl) {
+    if (!icone || !btn || !contador || !textoEl) return;
     const ja = lerCurtidasUser();
     if (ja.includes(id)) return;
-
     const c = lerCurtidas();
     c[id] = (c[id] || 0) + 1;
     salvarCurtidas(c);
     ja.push(id);
     salvarCurtidasUser(ja);
-
     icone.textContent = 'ᛗ';
     btn.classList.add('ativo');
-
-    setTimeout(() => {
-      btn.classList.remove('ativo');
-      btn.classList.add('marcado');
-    }, 3000);
-
+    setTimeout(() => { btn.classList.remove('ativo'); btn.classList.add('marcado'); }, 3000);
     contador.textContent = c[id].toLocaleString('pt-BR');
     textoEl.textContent = 'Sua marca foi gravada';
   }
 
   function atualizarCurtir(id, icone, btn, contador, textoEl) {
+    if (!icone || !btn || !contador || !textoEl) return;
     const c = lerCurtidas();
     if (c[id] === undefined) { c[id] = seedCount(id); salvarCurtidas(c); }
     const ja = lerCurtidasUser().includes(id);
@@ -275,25 +269,20 @@ const Taverna = (() => {
     if (!contoAtual) return;
     curtir(contoAtual.id, $('acaoCurtirIcone'), $('acaoCurtir'), $('acaoContador'), $('acaoTexto'));
   }
-
   function curtirHNC() {
     curtir('hnc', $('acaoCurtirIconeHNC'), $('acaoCurtirHNC'), $('acaoContadorHNC'), $('acaoTextoHNC'));
   }
 
-  // ============================================================
   // COMPARTILHAR
-  // ============================================================
   function compartilharConto() {
     if (!contoAtual) return;
     const url = window.location.origin + window.location.pathname + '#' + contoAtual.id;
     compartilhar(contoAtual.titulo + ' — Taverna Fenrir', url);
   }
-
   function compartilharHNC() {
     const url = window.location.origin + window.location.pathname + '#historia-nao-contada';
     compartilhar('A História Não Contada — Taverna Fenrir', url);
   }
-
   function compartilhar(titulo, url) {
     if (navigator.share) {
       navigator.share({ title: titulo, url: url }).catch(() => {});
@@ -302,15 +291,14 @@ const Taverna = (() => {
     }
   }
 
-  // ============================================================
   // CONTOS
-  // ============================================================
   function renderizarContos() {
     const abertura = $('contosAbertura');
-    if (typeof CONTOS_ABERTURA !== 'undefined' && CONTOS_ABERTURA) {
+    if (abertura && typeof CONTOS_ABERTURA !== 'undefined' && CONTOS_ABERTURA) {
       abertura.innerHTML = `<img src="assets/img/${CONTOS_ABERTURA}" alt="Contos" onerror="this.parentElement.innerHTML='<div class=imagem-abertura-placeholder>Suba assets/img/${CONTOS_ABERTURA}</div>'">`;
     }
     const lista = $('listaContos');
+    if (!lista) return;
     lista.innerHTML = '';
     CONTOS.forEach(c => {
       const div = document.createElement('div');
@@ -329,6 +317,7 @@ const Taverna = (() => {
 
   function renderizarMicrocontos() {
     const lista = $('listaMicrocontos');
+    if (!lista) return;
     lista.innerHTML = '';
     MICROCONTOS.forEach(m => {
       const div = document.createElement('div');
@@ -338,9 +327,7 @@ const Taverna = (() => {
     });
   }
 
-  // ============================================================
-  // MODAL DE CONTO
-  // ============================================================
+  // MODAL
   function abrirHistoria(id) {
     const c = CONTOS.find(x => x.id === id);
     if (!c) return;
@@ -348,47 +335,60 @@ const Taverna = (() => {
     abaAtual = 0;
 
     const img = $('historiaImagemAbertura');
-    if (c.imagemAbertura) {
-      img.innerHTML = `<img src="assets/img/${c.imagemAbertura}" alt="${c.titulo}" onerror="this.parentElement.innerHTML='<div class=historia-imagem-abertura-placeholder>Suba assets/img/${c.imagemAbertura}</div>'">`;
-    } else { img.innerHTML = ''; }
-
-    $('historiaTitulo').textContent = c.titulo;
-    $('historiaSub').textContent = c.subtitulo;
-
-    const navAbas = $('historiaAbasNav');
-    navAbas.innerHTML = '';
-    if (c.abas && c.abas.length > 1) {
-      c.abas.forEach((aba, i) => {
-        const b = document.createElement('button');
-        b.textContent = aba.titulo;
-        b.className = i === 0 ? 'ativa' : '';
-        b.onclick = () => { abaAtual = i; renderizarAba(); };
-        navAbas.appendChild(b);
-      });
-      navAbas.style.display = 'flex';
-    } else {
-      navAbas.style.display = 'none';
+    if (img) {
+      if (c.imagemAbertura) {
+        img.innerHTML = `<img src="assets/img/${c.imagemAbertura}" alt="${c.titulo}" onerror="this.parentElement.innerHTML='<div class=historia-imagem-abertura-placeholder>Suba assets/img/${c.imagemAbertura}</div>'">`;
+      } else { img.innerHTML = ''; }
     }
 
-    $('btnHistoriaProxima').textContent = (c.abas && c.abas.length > 1) ? 'Avançar →' : 'Fechar ✕';
+    const titulo = $('historiaTitulo');
+    if (titulo) titulo.textContent = c.titulo;
+    const sub = $('historiaSub');
+    if (sub) sub.textContent = c.subtitulo;
+
+    const navAbas = $('historiaAbasNav');
+    if (navAbas) {
+      navAbas.innerHTML = '';
+      if (c.abas && c.abas.length > 1) {
+        c.abas.forEach((aba, i) => {
+          const b = document.createElement('button');
+          b.textContent = aba.titulo;
+          b.className = i === 0 ? 'ativa' : '';
+          b.onclick = () => { abaAtual = i; renderizarAba(); };
+          navAbas.appendChild(b);
+        });
+        navAbas.style.display = 'flex';
+      } else {
+        navAbas.style.display = 'none';
+      }
+    }
+
+    const btnProx = $('btnHistoriaProxima');
+    if (btnProx) btnProx.textContent = (c.abas && c.abas.length > 1) ? 'Avançar →' : 'Fechar ✕';
 
     renderizarAba();
 
     const audioBox = $('historiaAudioBox');
-    audioRuna().pause(); audioRuna().currentTime = 0;
-    $('historiaAudioBtn').textContent = '▶';
+    if (audioRuna()) { audioRuna().pause(); audioRuna().currentTime = 0; }
+    const audioBtn = $('historiaAudioBtn');
+    if (audioBtn) audioBtn.textContent = '▶';
     audioRunaTocando = false;
-    if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
-    if (c.audio) { audioBox.classList.add('visible'); audioRuna().src = c.audio; }
-    else { audioBox.classList.remove('visible'); }
+    if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
+
+    if (c.audio && audioRuna()) {
+      if (audioBox) audioBox.classList.add('visible');
+      audioRuna().src = c.audio;
+    } else {
+      if (audioBox) audioBox.classList.remove('visible');
+    }
 
     atualizarCurtir(c.id, $('acaoCurtirIcone'), $('acaoCurtir'), $('acaoContador'), $('acaoTexto'));
-
     renderizarSelos('historiaSelos');
     renderizarRedes('historiaRedes');
     renderizarRedes('hncRedes');
 
-    $('historiaModal').classList.add('active');
+    const modal = $('historiaModal');
+    if (modal) modal.classList.add('active');
     history.pushState({ modal: id }, '', '#' + id);
   }
 
@@ -398,37 +398,45 @@ const Taverna = (() => {
     const texto = c.abas ? c.abas[abaAtual].texto : c.texto;
     let textoHtml = aplicarRunasNoTexto(texto);
     textoHtml = textoHtml.replace(/^([A-ZÁÉÍÓÚÂÊÔÃÕÇ])/, '<span class="drop-cap-inicio">$1</span>');
-    $('historiaTexto').innerHTML = textoHtml;
+    const el = $('historiaTexto');
+    if (el) el.innerHTML = textoHtml;
 
     const navAbas = $('historiaAbasNav');
-    navAbas.querySelectorAll('button').forEach((b, i) => {
-      b.classList.toggle('ativa', i === abaAtual);
-    });
+    if (navAbas) {
+      navAbas.querySelectorAll('button').forEach((b, i) => {
+        b.classList.toggle('ativa', i === abaAtual);
+      });
+    }
 
     const prop = $('historiaPropaganda');
-    if (c.propaganda) {
-      prop.innerHTML = `<img src="assets/img/${c.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba assets/img/${c.propaganda}</div>'">`;
-      prop.style.display = 'block';
-    } else {
-      prop.innerHTML = ''; prop.style.display = 'none';
+    if (prop) {
+      if (c.propaganda) {
+        prop.innerHTML = `<img src="assets/img/${c.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba assets/img/${c.propaganda}</div>'">`;
+        prop.style.display = 'block';
+      } else {
+        prop.innerHTML = ''; prop.style.display = 'none';
+      }
     }
 
     const linkBox = $('historiaLinkBox');
     const ultimaAba = !c.abas || abaAtual === c.abas.length - 1;
-    if (c.link && c.linkTexto && ultimaAba) {
-      $('historiaLink').href = c.link;
-      $('historiaLink').textContent = c.linkTexto + ' →';
+    if (linkBox && c.link && c.linkTexto && ultimaAba) {
+      const link = $('historiaLink');
+      if (link) { link.href = c.link; link.textContent = c.linkTexto + ' →'; }
       linkBox.classList.add('visivel');
-    } else {
+    } else if (linkBox) {
       linkBox.classList.remove('visivel');
     }
   }
 
   function fecharHistoria() {
-    $('historiaModal').classList.remove('active');
-    audioRuna().pause(); audioRuna().currentTime = 0; audioRunaTocando = false;
-    $('historiaAudioBtn').textContent = '▶';
-    if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
+    const modal = $('historiaModal');
+    if (modal) modal.classList.remove('active');
+    if (audioRuna()) { audioRuna().pause(); audioRuna().currentTime = 0; }
+    audioRunaTocando = false;
+    const btn = $('historiaAudioBtn');
+    if (btn) btn.textContent = '▶';
+    if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     contoAtual = null;
     abaAtual = 0;
   }
@@ -444,24 +452,19 @@ const Taverna = (() => {
 
   function toggleHistoriaAudio() {
     const btn = $('historiaAudioBtn');
+    if (!btn || !audioRuna()) return;
     if (audioRunaTocando) {
       audioRuna().pause(); btn.textContent = '▶'; audioRunaTocando = false;
-      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
+      if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     } else {
-      audioRuna().volume = 1; audioRuna().play().catch(() => {});
+      audioRuna().volume = 1;
+      audioRuna().play().catch(() => {});
       btn.textContent = '❚❚'; audioRunaTocando = true;
-      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
+      if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
     }
   }
 
-  audioRuna().addEventListener('ended', () => {
-    audioRunaTocando = false; $('historiaAudioBtn').textContent = '▶';
-    if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
-  });
-
-  // ============================================================
   // SELOS
-  // ============================================================
   function renderizarSelos(containerId) {
     const el = $(containerId);
     if (!el) return;
@@ -519,9 +522,7 @@ const Taverna = (() => {
     });
   }
 
-  // ============================================================
-  // REDES SOCIAIS
-  // ============================================================
+  // REDES
   function renderizarRedes(containerId) {
     const el = $(containerId);
     if (!el) return;
@@ -542,9 +543,7 @@ const Taverna = (() => {
     });
   }
 
-  // ============================================================
-  // SLOTS AUTOMÁTICOS
-  // ============================================================
+  // SLOTS
   function popularSlots() {
     $$('.slot-grid').forEach(grid => {
       const prefix = grid.dataset.prefix;
@@ -574,9 +573,7 @@ const Taverna = (() => {
     });
   }
 
-  // ============================================================
-  // SOBRE A RUNA
-  // ============================================================
+  // SOBRE
   function renderizarSobreRuna() {
     const c = $('sobreRunaConteudo');
     if (!c) return;
@@ -607,7 +604,6 @@ const Taverna = (() => {
       else if (m.tipo === 'assinatura') html += `<p class="assinatura">${txt}</p>`;
     });
     html += `</div>`;
-
     if (s.videoPropaganda) {
       html += `
         <div class="sobre-video-propaganda">
@@ -624,20 +620,14 @@ const Taverna = (() => {
     const audio = audioRuna();
     const btn = document.querySelector('.btn-player-runa');
     if (!audio) return;
-
     if (audioRunaTocando) {
-      audio.pause();
-      audio.currentTime = 0;
-      audioRunaTocando = false;
+      audio.pause(); audio.currentTime = 0; audioRunaTocando = false;
       if (btn) btn.innerHTML = '▶ Ouvir a Runa contar a história dela';
-      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
+      if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     } else {
       const srcFinal = SOBRE_RUNA.audio;
-      if (!audio.src || !audio.src.endsWith(srcFinal)) {
-        audio.src = srcFinal;
-      }
+      if (!audio.src || !audio.src.endsWith(srcFinal)) audio.src = srcFinal;
       audio.volume = 1;
-
       if (audio.readyState >= 2) {
         tocarHistoriaRuna(audio, btn);
       } else {
@@ -652,27 +642,27 @@ const Taverna = (() => {
   }
 
   function tocarHistoriaRuna(audio, btn) {
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
+    const p = audio.play();
+    if (p !== undefined) {
+      p.then(() => {
         audioRunaTocando = true;
         if (btn) btn.innerHTML = '❚❚ Pausar história';
-        if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
+        if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
       }).catch(e => {
-        console.error('❌ Áudio da Runa falhou:', e.name, e.message);
+        console.error('Audio falhou:', e.name, e.message);
         audioRunaTocando = false;
         if (btn) btn.innerHTML = '▶ Ouvir a Runa contar a história dela';
       });
     }
   }
 
-  // ============================================================
-  // VIKING / MITOLOGIA / LOJAS
-  // ============================================================
+  // VIKING
   function renderizarViking() {
-    $('universoIntro').textContent = VIKING.intro;
+    const intro = $('universoIntro');
+    if (intro) intro.textContent = VIKING.intro;
     renderizarImagemAbertura('universoAbertura', VIKING.imagem);
     const c = $('universoGrupos');
+    if (!c) return;
     c.innerHTML = '';
     VIKING.grupos.forEach(g => {
       const div = document.createElement('div');
@@ -687,10 +677,13 @@ const Taverna = (() => {
     c.innerHTML += `<div class="centro" style="margin-top:30px"><a class="btn-venda" href="${VIKING.link}" target="_blank" rel="noopener">${VIKING.linkTexto} →</a></div>`;
   }
 
+  // MITOLOGIA
   function renderizarMitologia() {
-    $('mitologiaIntro').textContent = MITOLOGIA.intro;
+    const intro = $('mitologiaIntro');
+    if (intro) intro.textContent = MITOLOGIA.intro;
     renderizarImagemAbertura('mitologiaAbertura', MITOLOGIA.imagem);
     const c = $('mitologiaGrupos');
+    if (!c) return;
     c.innerHTML = '';
     MITOLOGIA.grupos.forEach(g => {
       const div = document.createElement('div');
@@ -705,20 +698,24 @@ const Taverna = (() => {
     c.innerHTML += `<div class="centro" style="margin-top:30px"><a class="btn-venda" href="${MITOLOGIA.link}" target="_blank" rel="noopener">${MITOLOGIA.linkTexto} →</a></div>`;
   }
 
+  // VENDAS
   function renderizarVendas() {
     ['aneis','facas','casacos','heavymetal'].forEach(id => {
       const v = SALAS_VENDA[id];
       if (!v) return;
-      $(id + 'Titulo').textContent = v.titulo;
-      $(id + 'Subtitulo').textContent = v.subtitulo;
+      const t = $(id + 'Titulo');
+      const s = $(id + 'Subtitulo');
+      const txt = $(id + 'Texto');
+      const link = $(id + 'Link');
+      if (t) t.textContent = v.titulo;
+      if (s) s.textContent = v.subtitulo;
       renderizarImagemAbertura(id + 'Abertura', v.imagem);
-      $(id + 'Texto').innerHTML = aplicarRunasNoTexto(v.texto);
+      if (txt) txt.innerHTML = aplicarRunasNoTexto(v.texto);
       const prop = $(id + 'Propaganda');
       if (prop && v.propaganda) {
         prop.innerHTML = `<img src="assets/img/${v.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba assets/img/${v.propaganda}</div>'">`;
       }
-      $(id + 'Link').href = v.link;
-      $(id + 'Link').textContent = v.linkTexto + ' →';
+      if (link) { link.href = v.link; link.textContent = v.linkTexto + ' →'; }
     });
   }
 
@@ -728,35 +725,40 @@ const Taverna = (() => {
     el.innerHTML = `<img src="assets/img/${src}" alt="Abertura" onerror="this.parentElement.innerHTML='<div class=imagem-abertura-placeholder>Suba assets/img/${src}</div>'">`;
   }
 
-  // ============================================================
-  // HISTÓRIA NÃO CONTADA
-  // ============================================================
+  // HNC
   function abrirHistoriaNaoContada() {
-    $('hncTexto').innerHTML = aplicarRunasNoTexto(HISTORIA_NAO_CONTADA.texto);
+    const el = $('hncTexto');
+    if (el) el.innerHTML = aplicarRunasNoTexto(HISTORIA_NAO_CONTADA.texto);
     renderizarRedes('hncRedes');
     atualizarCurtir('hnc', $('acaoCurtirIconeHNC'), $('acaoCurtirHNC'), $('acaoContadorHNC'), $('acaoTextoHNC'));
-    $('modalHNC').classList.add('active');
+    const modal = $('modalHNC');
+    if (modal) modal.classList.add('active');
     history.pushState({ hnc: true }, '', '#historia-nao-contada');
   }
-  function fecharHNC() { $('modalHNC').classList.remove('active'); }
-
-  // ============================================================
-  // LIGHTBOX
-  // ============================================================
-  function abrirLightbox(src) { $('lightboxImg').src = src; $('lightbox').classList.add('active'); }
-  function fecharLightbox() { $('lightbox').classList.remove('active'); }
-
-  // ============================================================
-  // MÚSICA
-  // ============================================================
-  function toggleMusica() {
-    if (musica().paused) { musica().play(); $('btnMusica').textContent = '❚❚'; }
-    else { musica().pause(); $('btnMusica').textContent = '▶'; salvarTempoMusica(); }
+  function fecharHNC() {
+    const modal = $('modalHNC');
+    if (modal) modal.classList.remove('active');
   }
 
-  // ============================================================
+  // LIGHTBOX
+  function abrirLightbox(src) {
+    const img = $('lightboxImg');
+    const box = $('lightbox');
+    if (img) img.src = src;
+    if (box) box.classList.add('active');
+  }
+  function fecharLightbox() {
+    const box = $('lightbox');
+    if (box) box.classList.remove('active');
+  }
+
+  function toggleMusica() {
+    if (!musica()) return;
+    if (musica().paused) { musica().play(); if ($('btnMusica')) $('btnMusica').textContent = '❚❚'; }
+    else { musica().pause(); if ($('btnMusica')) $('btnMusica').textContent = '▶'; salvarTempoMusica(); }
+  }
+
   // INIT
-  // ============================================================
   function init() {
     renderizarPortas();
     renderizarContos();
@@ -768,6 +770,17 @@ const Taverna = (() => {
     renderizarSelosFooter();
     renderizarLojasFooter();
     renderizarRedes('footerRedes');
+
+    // Listener do áudio da Runa — só depois que tudo existe
+    const a = audioRuna();
+    if (a) {
+      a.addEventListener('ended', () => {
+        audioRunaTocando = false;
+        const btn = $('historiaAudioBtn');
+        if (btn) btn.textContent = '▶';
+        if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
+      });
+    }
 
     setInterval(salvarTempoMusica, 5000);
     window.addEventListener('beforeunload', salvarTempoMusica);
@@ -783,13 +796,12 @@ const Taverna = (() => {
       if (e.key === 'Escape') { fecharHistoria(); fecharHNC(); fecharLightbox(); }
     });
 
-    $('modalHNC').addEventListener('click', (e) => { if (e.target.id === 'modalHNC') fecharHNC(); });
-    $('historiaModal').addEventListener('click', (e) => { if (e.target.id === 'historiaModal') fecharHistoria(); });
+    const m1 = $('modalHNC');
+    if (m1) m1.addEventListener('click', (e) => { if (e.target.id === 'modalHNC') fecharHNC(); });
+    const m2 = $('historiaModal');
+    if (m2) m2.addEventListener('click', (e) => { if (e.target.id === 'historiaModal') fecharHistoria(); });
   }
 
-  // ============================================================
-  // API PÚBLICA
-  // ============================================================
   return {
     entrar, irParaPortal, voltarAoHall, toggleMenu,
     abrirHistoria, fecharHistoria, toggleHistoriaAudio, ouvirHistoriaRuna,
@@ -804,4 +816,4 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', Taverna.init);
 } else {
   Taverna.init();
-                         }
+  }
