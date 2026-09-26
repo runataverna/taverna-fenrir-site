@@ -66,12 +66,42 @@ const Taverna = (() => {
   // ENTRAR
   // ============================================================
   function entrar() {
-    // Glow de entrada
-    const glow = $('glowEntrada');
-    if (glow) {
-      glow.classList.add('ativo');
-      setTimeout(() => glow.classList.remove('ativo'), 1700);
-    }
+  const glow = $('glowEntrada');
+  if (glow) {
+    glow.classList.add('ativo');
+    setTimeout(() => glow.classList.remove('ativo'), 1700);
+  }
+
+  // Revela o app depois do glow
+  setTimeout(() => {
+    $('entrada').classList.add('hidden');
+    $('app').classList.add('visible');
+    $('navbar').classList.add('visible');
+    $('playerMusicaBox').classList.add('visible');
+    ativarHeroVideo();
+
+    // Música + desbloqueio de áudio
+    desbloquearAudio();
+    restaurarMusica();
+    musicaLiberada = true;
+    musica().volume = CONFIG.volumes.musicaBaixa;
+    musica().play().catch(e => console.log('mus:', e.name));
+
+    // Boas-vindas viajante depois de 8s
+    setTimeout(() => {
+      boasVindas().volume = CONFIG.volumes.boasVindas;
+      boasVindas().play().catch(e => console.log('bv:', e.name));
+    }, CONFIG.delays.fimIntro);
+
+    // Música sobe depois de 25s
+    setTimeout(() => {
+      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
+    }, CONFIG.delays.musicaSubir);
+
+  }, 800);
+}
+
+function finalizarIntro() { /* não faz mais nada */ }
 
     setTimeout(() => {
       $('entrada').classList.add('hidden');
