@@ -1,5 +1,5 @@
 /* ============================================================
-   TAVERNA FENRIR — LÓGICA v4
+   TAVERNA FENRIR — LÓGICA v5 (final)
    ============================================================ */
 
 const Taverna = (() => {
@@ -66,46 +66,18 @@ const Taverna = (() => {
   // ENTRAR
   // ============================================================
   function entrar() {
-  const glow = $('glowEntrada');
-  if (glow) {
-    glow.classList.add('ativo');
-    setTimeout(() => glow.classList.remove('ativo'), 1700);
-  }
-
-  // Revela o app depois do glow
-  setTimeout(() => {
-    $('entrada').classList.add('hidden');
-    $('app').classList.add('visible');
-    $('navbar').classList.add('visible');
-    $('playerMusicaBox').classList.add('visible');
-    ativarHeroVideo();
-
-    // Música + desbloqueio de áudio
-    desbloquearAudio();
-    restaurarMusica();
-    musicaLiberada = true;
-    musica().volume = CONFIG.volumes.musicaBaixa;
-    musica().play().catch(e => console.log('mus:', e.name));
-
-    // Boas-vindas viajante depois de 8s
-    setTimeout(() => {
-      boasVindas().volume = CONFIG.volumes.boasVindas;
-      boasVindas().play().catch(e => console.log('bv:', e.name));
-    }, CONFIG.delays.fimIntro);
-
-    // Música sobe depois de 25s
-    setTimeout(() => {
-      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
-    }, CONFIG.delays.musicaSubir);
-
-  }, 800);
-}
-
-function finalizarIntro() { /* não faz mais nada */ }
+    const glow = $('glowEntrada');
+    if (glow) {
+      glow.classList.add('ativo');
+      setTimeout(() => glow.classList.remove('ativo'), 1700);
+    }
 
     setTimeout(() => {
       $('entrada').classList.add('hidden');
-      $('introWrap').classList.add('active');
+      $('app').classList.add('visible');
+      $('navbar').classList.add('visible');
+      $('playerMusicaBox').classList.add('visible');
+      ativarHeroVideo();
 
       desbloquearAudio();
       restaurarMusica();
@@ -113,31 +85,16 @@ function finalizarIntro() { /* não faz mais nada */ }
       musica().volume = CONFIG.volumes.musicaBaixa;
       musica().play().catch(e => console.log('mus:', e.name));
 
-      const src = `https://www.youtube.com/embed/${CONFIG.intro}?autoplay=1&mute=1&loop=1&playlist=${CONFIG.intro}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3`;
-      $('introIframe').src = src;
+      setTimeout(() => {
+        boasVindas().volume = CONFIG.volumes.boasVindas;
+        boasVindas().play().catch(e => console.log('bv:', e.name));
+      }, CONFIG.delays.fimIntro);
+
+      setTimeout(() => {
+        if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
+      }, CONFIG.delays.musicaSubir);
+
     }, 800);
-
-    setTimeout(() => {
-      $('app').classList.add('visible');
-      $('navbar').classList.add('visible');
-      $('playerMusicaBox').classList.add('visible');
-      ativarHeroVideo();
-    }, 1300);
-
-    setTimeout(() => {
-      finalizarIntro();
-      boasVindas().volume = CONFIG.volumes.boasVindas;
-      boasVindas().play().catch(e => console.log('bv:', e.name));
-    }, CONFIG.delays.fimIntro + 800);
-
-    setTimeout(() => {
-      if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
-    }, CONFIG.delays.musicaSubir + 800);
-  }
-
-  function finalizarIntro() {
-    $('introIframe').src = '';
-    $('introWrap').classList.remove('active');
   }
 
   function ativarHeroVideo() {
@@ -203,18 +160,12 @@ function finalizarIntro() { /* não faz mais nada */ }
   function toggleMenu() { $('menuLista').classList.toggle('aberto'); }
 
   // ============================================================
-  // HISTORY API — botão físico do celular
+  // HISTORY API
   // ============================================================
   window.addEventListener('popstate', () => {
-    if ($('historiaModal').classList.contains('active')) {
-      fecharHistoria(); return;
-    }
-    if ($('modalHNC').classList.contains('active')) {
-      fecharHNC(); return;
-    }
-    if ($('lightbox').classList.contains('active')) {
-      fecharLightbox(); return;
-    }
+    if ($('historiaModal').classList.contains('active')) { fecharHistoria(); return; }
+    if ($('modalHNC').classList.contains('active')) { fecharHNC(); return; }
+    if ($('lightbox').classList.contains('active')) { fecharLightbox(); return; }
     if (salaAtual) { voltarAoHall(); }
   });
 
@@ -236,6 +187,7 @@ function finalizarIntro() { /* não faz mais nada */ }
         <span class="seta">Entrar →</span>`;
       btn.onclick = () => irParaPortal(p.id);
       grid.appendChild(btn);
+
       const a = document.createElement('a');
       a.textContent = (i+1) + '. ' + p.titulo;
       a.onclick = () => irParaPortal(p.id);
@@ -281,7 +233,7 @@ function finalizarIntro() { /* não faz mais nada */ }
     return c[id];
   }
 
-  function curtir(id, prefixo, icone, btn, contador, textoEl) {
+  function curtir(id, icone, btn, contador, textoEl) {
     const ja = lerCurtidasUser();
     if (ja.includes(id)) return;
 
@@ -303,7 +255,7 @@ function finalizarIntro() { /* não faz mais nada */ }
     textoEl.textContent = 'Sua marca foi gravada';
   }
 
-  function atualizarCurtir(id, prefixo, icone, btn, contador, textoEl) {
+  function atualizarCurtir(id, icone, btn, contador, textoEl) {
     const c = lerCurtidas();
     if (c[id] === undefined) { c[id] = seedCount(id); salvarCurtidas(c); }
     const ja = lerCurtidasUser().includes(id);
@@ -321,23 +273,11 @@ function finalizarIntro() { /* não faz mais nada */ }
 
   function curtirConto() {
     if (!contoAtual) return;
-    curtir(contoAtual.id,
-      'conto',
-      $('acaoCurtirIcone'),
-      $('acaoCurtir'),
-      $('acaoContador'),
-      $('acaoTexto')
-    );
+    curtir(contoAtual.id, $('acaoCurtirIcone'), $('acaoCurtir'), $('acaoContador'), $('acaoTexto'));
   }
 
   function curtirHNC() {
-    curtir('hnc',
-      'hnc',
-      $('acaoCurtirIconeHNC'),
-      $('acaoCurtirHNC'),
-      $('acaoContadorHNC'),
-      $('acaoTextoHNC')
-    );
+    curtir('hnc', $('acaoCurtirIconeHNC'), $('acaoCurtirHNC'), $('acaoContadorHNC'), $('acaoTextoHNC'));
   }
 
   // ============================================================
@@ -346,8 +286,7 @@ function finalizarIntro() { /* não faz mais nada */ }
   function compartilharConto() {
     if (!contoAtual) return;
     const url = window.location.origin + window.location.pathname + '#' + contoAtual.id;
-    const titulo = contoAtual.titulo + ' — Taverna Fenrir';
-    compartilhar(titulo, url);
+    compartilhar(contoAtual.titulo + ' — Taverna Fenrir', url);
   }
 
   function compartilharHNC() {
@@ -435,7 +374,6 @@ function finalizarIntro() { /* não faz mais nada */ }
 
     renderizarAba();
 
-    // Áudio
     const audioBox = $('historiaAudioBox');
     audioRuna().pause(); audioRuna().currentTime = 0;
     $('historiaAudioBtn').textContent = '▶';
@@ -444,10 +382,8 @@ function finalizarIntro() { /* não faz mais nada */ }
     if (c.audio) { audioBox.classList.add('visible'); audioRuna().src = c.audio; }
     else { audioBox.classList.remove('visible'); }
 
-    // Curtir
-    atualizarCurtir(c.id, 'conto', $('acaoCurtirIcone'), $('acaoCurtir'), $('acaoContador'), $('acaoTexto'));
+    atualizarCurtir(c.id, $('acaoCurtirIcone'), $('acaoCurtir'), $('acaoContador'), $('acaoTexto'));
 
-    // Selos e redes
     renderizarSelos('historiaSelos');
     renderizarRedes('historiaRedes');
     renderizarRedes('hncRedes');
@@ -469,7 +405,6 @@ function finalizarIntro() { /* não faz mais nada */ }
       b.classList.toggle('ativa', i === abaAtual);
     });
 
-    // Propaganda
     const prop = $('historiaPropaganda');
     if (c.propaganda) {
       prop.innerHTML = `<img src="assets/img/${c.propaganda}" alt="Propaganda" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba assets/img/${c.propaganda}</div>'">`;
@@ -478,7 +413,6 @@ function finalizarIntro() { /* não faz mais nada */ }
       prop.innerHTML = ''; prop.style.display = 'none';
     }
 
-    // Link de venda (só na última aba)
     const linkBox = $('historiaLinkBox');
     const ultimaAba = !c.abas || abaAtual === c.abas.length - 1;
     if (c.link && c.linkTexto && ultimaAba) {
@@ -519,6 +453,7 @@ function finalizarIntro() { /* não faz mais nada */ }
       if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaBaixa);
     }
   }
+
   audioRuna().addEventListener('ended', () => {
     audioRunaTocando = false; $('historiaAudioBtn').textContent = '▶';
     if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
@@ -673,7 +608,6 @@ function finalizarIntro() { /* não faz mais nada */ }
     });
     html += `</div>`;
 
-    // Vídeo propaganda 1:1 + link
     if (s.videoPropaganda) {
       html += `
         <div class="sobre-video-propaganda">
@@ -692,25 +626,21 @@ function finalizarIntro() { /* não faz mais nada */ }
     if (!audio) return;
 
     if (audioRunaTocando) {
-      // PAUSAR
       audio.pause();
       audio.currentTime = 0;
       audioRunaTocando = false;
       if (btn) btn.innerHTML = '▶ Ouvir a Runa contar a história dela';
       if (musicaLiberada) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     } else {
-      // TOCAR
       const srcFinal = SOBRE_RUNA.audio;
       if (!audio.src || !audio.src.endsWith(srcFinal)) {
         audio.src = srcFinal;
       }
       audio.volume = 1;
 
-      // Se já está carregado, toca direto
       if (audio.readyState >= 2) {
         tocarHistoriaRuna(audio, btn);
       } else {
-        // Se ainda não carregou, espera
         const onReady = () => {
           audio.removeEventListener('canplay', onReady);
           tocarHistoriaRuna(audio, btn);
@@ -804,7 +734,7 @@ function finalizarIntro() { /* não faz mais nada */ }
   function abrirHistoriaNaoContada() {
     $('hncTexto').innerHTML = aplicarRunasNoTexto(HISTORIA_NAO_CONTADA.texto);
     renderizarRedes('hncRedes');
-    atualizarCurtir('hnc', 'hnc', $('acaoCurtirIconeHNC'), $('acaoCurtirHNC'), $('acaoContadorHNC'), $('acaoTextoHNC'));
+    atualizarCurtir('hnc', $('acaoCurtirIconeHNC'), $('acaoCurtirHNC'), $('acaoContadorHNC'), $('acaoTextoHNC'));
     $('modalHNC').classList.add('active');
     history.pushState({ hnc: true }, '', '#historia-nao-contada');
   }
@@ -861,7 +791,7 @@ function finalizarIntro() { /* não faz mais nada */ }
   // API PÚBLICA
   // ============================================================
   return {
-    entrar, finalizarIntro, irParaPortal, voltarAoHall, toggleMenu,
+    entrar, irParaPortal, voltarAoHall, toggleMenu,
     abrirHistoria, fecharHistoria, toggleHistoriaAudio, ouvirHistoriaRuna,
     curtirConto, curtirHNC, compartilharConto, compartilharHNC,
     abrirHistoriaNaoContada, fecharHNC,
@@ -874,4 +804,4 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', Taverna.init);
 } else {
   Taverna.init();
-       }
+                         }
