@@ -97,9 +97,11 @@ button { font-family: inherit; }
    GLOW DE ENTRADA (efeito luminosidade ao clicar ENTRAR)
    ============================================================ */
 .glow-entrada {
+ 
   position: fixed; inset: 0; z-index: 1400;
   pointer-events: none; opacity: 0;
-  background: radial-gradient(circle at center, #00E5FF 0%, #c9a227 40%, transparent 70%);
+  background: radial-gradient(circle at center, #ffffff 0%, #f0e6c8 25%, #c9a227 50%, transparent 75%);
+ }
 }
 .glow-entrada.ativo {
   animation: glowCegar 1.6s ease-in forwards;
