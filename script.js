@@ -265,6 +265,16 @@ const Taverna = (() => {
     contador.textContent = c[id].toLocaleString('pt-BR');
   }
 
+  // ===== AUXILIARES PARA CURTIR FOTOS (arte conceitual) =====
+  function curtirFoto(id, icone, btn, contador, textoEl) {
+    curtir(id, icone, btn, contador, textoEl);
+  }
+
+  function atualizarCurtirFoto(id, icone, btn, contador, textoEl) {
+    atualizarCurtir(id, icone, btn, contador, textoEl);
+  }
+  // ==========================================================
+
   function curtirConto() {
     if (!contoAtual) return;
     curtir(contoAtual.id, $('acaoCurtirIcone'), $('acaoCurtir'), $('acaoContador'), $('acaoTexto'));
@@ -568,6 +578,56 @@ const Taverna = (() => {
         };
         img.src = `assets/img/${prefix}${i}.png`;
         slot.appendChild(img);
+
+        // ===== ARTE CONCEITUAL: curtir + compartilhar =====
+        if (prefix === 'conceito') {
+          const acoes = document.createElement('div');
+          acoes.className = 'foto-acoes';
+
+          const botaoCurtir = document.createElement('button');
+          botaoCurtir.className = 'foto-curtir';
+          botaoCurtir.type = 'button';
+          botaoCurtir.setAttribute('aria-label', `Curtir ${prefix}${i}`);
+
+          const icone = document.createElement('span');
+          icone.className = 'foto-curtir-icone';
+
+          const contador = document.createElement('span');
+          contador.className = 'foto-contador';
+
+          const texto = document.createElement('span');
+          texto.className = 'foto-status';
+
+          botaoCurtir.appendChild(icone);
+          botaoCurtir.appendChild(contador);
+
+          botaoCurtir.onclick = event => {
+            event.stopPropagation();
+            curtirFoto(`${prefix}${i}`, icone, botaoCurtir, contador, texto);
+          };
+
+          const botaoCompartilhar = document.createElement('button');
+          botaoCompartilhar.className = 'foto-compartilhar';
+          botaoCompartilhar.type = 'button';
+          botaoCompartilhar.textContent = '↗';
+          botaoCompartilhar.setAttribute('aria-label', `Compartilhar ${prefix}${i}`);
+
+          botaoCompartilhar.onclick = event => {
+            event.stopPropagation();
+            const url = window.location.origin + window.location.pathname + `#${prefix}${i}`;
+            compartilhar(`Arte conceitual ${i} — Taverna Fenrir`, url);
+          };
+
+          acoes.appendChild(botaoCurtir);
+          acoes.appendChild(botaoCompartilhar);
+          acoes.appendChild(texto);
+
+          slot.appendChild(acoes);
+
+          atualizarCurtirFoto(`${prefix}${i}`, icone, botaoCurtir, contador, texto);
+        }
+        // ==================================================
+
         grid.appendChild(slot);
       }
     });
@@ -816,4 +876,4 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', Taverna.init);
 } else {
   Taverna.init();
-  }
+       }
