@@ -1,6 +1,6 @@
 // GERADO AUTOMATICAMENTE POR build-historias.js
 // NAO EDITAR A MAO.
-// Gerado em: 2026-09-29T18:10:50.810Z
+// Gerado em: 2026-09-29T18:11:06.931Z
 
 const MITOLOGIA = {
   intro: "Yggdrasil, Thor e Fenrir abrem as portas da casa. Novos deuses chegam toda semana.",
