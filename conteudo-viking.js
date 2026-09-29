@@ -1,6 +1,6 @@
 // GERADO AUTOMATICAMENTE POR build-historias.js
 // NAO EDITAR A MAO.
-// Gerado em: 2026-09-29T18:10:01.946Z
+// Gerado em: 2026-09-29T18:10:38.597Z
 
 const VIKING = {
   intro: "Um povo novo a cada semana. O norte não cabe num só conto.",
