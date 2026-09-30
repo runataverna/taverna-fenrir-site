@@ -1,6 +1,6 @@
 // GERADO AUTOMATICAMENTE POR build-chamas.js
 // NAO EDITAR A MAO.
-// Gerado em: 2026-09-30T20:59:46.934Z
+// Gerado em: 2026-09-30T22:11:19.845Z
 
 const MICROCONTOS = [
   {
@@ -10,6 +10,10 @@ const MICROCONTOS = [
   {
     titulo: "O peso da promessa",
     texto: "A porta rangeu com o último suspiro do inverno. Era um velho. Rosto marcado pelas tempestades, mãos trêmulas de tanto puxar rede. Ele não pediu hidromel. Colocou um saco de couro pequeno no balcão, entre nós. O couro estava gasto, encardido de mar e sal.\n\n— Demorei — ele disse. A voz soava como madeira rangendo em casco.\n\nEu não perguntei o que tinha dentro. Conheço esse olhar. É o olhar de quem passou décadas esperando o gelo derreter para, finalmente, conseguir andar sem o peso de um segredo pendurado no pescoço. \n\nEle empurrou o saco. O som foi abafado, pesado.\n\n— Não devo mais nada.\n\n— A gente nunca deixa de dever nada — respondi. — Mas a gente pode escolher o que deixar para trás.\n\nO velho soltou um suspiro longo, soltando os ombros pela primeira vez em muitos invernos. Ele olhou em volta, viu que a Taverna Fenrir estava em silêncio, apenas o estalar do fogo na lareira.\n\nEu guardei o saco sob o balcão. Não abri. Não importa o que ele trouxe. O que importava era que ele, pela primeira vez, não estava procurando uma saída. Ele estava procurando onde sentar.\n\n— Fica — eu disse, apontando o banco mais próximo da lareira. — A noite ainda está fria.\n\nEle sentou. O peito subiu e desceu mais leve. A dívida não estava no saco. Estava na coragem de vir até aqui e colocar o passado sobre o balcão.\n\n#chamas"
+  },
+  {
+    titulo: "A Espera",
+    texto: "O moleque apareceu na soleira quando o sol já tinha caído. Não devia ter mais de dez invernos. Trazia nos olhos aquela névoa de quem procura o que não está mais lá.\n\nEle se aproximou do balcão, os pés descalços fazendo um barulho seco na madeira.\n\n— Meu pai saiu no knarr antes da última neve — ele disse. — Disseram que ele vinha por aqui.\n\nEu parei de limpar a caneca. Olhei pra ele, depois pra porta aberta, onde o vento trazia o cheiro de maresia e medo.\n\n— O nome dele? — perguntei.\n\nEle falou um nome qualquer. Um nome que já se perdeu entre tantas histórias de gente que saiu pra navegar e nunca mais pisou na terra.\n\n— Ele não voltou? — o menino insistiu, a voz tremendo igual chama de vela.\n\nEu não minto pra quem ainda tem tempo de aprender. Abracei os ombros dele, puxando pra perto do calor do fogão.\n\n— O mar é um pai ciumento. Ele chama os homens e, quando gosta da companhia, não abre mão.\n\nO menino ficou quieto. A respiração dele foi acalmando enquanto o calor da taverna envolvia o frio que ele trazia de fora. Ele não perguntou de novo.\n\n— Senta — eu disse. — Tem pão e caldo. A noite é longa, e eu tenho tempo pra te ouvir contar quem ele era.\n\nNinguém precisa encarar a ausência sozinho.\n\n#chamas"
   },
   {
     titulo: "A Mulher do Mar",
