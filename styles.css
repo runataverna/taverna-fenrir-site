@@ -1315,45 +1315,50 @@ body, #app {
 /* Contos — Kenaz */
 .porta.runa-contos::after { background: linear-gradient(to right, transparent, #FFC94D, transparent); }
 .porta.runa-contos:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(255,201,77,.35); }
-.porta.runa-contos h3 { color: #FFC94D; }
 
 /* Sobre a Runa — Mannaz */
 .porta.runa-sobre::after { background: linear-gradient(to right, transparent, #e8d5a0, transparent); }
 .porta.runa-sobre:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(232,213,160,.35); }
-.porta.runa-sobre h3 { color: #e8d5a0; }
 
 /* Universo Viking — Thurisaz */
 .porta.runa-universo::after { background: linear-gradient(to right, transparent, #d94a3d, transparent); }
 .porta.runa-universo:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(217,74,61,.4); }
-.porta.runa-universo h3 { color: #d94a3d; }
 
 /* Mitologia — Othala */
 .porta.runa-mitologia::after { background: linear-gradient(to right, transparent, #d4915a, transparent); }
 .porta.runa-mitologia:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(212,145,90,.35); }
-.porta.runa-mitologia h3 { color: #d4915a; }
 
 /* Anéis — Fehu */
 .porta.runa-aneis::after { background: linear-gradient(to right, transparent, #c9a227, transparent); }
 .porta.runa-aneis:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(201,162,39,.4); }
-.porta.runa-aneis h3 { color: #c9a227; }
 
 /* Facas — Berkana */
 .porta.runa-facas::after { background: linear-gradient(to right, transparent, #7ec9a3, transparent); }
 .porta.runa-facas:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(126,201,163,.35); }
-.porta.runa-facas h3 { color: #7ec9a3; }
 
 /* Casacos — Isa */
 .porta.runa-casacos::after { background: linear-gradient(to right, transparent, #7DE2FF, transparent); }
 .porta.runa-casacos:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(125,226,255,.35); }
-.porta.runa-casacos h3 { color: #7DE2FF; }
 
 /* Heavy Metal — Wunjo */
 .porta.runa-heavymetal::after { background: linear-gradient(to right, transparent, #7ec9a3, transparent); }
 .porta.runa-heavymetal:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(126,201,163,.35); }
-.porta.runa-heavymetal h3 { color: #7ec9a3; }
 
 /* Arte Conceitual — Algiz */
 .porta.runa-arte::after { background: linear-gradient(to right, transparent, #00E5FF, transparent); }
 .porta.runa-arte:hover { box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(0,229,255,.4); }
-.porta.runa-arte h3 { color: #00E5FF; }
 
+
+/* ============================================================
+   REFORÇO DO DEGRADÊ DAS PORTAS
+   Aplicado em 09/10/2026 — título fica dourado (padrão), só a
+   listra superior carrega a cor da runa
+   ============================================================ */
+.porta::after {
+  height: 4px;
+  opacity: .8;
+}
+.porta:hover::after {
+  opacity: 1;
+  height: 5px;
+}
