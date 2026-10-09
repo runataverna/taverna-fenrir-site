@@ -183,7 +183,7 @@ const Taverna = (() => {
     grid.innerHTML = ''; menu.innerHTML = '';
     PORTAS.forEach((p, i) => {
       const btn = document.createElement('button');
-      btn.className = 'porta';
+      btn.className = 'porta runa-' + p.id;
       btn.innerHTML = `
         <span class="porta-num">${i+1}</span>
         <span class="porta-tag">${p.tag}</span>
