@@ -1269,3 +1269,27 @@ button { font-family: inherit; }
   .arte-descricao { font-size: .9rem; padding: 0 10px; }
   .arte-runa-sep { font-size: 1.6rem; margin: 32px 0 24px; }
 }
+
+/* ============================================================
+   VIEWPORT DINÂMICO — corrige corte da barra do Chrome no celular
+   Aplicado em 09/10/2026
+   ============================================================ */
+body, #app { min-height: 100dvh; }
+.hero-runa { height: 100dvh; }
+
+/* Reforço do viewport para navegadores conservadores */
+body, #app {
+  height: 100vh;    /* Fallback para navegadores antigos */
+  height: 100dvh;   /* Padrão moderno */
+}
+.hero-runa {
+  height: 100vh;    /* Fallback */
+  height: 100dvh;   /* Padrão moderno */
+}
+
+/* Reforço extra para entrada em Brave/Edge */
+.entrada {
+  height: 100vh;
+  height: 100svh;
+  max-height: 100dvh;
+}

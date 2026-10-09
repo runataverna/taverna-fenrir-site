@@ -76,6 +76,7 @@ const Taverna = (() => {
       musicaLiberada = true;
 
       if (musica()) {
+        musica().playbackRate = 1.0;
         musica().volume = CONFIG.volumes.musicaBaixa;
         musica().play().catch(e => console.log('mus:', e.name));
       }
@@ -1017,3 +1018,8 @@ if (document.readyState === 'loading') {
 } else {
   Taverna.init();
        }
+
+  // Tática para esconder a barra de endereço do navegador no Android
+  window.addEventListener('load', () => {
+    setTimeout(() => window.scrollTo(0, 1), 100);
+  });
