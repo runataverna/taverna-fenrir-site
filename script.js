@@ -818,6 +818,145 @@ const Taverna = (() => {
     else { musica().pause(); if ($('btnMusica')) $('btnMusica').textContent = '▶'; salvarTempoMusica(); }
   }
 
+  function renderizarArteCarrossel() {
+    const container = $('arteCarrossel');
+    if (!container) return;
+
+    const BLOCOS = [
+      { id: 'v1',      runa: 'algiz',    sim: 'ᛉ', desc: 'Onde tudo começou. Os primeiros esboços, ainda sem saber quem ela era.', fotos: ['conceito1.jpg','conceito2.jpg','conceito3.jpg','conceito4.jpg'] },
+      { id: 'v2',      runa: 'isa',      sim: 'ᛁ', desc: 'Segunda tentativa. O rosto apareceu, mas a alma ainda não.', fotos: ['conceito5.jpg','conceito6.jpg','conceito7.jpg','conceito8.jpg'] },
+      { id: 'v3',      runa: 'kenaz',    sim: 'ᚲ', desc: 'Terceira versão. O traço ficou meu. Deixei de copiar referência.', fotos: ['conceito9.jpg','conceito10.jpg'] },
+      { id: 'v4',      runa: 'mannaz',   sim: 'ᛗ', desc: 'A versão que virou referência. Foi aqui que ela começou a olhar de volta.', fotos: ['conceito11.jpg','conceito12.jpg','conceito13.jpg','conceito14.jpg','conceito15.jpg','conceito16.jpg'] },
+      { id: 'v5',      runa: 'othala',   sim: 'ᛟ', desc: 'Refinamento final. Depois de tudo pronto, ela já respirava sozinha.', fotos: ['conceito17.jpg','conceito18.jpg','conceito19.jpg','conceito20.jpg','conceito21.jpg'] },
+      { id: 'taverna', runa: 'thurisaz', sim: 'ᚦ', desc: 'O cenário. A porta feita de raiz, a casa que ela construiu.', fotos: ['conceito22.jpg','conceito23.jpg','conceito24.jpg'] },
+      { id: 'bardo',   runa: 'wunjo',    sim: 'ᚹ', desc: 'Ainda faltava um pouco de vida nesse lugar. Aí nasceu a ideia de Bardo.', fotos: ['conceito25.jpg'] }
+    ];
+
+    function mudarFoto(blocoId, novoIndex) {
+      const carrossel = document.querySelector('.arte-carrossel[data-bloco="' + blocoId + '"]');
+      if (!carrossel) return;
+      const fotos = carrossel.querySelectorAll('.arte-foto');
+      fotos.forEach((f, i) => f.classList.toggle('ativa', i === novoIndex));
+      const blocoEl = carrossel.closest('.arte-bloco');
+      if (!blocoEl) return;
+      blocoEl.querySelectorAll('.arte-bolinhas span').forEach((b, i) => b.classList.toggle('ativa', i === novoIndex));
+    }
+
+    function getFotoAtual(blocoId) {
+      const carrossel = document.querySelector('.arte-carrossel[data-bloco="' + blocoId + '"]');
+      if (!carrossel) return 0;
+      const ativa = carrossel.querySelector('.arte-foto.ativa');
+      return ativa ? parseInt(ativa.dataset.index) : 0;
+    }
+
+    container.innerHTML = '';
+
+    BLOCOS.forEach((bloco, idx) => {
+      const blocoEl = document.createElement('div');
+      blocoEl.className = 'arte-bloco';
+
+      const carrossel = document.createElement('div');
+      carrossel.className = 'arte-carrossel';
+      carrossel.dataset.bloco = bloco.id;
+
+      bloco.fotos.forEach((foto, i) => {
+        const fotoEl = document.createElement('div');
+        fotoEl.className = 'arte-foto' + (i === 0 ? ' ativa' : '');
+        fotoEl.dataset.index = i;
+        fotoEl.innerHTML = '<img src="assets/img/' + foto + '" alt="Runa — ' + bloco.id + '" loading="lazy">';
+        carrossel.appendChild(fotoEl);
+      });
+
+      blocoEl.appendChild(carrossel);
+
+      if (bloco.fotos.length > 1) {
+        const bolinhas = document.createElement('div');
+        bolinhas.className = 'arte-bolinhas';
+        bloco.fotos.forEach((_, i) => {
+          const b = document.createElement('span');
+          if (i === 0) b.className = 'ativa';
+          b.dataset.index = i;
+          b.onclick = () => mudarFoto(bloco.id, i);
+          bolinhas.appendChild(b);
+        });
+        blocoEl.appendChild(bolinhas);
+
+        const nav = document.createElement('div');
+        nav.className = 'arte-nav';
+        const prev = document.createElement('button');
+        prev.textContent = '← Voltar';
+        prev.onclick = () => {
+          const atual = getFotoAtual(bloco.id);
+          mudarFoto(bloco.id, (atual - 1 + bloco.fotos.length) % bloco.fotos.length);
+        };
+        const next = document.createElement('button');
+        next.textContent = 'Avançar →';
+        next.onclick = () => {
+          const atual = getFotoAtual(bloco.id);
+          mudarFoto(bloco.id, (atual + 1) % bloco.fotos.length);
+        };
+        nav.appendChild(prev);
+        nav.appendChild(next);
+        blocoEl.appendChild(nav);
+      }
+
+      const acoes = document.createElement('div');
+      acoes.className = 'arte-acoes';
+
+      const btnCurtir = document.createElement('button');
+      btnCurtir.className = 'arte-balao arte-curtir';
+      btnCurtir.setAttribute('aria-label', 'Curtir');
+      const icone = document.createElement('span');
+      icone.className = 'arte-icone';
+      icone.textContent = '♡';
+      btnCurtir.appendChild(icone);
+
+      const contador = document.createElement('span');
+      contador.className = 'arte-contador';
+
+      const textoStatus = document.createElement('p');
+      textoStatus.className = 'arte-status';
+      textoStatus.style.display = 'none';
+
+      const idCurto = 'arte-' + bloco.id;
+
+      btnCurtir.onclick = () => {
+        curtir(idCurto, icone, btnCurtir, contador, textoStatus);
+        atualizarCurtir(idCurto, icone, btnCurtir, contador, textoStatus);
+      };
+
+      const btnShare = document.createElement('button');
+      btnShare.className = 'arte-balao';
+      btnShare.textContent = '↗';
+      btnShare.setAttribute('aria-label', 'Compartilhar');
+      btnShare.onclick = () => {
+        const url = window.location.origin + window.location.pathname + '#' + idCurto;
+        compartilhar('Arte conceitual — Taverna Fenrir', url);
+      };
+
+      acoes.appendChild(btnCurtir);
+      acoes.appendChild(contador);
+      acoes.appendChild(btnShare);
+      blocoEl.appendChild(acoes);
+
+      atualizarCurtir(idCurto, icone, btnCurtir, contador, textoStatus);
+
+      const desc = document.createElement('p');
+      desc.className = 'arte-descricao';
+      desc.textContent = bloco.desc;
+      blocoEl.appendChild(desc);
+
+      container.appendChild(blocoEl);
+
+      if (idx < BLOCOS.length - 1) {
+        const runaEl = document.createElement('div');
+        runaEl.className = 'arte-runa-sep ' + BLOCOS[idx + 1].runa;
+        runaEl.textContent = BLOCOS[idx + 1].sim;
+        container.appendChild(runaEl);
+      }
+    });
+  }
+
   // INIT
   function init() {
     renderizarPortas();
@@ -830,6 +969,7 @@ const Taverna = (() => {
     renderizarSelosFooter();
     renderizarLojasFooter();
     renderizarRedes('footerRedes');
+    renderizarArteCarrossel();
 
     // Listener do áudio da Runa — só depois que tudo existe
     const a = audioRuna();
