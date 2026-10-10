@@ -1875,3 +1875,30 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   object-fit: cover;
   display: block;
 }
+
+/* ============================================================
+   MITOLOGIA — Texto de introdução (voz da Runa)
+   Aplicado em 10/10/2026
+   ============================================================ */
+.mitologia-intro-texto {
+  max-width: 720px;
+  margin: 30px auto 40px;
+  padding: 0 20px;
+}
+
+.mitologia-intro-texto p {
+  font-family: 'Texturina', serif;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #d8d4cc;
+  margin-bottom: 18px;
+  text-align: left;
+}
+
+.mitologia-intro-texto p:last-child {
+  font-style: italic;
+  color: #c9a227;
+  text-align: center;
+  margin-top: 30px;
+  letter-spacing: .5px;
+}

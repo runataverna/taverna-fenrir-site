@@ -740,6 +740,17 @@ const Taverna = (() => {
     const intro = $(prefixo + 'Intro');
     if (intro) intro.textContent = config.intro;
     renderizarImagemAbertura(prefixo + 'Abertura', config.imagem);
+
+    // Texto de introdução (só Mitologia tem)
+    if (config.introTexto) {
+      const introEl = $(prefixo + 'IntroTexto');
+      if (introEl) {
+        let html = aplicarRunasNoTexto(config.introTexto);
+        html = html.split('\n\n').map(p => '<p>' + p + '</p>').join('');
+        introEl.innerHTML = html;
+      }
+    }
+
     const c = $(prefixo + 'Grupos');
     if (!c) return;
     c.innerHTML = '';
