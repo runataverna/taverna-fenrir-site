@@ -1935,3 +1935,34 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   from { background-position: 0 0; }
   to   { background-position: 0 100%; }
 }
+
+/* ============================================================
+   ENTRADA — animação do portal (corrigida)
+   Aplicado em 10/10/2026
+   ============================================================ */
+.entrada-portal {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.entrada-portal img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  transform: translateY(0);
+}
+
+.entrada-imagem.ativando .entrada-portal img {
+  animation: portalAnim 2s steps(8, end) forwards;
+}
+
+@keyframes portalAnim {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-87.5%); }
+}
