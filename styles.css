@@ -1641,3 +1641,37 @@ body, #app {
   letter-spacing: .5px;
   font-weight: 600;
 }
+
+/* ============================================================
+   ISOLAMENTO DE CÓPIA — só o texto do conto é selecionável
+   Aplicado em 10/10/2026
+   ============================================================ */
+
+/* Bloqueia seleção em toda a página */
+body, #app, .sala, .hall, .navbar, .menu-lista {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Libera seleção só nos textos que importam */
+.historia-texto,
+.historia-rodape,
+.card-modal-vocesabia,
+.monologo,
+.venda-texto,
+.card p,
+.card-fechado p {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Modais: só o texto de dentro é copiável */
+.historia-modal,
+.historia-box {
+  -webkit-user-select: none;
+  user-select: none;
+}
