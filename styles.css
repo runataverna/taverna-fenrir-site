@@ -225,7 +225,7 @@ button { font-family: inherit; }
 }
 .hero-fallback {
   position: absolute; inset: 0;
-  background: #000 url('assets/img/hero-final.jpg') center/cover no-repeat;
+  background: #000 url('assets/img/hero-final.jpg') center top / contain no-repeat;
   z-index: 0;
 }
 .hero-overlay {
