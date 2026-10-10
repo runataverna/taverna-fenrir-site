@@ -773,9 +773,13 @@ const Taverna = (() => {
           ? primeiroP.substring(0, 130).trim() + '...'
           : primeiroP.trim();
 
+        const fotoHTML = cd.foto
+          ? '<img src="assets/img/' + cd.foto + '" alt="' + cd.titulo + '" loading="lazy">'
+          : '<div class="card-fechado-placeholder">Imagem em produção</div>';
+
         card.innerHTML = `
           <div class="card-fechado-foto">
-            <div class="card-fechado-placeholder">Imagem em produção</div>
+            ${fotoHTML}
           </div>
           <div class="card-fechado-conteudo">
             ${cd.subtitulo ? '<span class="card-fechado-tag">' + cd.subtitulo + '</span>' : ''}
@@ -791,7 +795,8 @@ const Taverna = (() => {
             tag: cd.subtitulo || '',
             texto: cd.texto,
             voceSabia: cd.voceSabia,
-            foto: cd.foto || null
+            foto: cd.foto || null,
+            fotoInterna: cd.fotoInterna || null
           }, cor);
         };
 
@@ -934,8 +939,9 @@ const Taverna = (() => {
 
     const foto = $('cardModalFoto');
     if (foto) {
-      if (dados.foto) {
-        foto.innerHTML = '<img src="assets/img/' + dados.foto + '" alt="' + dados.titulo + '">';
+      const fonte = dados.fotoInterna || dados.foto;
+      if (fonte) {
+        foto.innerHTML = '<img src="assets/img/' + fonte + '" alt="' + dados.titulo + '">';
       } else {
         foto.innerHTML = '<div class="foto-placeholder">Imagem em produção —<br>a história está sendo forjada.</div>';
       }

@@ -1864,3 +1864,14 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   color: #7DE2FF;
   border-color: rgba(0,229,255,.5);
 }
+
+/* ============================================================
+   FOTO DO CARD FECHADO — preenche o espaço
+   Aplicado em 10/10/2026
+   ============================================================ */
+.card-fechado-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
