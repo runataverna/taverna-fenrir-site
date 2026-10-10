@@ -349,6 +349,36 @@
   </div>
 </div>
 
+<!-- MODAL: CARD DE HISTÓRIA (Viking / Mitologia) -->
+<div class="historia-modal" id="modalCard">
+  <div class="historia-box card-modal-box">
+    <button class="historia-fechar" onclick="Taverna.fecharCard()">✕</button>
+
+    <div class="card-modal-foto" id="cardModalFoto"></div>
+
+    <div class="card-modal-tag" id="cardModalTag"></div>
+    <h2 id="cardModalTitulo"></h2>
+
+    <div class="historia-texto" id="cardModalTexto"></div>
+
+    <div class="card-modal-vocesabia" id="cardModalVoceSabia"></div>
+
+    <div class="historia-acoes">
+      <div class="historia-acoes-baloes">
+        <button class="acao-balao acao-curtir" id="cardCurtir" onclick="Taverna.curtirCard()" aria-label="Curtir">
+          <span class="acao-icone" id="cardCurtirIcone">♡</span>
+        </button>
+        <button class="acao-balao acao-compartilhar" onclick="Taverna.compartilharCard()" aria-label="Compartilhar">
+          <span class="acao-icone">↗</span>
+        </button>
+        <span class="acao-contador" id="cardContador">0</span>
+      </div>
+      <p class="acao-texto" id="cardTexto">Acenda essa história</p>
+    </div>
+  </div>
+</div>
+
+
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="Taverna.fecharLightbox()">
   <button class="lightbox-fechar" onclick="Taverna.fecharLightbox();event.stopPropagation()">✕</button>

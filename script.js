@@ -718,45 +718,79 @@ const Taverna = (() => {
   }
 
   // VIKING
-  function renderizarViking() {
-    const intro = $('universoIntro');
-    if (intro) intro.textContent = VIKING.intro;
-    renderizarImagemAbertura('universoAbertura', VIKING.imagem);
-    const c = $('universoGrupos');
-    if (!c) return;
-    c.innerHTML = '';
-    VIKING.grupos.forEach(g => {
-      const div = document.createElement('div');
-      div.className = 'grupo-mae';
-      let cards = '';
-      g.cards.forEach(cd => {
-        cards += `<div class="card"><h3>${cd.titulo}</h3><p>${cd.texto}</p>${cd.voceSabia && cd.voceSabia !== '[A PREENCHER]' ? `<div class="voce-sabia"><strong>💡 VOCÊ SABIA?</strong>${cd.voceSabia}</div>` : ''}</div>`;
-      });
-      div.innerHTML = `<h3 class="grupo-mae-titulo">${g.titulo}</h3><p class="grupo-mae-sub">${g.subtitulo}</p><div class="cards">${cards}</div>`;
-      c.appendChild(div);
-    });
-    c.innerHTML += `<div class="centro" style="margin-top:30px"><a class="btn-venda" href="${VIKING.link}" target="_blank" rel="noopener">${VIKING.linkTexto} →</a></div>`;
-  }
 
-  // MITOLOGIA
-  function renderizarMitologia() {
-    const intro = $('mitologiaIntro');
-    if (intro) intro.textContent = MITOLOGIA.intro;
-    renderizarImagemAbertura('mitologiaAbertura', MITOLOGIA.imagem);
-    const c = $('mitologiaGrupos');
+  // VIKING + MITOLOGIA — CARDS FECHADOS
+  function renderizarSecao(config, prefixo, cor) {
+    const intro = $(prefixo + 'Intro');
+    if (intro) intro.textContent = config.intro;
+    renderizarImagemAbertura(prefixo + 'Abertura', config.imagem);
+    const c = $(prefixo + 'Grupos');
     if (!c) return;
     c.innerHTML = '';
-    MITOLOGIA.grupos.forEach(g => {
+
+    config.grupos.forEach(g => {
       const div = document.createElement('div');
       div.className = 'grupo-mae';
-      let cards = '';
+
+      const titulo = document.createElement('h3');
+      titulo.className = 'grupo-mae-titulo';
+      titulo.textContent = g.titulo;
+      div.appendChild(titulo);
+
+      const sub = document.createElement('p');
+      sub.className = 'grupo-mae-sub';
+      sub.textContent = g.subtitulo;
+      div.appendChild(sub);
+
+      const grid = document.createElement('div');
+      grid.className = 'cards cards-fechados';
+
       g.cards.forEach(cd => {
-        cards += `<div class="card"><h3>${cd.titulo}</h3><p>${cd.texto}</p>${cd.voceSabia && cd.voceSabia !== '[A PREENCHER]' ? `<div class="voce-sabia"><strong>💡 VOCÊ SABIA?</strong>${cd.voceSabia}</div>` : ''}</div>`;
+        const card = document.createElement('div');
+        card.className = 'card card-fechado';
+        card.style.setProperty('--cor-sala', cor);
+
+        // Gancho curto — primeiro parágrafo cortado
+        const textoLimpo = (cd.texto || '').replace(/\*\*/g, '').replace(/\n\n/g, ' ');
+        const primeiroP = textoLimpo.split(/\n/)[0] || '';
+        const gancho = primeiroP.length > 130
+          ? primeiroP.substring(0, 130).trim() + '...'
+          : primeiroP.trim();
+
+        card.innerHTML = `
+          <div class="card-fechado-foto">
+            <div class="card-fechado-placeholder">Imagem em produção</div>
+          </div>
+          <div class="card-fechado-conteudo">
+            ${cd.subtitulo ? '<span class="card-fechado-tag">' + cd.subtitulo + '</span>' : ''}
+            <h4>${cd.titulo}</h4>
+            <p>${gancho}</p>
+            <span class="card-fechado-cta">Ler a história →</span>
+          </div>`;
+
+        card.onclick = () => {
+          abrirCard({
+            id: (prefixo) + '-' + cd.titulo.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+            titulo: cd.titulo,
+            tag: cd.subtitulo || '',
+            texto: cd.texto,
+            voceSabia: cd.voceSabia,
+            foto: cd.foto || null
+          }, cor);
+        };
+
+        grid.appendChild(card);
       });
-      div.innerHTML = `<h3 class="grupo-mae-titulo">${g.titulo}</h3><p class="grupo-mae-sub">${g.subtitulo}</p><div class="cards">${cards}</div>`;
+
+      div.appendChild(grid);
       c.appendChild(div);
     });
-    c.innerHTML += `<div class="centro" style="margin-top:30px"><a class="btn-venda" href="${MITOLOGIA.link}" target="_blank" rel="noopener">${MITOLOGIA.linkTexto} →</a></div>`;
+
+    const botao = document.createElement('div');
+    botao.className = 'centro';
+    botao.style.marginTop = '30px';
+    botao.innerHTML = '<a class="btn-venda" href="' + config.link + '" target="_blank" rel="noopener">' + config.linkTexto + ' →</a>';
+    c.appendChild(botao);
   }
 
   // VENDAS
@@ -800,6 +834,74 @@ const Taverna = (() => {
     const modal = $('modalHNC');
     if (modal) modal.classList.remove('active');
   }
+
+  // ============================================================
+  // MODAL DE CARD (Viking / Mitologia)
+  // ============================================================
+  let cardAtual = null;
+
+  function abrirCard(dados, corSala) {
+    if (!dados) return;
+    cardAtual = dados;
+
+    const foto = $('cardModalFoto');
+    if (foto) {
+      if (dados.foto) {
+        foto.innerHTML = '<img src="assets/img/' + dados.foto + '" alt="' + dados.titulo + '">';
+      } else {
+        foto.innerHTML = '<div class="foto-placeholder">Imagem em produção —<br>a história está sendo forjada.</div>';
+      }
+    }
+
+    const tag = $('cardModalTag');
+    if (tag) {
+      tag.textContent = dados.tag || '';
+      tag.style.color = corSala;
+      tag.style.borderColor = corSala;
+      tag.style.display = dados.tag ? 'inline-block' : 'none';
+    }
+
+    const titulo = $('cardModalTitulo');
+    if (titulo) titulo.textContent = dados.titulo || '';
+
+    const texto = $('cardModalTexto');
+    if (texto) texto.innerHTML = aplicarRunasNoTexto(dados.texto || '');
+
+    const vs = $('cardModalVoceSabia');
+    if (vs) {
+      if (dados.voceSabia && dados.voceSabia !== '[A PREENCHER]') {
+        vs.innerHTML = '<strong>💡 VOCÊ SABIA?</strong>' + dados.voceSabia;
+        vs.style.display = 'block';
+      } else {
+        vs.style.display = 'none';
+      }
+    }
+
+    atualizarCurtir('card-' + dados.id, $('cardCurtirIcone'), $('cardCurtir'), $('cardContador'), $('cardTexto'));
+
+    const modal = $('modalCard');
+    if (modal) modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharCard() {
+    const modal = $('modalCard');
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
+    cardAtual = null;
+  }
+
+  function curtirCard() {
+    if (!cardAtual) return;
+    curtir('card-' + cardAtual.id, $('cardCurtirIcone'), $('cardCurtir'), $('cardContador'), $('cardTexto'));
+  }
+
+  function compartilharCard() {
+    if (!cardAtual) return;
+    const url = window.location.origin + window.location.pathname + '#card-' + cardAtual.id;
+    compartilhar(cardAtual.titulo + ' — Taverna Fenrir', url);
+  }
+
 
   // LIGHTBOX
   function abrirLightbox(src) {
@@ -964,8 +1066,8 @@ const Taverna = (() => {
     renderizarContos();
     renderizarMicrocontos();
     renderizarSobreRuna();
-    renderizarViking();
-    renderizarMitologia();
+    renderizarSecao(VIKING, 'universo', '#e8564a');
+    renderizarSecao(MITOLOGIA, 'mitologia', '#d4915a');
     renderizarVendas();
     renderizarSelosFooter();
     renderizarLojasFooter();
@@ -1008,6 +1110,7 @@ const Taverna = (() => {
     abrirHistoria, fecharHistoria, toggleHistoriaAudio, ouvirHistoriaRuna,
     curtirConto, curtirHNC, compartilharConto, compartilharHNC,
     abrirHistoriaNaoContada, fecharHNC,
+    abrirCard, fecharCard, curtirCard, compartilharCard,
     abrirLightbox, fecharLightbox,
     toggleMusica, proximaAba, init
   };
