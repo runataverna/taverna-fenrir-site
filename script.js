@@ -166,6 +166,8 @@ const Taverna = (() => {
   }
 
   window.addEventListener('popstate', () => {
+    const m0 = $('modalCard');
+    if (m0 && m0.classList.contains('active')) { fecharCard(); return; }
     const m1 = $('historiaModal');
     if (m1 && m1.classList.contains('active')) { fecharHistoria(); return; }
     const m2 = $('modalHNC');
@@ -1096,7 +1098,7 @@ const Taverna = (() => {
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { fecharHistoria(); fecharHNC(); fecharLightbox(); }
+      if (e.key === 'Escape') { fecharCard(); fecharHistoria(); fecharHNC(); fecharLightbox(); }
     });
 
     const m1 = $('modalHNC');
