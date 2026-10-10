@@ -60,13 +60,39 @@ button { font-family: inherit; }
   font-size: .72rem; letter-spacing: 4px; margin-bottom: 20px; opacity: .85;
 }
 .entrada-imagem {
-  width: 100%; border-radius: 14px; overflow: hidden;
+  width: 100%; max-width: 480px;
+  margin: 0 auto 24px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  position: relative;
+  border-radius: 14px;
   border: 1px solid rgba(201,162,39,.35);
   box-shadow: 0 8px 40px rgba(0,0,0,.85);
-  margin-bottom: 24px;
-  background: linear-gradient(135deg, #1a0a0a, #2a1515);
+  background: #0a0e14;
 }
-.entrada-imagem img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+
+.entrada-portal {
+  width: 100%;
+  height: 100%;
+}
+
+.entrada-portal img {
+  width: 100%;
+  height: 800%;
+  display: block;
+  object-fit: fill;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.entrada-imagem.ativando .entrada-portal img {
+  animation: portalAnim 2s steps(7) forwards;
+}
+
+@keyframes portalAnim {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-87.5%); }
+}
 .entrada-imagem-placeholder {
   aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center;
   color: #555; font-style: italic; font-size: .9rem; padding: 30px;
@@ -1907,106 +1933,4 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
    ENTRADA — animação do portal (sprite 8 frames)
    Aplicado em 10/10/2026
    ============================================================ */
-.entrada-imagem {
-  position: relative;
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(201,162,39,.35);
-  box-shadow: 0 8px 40px rgba(0,0,0,.85);
-  margin-bottom: 24px;
-  background: linear-gradient(135deg, #1a0a0a, #2a1515);
-}
-
-.entrada-portal {
-  width: 100%;
-  aspect-ratio: 4/5;
-  background-image: url('assets/img/entrada-sprite.jpg');
-  background-size: 100% 800%;
-  background-position: 0 0;
-  background-repeat: no-repeat;
-}
-
-.entrada-imagem.ativando .entrada-portal {
-  animation: portalAnim 2s steps(8) forwards;
-}
-
-@keyframes portalAnim {
-  from { background-position: 0 0; }
-  to   { background-position: 0 100%; }
-}
-
-/* ============================================================
-   ENTRADA — animação do portal (corrigida)
-   Aplicado em 10/10/2026
    ============================================================ */
-.entrada-portal {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  border-radius: 14px;
-}
-
-.entrada-portal img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  display: block;
-  transform: translateY(0);
-}
-
-.entrada-imagem.ativando .entrada-portal img {
-  animation: portalAnim 2s steps(8, end) forwards;
-}
-
-@keyframes portalAnim {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-87.5%); }
-}
-
-/* ============================================================
-   ENTRADA — CORREÇÃO FINAL DO PORTAL
-   Força altura de 1 frame (4:5) e sobrescreve regras antigas
-   Aplicado em 10/10/2026
-   ============================================================ */
-.entrada-imagem {
-  position: relative !important;
-  aspect-ratio: auto !important;
-  padding-bottom: 125% !important;
-  height: 0 !important;
-  overflow: hidden !important;
-}
-
-.entrada-portal {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  overflow: hidden !important;
-  aspect-ratio: auto !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-}
-
-.entrada-portal img {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  transform: translateY(0) !important;
-}
-
-.entrada-imagem.ativando .entrada-portal img {
-  animation: portalAnim 2s steps(8, end) forwards !important;
-}
-
-@keyframes portalAnim {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-87.5%); }
-}
