@@ -790,7 +790,7 @@ const Taverna = (() => {
 
     const forjada = document.createElement('div');
     forjada.className = 'historia-forjada';
-    forjada.textContent = 'Essa história ainda está sendo forjada.';
+    forjada.innerHTML = '<div class="historia-forjada-titulo">A próxima história</div><div class="historia-forjada-sub">ainda está sendo forjada</div>';
     c.appendChild(forjada);
 
     const botao = document.createElement('div');
