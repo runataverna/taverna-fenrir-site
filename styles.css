@@ -1851,3 +1851,16 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   color: #7DE2FF;
   border-color: rgba(0,229,255,.45);
 }
+
+/* ============================================================
+   REFORÇO — Dança das Chamas fica azul (vence o âmbar)
+   Aplicado em 10/10/2026
+   ============================================================ */
+#sala-contos .conto-card-chamas::before {
+  background: linear-gradient(to right, transparent, #00E5FF, transparent);
+  opacity: .9;
+}
+#sala-contos .conto-card-chamas .tag-chamas {
+  color: #7DE2FF;
+  border-color: rgba(0,229,255,.5);
+}
