@@ -53,16 +53,10 @@ const Taverna = (() => {
 
   // ENTRAR
   function entrar() {
-    // Animação da imagem: runas acendendo + clarão
-    const imgEntrada = document.querySelector('.entrada-imagem');
-    if (imgEntrada) imgEntrada.classList.add('ativando');
-
     const glow = $('glowEntrada');
     if (glow) {
-      setTimeout(() => {
-        glow.classList.add('ativo');
-        setTimeout(() => glow.classList.remove('ativo'), 1700);
-      }, 1500);
+      glow.classList.add('ativo');
+      setTimeout(() => glow.classList.remove('ativo'), 1700);
     }
 
     setTimeout(() => {
@@ -97,7 +91,7 @@ const Taverna = (() => {
       setTimeout(() => {
         if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
       }, CONFIG.delays.musicaSubir);
-    }, 2200);
+    }, 800);
   }
 
   function ativarHeroVideo() {
