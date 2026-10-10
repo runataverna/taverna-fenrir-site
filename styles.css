@@ -1902,3 +1902,36 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   margin-top: 30px;
   letter-spacing: .5px;
 }
+
+/* ============================================================
+   ENTRADA — animação do portal (sprite 8 frames)
+   Aplicado em 10/10/2026
+   ============================================================ */
+.entrada-imagem {
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(201,162,39,.35);
+  box-shadow: 0 8px 40px rgba(0,0,0,.85);
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #1a0a0a, #2a1515);
+}
+
+.entrada-portal {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background-image: url('assets/img/entrada-sprite.jpg');
+  background-size: 100% 800%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+.entrada-imagem.ativando .entrada-portal {
+  animation: portalAnim 2s steps(8) forwards;
+}
+
+@keyframes portalAnim {
+  from { background-position: 0 0; }
+  to   { background-position: 0 100%; }
+}
