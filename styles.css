@@ -1721,3 +1721,133 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   color: #c9a227;
   font-weight: 600;
 }
+
+/* ============================================================
+   MODAL DANÇA DAS CHAMAS — carrossel de microcontos
+   Aplicado em 10/10/2026
+   ============================================================ */
+.chamas-modal-box {
+  max-width: 640px;
+  margin: 40px auto;
+}
+
+.chamas-header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(201,162,39,.2);
+}
+
+.chamas-titulo {
+  font-family: 'Uncial Antiqua', cursive;
+  color: #c9a227;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.chamas-sub {
+  color: #a89b85;
+  font-style: italic;
+  font-size: .88rem;
+}
+
+.chamas-carrossel {
+  position: relative;
+  min-height: 320px;
+}
+
+.chamas-slide {
+  display: none;
+}
+
+.chamas-slide.ativa {
+  display: block;
+  animation: fadeChamas .4s ease;
+}
+
+@keyframes fadeChamas {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chamas-slide h3 {
+  font-family: 'Cinzel', serif;
+  color: #c9a227;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.chamas-texto {
+  font-size: 1rem;
+  color: #d8d4cc;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.chamas-bolinhas {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px 0 18px;
+}
+
+.chamas-bolinhas span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(201,162,39,.25);
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.chamas-bolinhas span.ativa {
+  background: #c9a227;
+  transform: scale(1.3);
+}
+
+.chamas-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.chamas-nav button {
+  background: transparent;
+  border: 1px solid rgba(201,162,39,.5);
+  color: #c9a227;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-family: 'Cinzel', serif;
+  font-size: .82rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.chamas-nav button:hover {
+  background: #c9a227;
+  color: #0a0a0a;
+}
+
+/* Card da Dança das Chamas na lista — borda azul */
+.conto-card-chamas {
+  position: relative;
+  overflow: hidden;
+}
+
+.conto-card-chamas::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #00E5FF, transparent);
+  opacity: .8;
+}
+
+.conto-card-chamas .tag-chamas {
+  color: #7DE2FF;
+  border-color: rgba(0,229,255,.45);
+}

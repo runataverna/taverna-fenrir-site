@@ -166,6 +166,8 @@ const Taverna = (() => {
   }
 
   window.addEventListener('popstate', () => {
+    const mChamas = $('modalChamas');
+    if (mChamas && mChamas.classList.contains('active')) { fecharChamas(); return; }
     const m0 = $('modalCard');
     if (m0 && m0.classList.contains('active')) { fecharCard(); return; }
     const m1 = $('historiaModal');
@@ -204,6 +206,10 @@ const Taverna = (() => {
   // RUNAS NO TEXTO
   function aplicarRunasNoTexto(html) {
     if (!html) return html;
+
+    // Markdown básico: **negrito** → <strong>
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong class="texto-negrito">$1</strong>');
+
     const nomes = ['Runa', 'Halvar', 'Svala', 'Ulf', 'Bardo', 'Brokkr', 'Eitri', 'Thor', 'Fenrir', 'Odin', 'Freya', 'Loki'];
     nomes.forEach(nome => {
       const regex = new RegExp(`\\b${nome}\\b`, 'g');
@@ -315,15 +321,16 @@ const Taverna = (() => {
     lista.innerHTML = '';
     CONTOS.forEach(c => {
       const div = document.createElement('div');
-      div.className = 'conto-card';
+      const classeEspecial = c.microcontos ? ' conto-card-chamas' : '';
+      div.className = 'conto-card' + classeEspecial;
       div.onclick = () => abrirHistoria(c.id);
       const preview = c.abas ? c.abas[0].texto : c.texto;
       const previewLimpo = preview.replace(/<[^>]+>/g, '').substring(0, 140).replace(/\n/g, ' ') + '...';
       div.innerHTML = `
-        <span class="conto-tag">${c.subtitulo}</span>
+        <span class="conto-tag${c.microcontos ? ' tag-chamas' : ''}">${c.subtitulo}</span>
         <h3>${c.titulo}</h3>
         <p>${previewLimpo}</p>
-        <span class="ler-conto">Ler o conto →</span>`;
+        <span class="ler-conto">${c.microcontos ? 'Abrir os microcontos →' : 'Ler o conto →'}</span>`;
       lista.appendChild(div);
     });
   }
@@ -344,6 +351,13 @@ const Taverna = (() => {
   function abrirHistoria(id) {
     const c = CONTOS.find(x => x.id === id);
     if (!c) return;
+
+    // Se for o card da Dança das Chamas, abre modal próprio
+    if (c.microcontos) {
+      abrirMicrocontos();
+      return;
+    }
+
     contoAtual = c;
     abaAtual = 0;
 
@@ -790,6 +804,74 @@ const Taverna = (() => {
 
     const forjada = document.createElement('div');
     forjada.className = 'historia-forjada';
+
+  // ============================================================
+  // DANÇA DAS CHAMAS — carrossel de microcontos
+  // ============================================================
+  let chamasIndex = 0;
+
+  function abrirMicrocontos() {
+    const carrossel = $('chamasCarrossel');
+    const bolinhas = $('chamasBolinhas');
+    if (!carrossel || typeof MICROCONTOS === 'undefined') return;
+
+    chamasIndex = 0;
+    carrossel.innerHTML = '';
+    if (bolinhas) bolinhas.innerHTML = '';
+
+    MICROCONTOS.forEach((m, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'chamas-slide' + (i === 0 ? ' ativa' : '');
+      slide.dataset.index = i;
+      slide.innerHTML = '<h3>' + m.titulo + '</h3><div class="chamas-texto">' + aplicarRunasNoTexto(m.texto) + '</div>';
+      carrossel.appendChild(slide);
+
+      if (bolinhas) {
+        const b = document.createElement('span');
+        if (i === 0) b.className = 'ativa';
+        b.onclick = () => { chamasIndex = i; atualizarChamas(); };
+        bolinhas.appendChild(b);
+      }
+    });
+
+    const modal = $('modalChamas');
+    if (modal) modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function atualizarChamas() {
+    const carrossel = $('chamasCarrossel');
+    const bolinhas = $('chamasBolinhas');
+    if (!carrossel) return;
+
+    carrossel.querySelectorAll('.chamas-slide').forEach((s, i) => {
+      s.classList.toggle('ativa', i === chamasIndex);
+    });
+    if (bolinhas) {
+      bolinhas.querySelectorAll('span').forEach((b, i) => {
+        b.classList.toggle('ativa', i === chamasIndex);
+      });
+    }
+  }
+
+  function chamasAnterior() {
+    if (typeof MICROCONTOS === 'undefined') return;
+    chamasIndex = (chamasIndex - 1 + MICROCONTOS.length) % MICROCONTOS.length;
+    atualizarChamas();
+  }
+
+  function chamasProxima() {
+    if (typeof MICROCONTOS === 'undefined') return;
+    chamasIndex = (chamasIndex + 1) % MICROCONTOS.length;
+    atualizarChamas();
+  }
+
+  function fecharChamas() {
+    const modal = $('modalChamas');
+    if (modal) modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
     forjada.innerHTML = '<div class="historia-forjada-titulo">A próxima história</div><div class="historia-forjada-sub">ainda está sendo forjada</div>';
     c.appendChild(forjada);
 
@@ -1103,7 +1185,7 @@ const Taverna = (() => {
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { fecharCard(); fecharHistoria(); fecharHNC(); fecharLightbox(); }
+      if (e.key === 'Escape') { fecharChamas(); fecharCard(); fecharHistoria(); fecharHNC(); fecharLightbox(); }
     });
 
     const m1 = $('modalHNC');
@@ -1118,6 +1200,7 @@ const Taverna = (() => {
     curtirConto, curtirHNC, compartilharConto, compartilharHNC,
     abrirHistoriaNaoContada, fecharHNC,
     abrirCard, fecharCard, curtirCard, compartilharCard,
+    abrirMicrocontos, fecharChamas, chamasAnterior, chamasProxima,
     abrirLightbox, fecharLightbox,
     toggleMusica, proximaAba, init
   };

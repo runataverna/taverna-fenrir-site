@@ -111,13 +111,6 @@
     </div>
     <div class="imagem-abertura" id="contosAbertura"></div>
     <div class="lista-contos" id="listaContos"></div>
-    <div class="danca-chamas">
-      <h3 class="hall-titulo">A DANÇA DAS CHAMAS</h3>
-      <p class="hall-sub">Pequenas histórias que passam pela taverna. Deslize para os lados.</p>
-      <div class="microcontos-wrapper">
-        <div class="microcontos" id="listaMicrocontos"></div>
-      </div>
-    </div>
   </section>
 
   <!-- SALA: SOBRE A RUNA -->
@@ -382,6 +375,32 @@
   </div>
 </div>
 
+
+
+<!-- MODAL: A DANÇA DAS CHAMAS (carrossel de microcontos) -->
+<div class="historia-modal" id="modalChamas">
+  <div class="historia-box chamas-modal-box">
+    <button class="historia-fechar" onclick="Taverna.fecharChamas()">✕</button>
+
+    <div class="chamas-header">
+      <h2 class="chamas-titulo">A Dança das Chamas</h2>
+      <p class="chamas-sub">Pequenas histórias que atravessam a porta.</p>
+    </div>
+
+    <div class="chamas-carrossel" id="chamasCarrossel"></div>
+
+    <div class="chamas-bolinhas" id="chamasBolinhas"></div>
+
+    <div class="chamas-nav">
+      <button onclick="Taverna.chamasAnterior()">← Voltar</button>
+      <button onclick="Taverna.chamasProxima()">Avançar →</button>
+    </div>
+
+    <div class="historia-nav">
+      <button onclick="Taverna.fecharChamas()">← Fechar</button>
+    </div>
+  </div>
+</div>
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="Taverna.fecharLightbox()">

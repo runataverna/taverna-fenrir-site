@@ -459,6 +459,18 @@ Se você quiser começar, começa por onde eu comecei. Uma faca de entalhe, um p
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
     imagens: null, video: null, link: 'https://meli.la/2CYf4XY', linkTexto: 'Conhecer o ofício da Runa', audio: null
+  },
+  {
+    id: 'chamas',
+    titulo: 'A Dança das Chamas',
+    subtitulo: 'Microcontos · O que passa pelo balcão',
+    imagemAbertura: null,
+    propaganda: null,
+    texto: 'Pequenas histórias que atravessam a porta e sentam no banco. Todo sábado, uma nova.',
+    gancho: 'Pequenas histórias que atravessam a porta e sentam no banco. Todo sábado, uma nova.',
+    rodape: null,
+    imagens: null, video: null, link: null, linkTexto: null, abas: null, audio: null,
+    microcontos: true
   }
 ];
 
