@@ -1966,3 +1966,47 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   from { transform: translateY(0); }
   to   { transform: translateY(-87.5%); }
 }
+
+/* ============================================================
+   ENTRADA — CORREÇÃO FINAL DO PORTAL
+   Força altura de 1 frame (4:5) e sobrescreve regras antigas
+   Aplicado em 10/10/2026
+   ============================================================ */
+.entrada-imagem {
+  position: relative !important;
+  aspect-ratio: auto !important;
+  padding-bottom: 125% !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+.entrada-portal {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  overflow: hidden !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+.entrada-portal img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  transform: translateY(0) !important;
+}
+
+.entrada-imagem.ativando .entrada-portal img {
+  animation: portalAnim 2s steps(8, end) forwards !important;
+}
+
+@keyframes portalAnim {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-87.5%); }
+}
