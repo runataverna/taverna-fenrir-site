@@ -804,8 +804,17 @@ const Taverna = (() => {
 
     const forjada = document.createElement('div');
     forjada.className = 'historia-forjada';
+    forjada.innerHTML = '<div class="historia-forjada-titulo">A próxima história</div><div class="historia-forjada-sub">ainda está sendo forjada</div>';
+    c.appendChild(forjada);
 
-  // ============================================================
+    const botao = document.createElement('div');
+    botao.className = 'centro';
+    botao.style.marginTop = '30px';
+    botao.innerHTML = '<a class="btn-venda" href="' + config.link + '" target="_blank" rel="noopener">' + config.linkTexto + ' →</a>';
+    c.appendChild(botao);
+  }
+
+
   // DANÇA DAS CHAMAS — carrossel de microcontos
   // ============================================================
   let chamasIndex = 0;
@@ -870,16 +879,6 @@ const Taverna = (() => {
     const modal = $('modalChamas');
     if (modal) modal.classList.remove('active');
     document.body.style.overflow = '';
-  }
-
-    forjada.innerHTML = '<div class="historia-forjada-titulo">A próxima história</div><div class="historia-forjada-sub">ainda está sendo forjada</div>';
-    c.appendChild(forjada);
-
-    const botao = document.createElement('div');
-    botao.className = 'centro';
-    botao.style.marginTop = '30px';
-    botao.innerHTML = '<a class="btn-venda" href="' + config.link + '" target="_blank" rel="noopener">' + config.linkTexto + ' →</a>';
-    c.appendChild(botao);
   }
 
   // VENDAS
