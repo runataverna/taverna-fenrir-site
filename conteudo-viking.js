@@ -77,19 +77,5 @@ const VIKING = {
         },
       ]
     },
-    {
-      id: "inverno",
-      titulo: "O Inverno",
-      subtitulo: "Sobreviver à estação mais longa.",
-      cards: [
-      ]
-    },
-    {
-      id: "crencas",
-      titulo: "As Crenças",
-      subtitulo: "Os deuses no cotidiano do povo.",
-      cards: [
-      ]
-    },
   ]
 };

@@ -788,6 +788,11 @@ const Taverna = (() => {
       c.appendChild(div);
     });
 
+    const forjada = document.createElement('div');
+    forjada.className = 'historia-forjada';
+    forjada.textContent = 'Essa história ainda está sendo forjada.';
+    c.appendChild(forjada);
+
     const botao = document.createElement('div');
     botao.className = 'centro';
     botao.style.marginTop = '30px';

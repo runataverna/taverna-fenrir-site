@@ -85,13 +85,6 @@ const MITOLOGIA = {
       ]
     },
     {
-      id: "ragnarok",
-      titulo: "Ragnarok — O Fim e o Recomeço",
-      subtitulo: "Tudo o que morre, retorna.",
-      cards: [
-      ]
-    },
-    {
       id: "quem-escreveu",
       titulo: "Quem Escreveu Tudo Isso",
       subtitulo: "A verdade sobre a mitologia.",
