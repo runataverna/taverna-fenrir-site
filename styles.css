@@ -1386,3 +1386,82 @@ body, #app {
 .porta.runa-universo:hover {
   box-shadow: 0 8px 30px rgba(0,0,0,.7), 0 0 0 1px rgba(232,86,74,.45);
 }
+
+/* ============================================================
+   TAG DENTRO DAS SALAS — herda cor da porta mãe
+   Aplicado em 09/10/2026
+   ============================================================ */
+
+/* Contos — herda Kenaz (âmbar) */
+#sala-contos .conto-tag {
+  color: #FFC94D;
+  border-color: rgba(255,201,77,.4);
+}
+
+
+/* ============================================================
+   FASE 1 — COR POR SALA NOS CARDS INTERNOS
+   Aplicado em 09/10/2026
+   Cada sala herda a cor da porta mãe
+   ============================================================ */
+
+/* CONTOS — herda Kenaz (âmbar) */
+#sala-contos .conto-tag {
+  color: #FFC94D;
+  border-color: rgba(255,201,77,.4);
+}
+#sala-contos .conto-card {
+  position: relative;
+  overflow: hidden;
+}
+#sala-contos .conto-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #FFC94D, transparent);
+  opacity: .7;
+}
+
+/* SOBRE A RUNA — herda Mannaz (bege) */
+#sala-sobre .conto-tag,
+#sala-sobre .card {
+  position: relative;
+}
+#sala-sobre .card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #e8d5a0, transparent);
+  opacity: .6;
+}
+
+/* UNIVERSO VIKING — herda Thurisaz (vermelho claro) */
+#sala-universo .card {
+  position: relative;
+  overflow: hidden;
+}
+#sala-universo .card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #e8564a, transparent);
+  opacity: .65;
+}
+
+/* MITOLOGIA NÓRDICA — herda Othala (laranja queimado) */
+#sala-mitologia .card {
+  position: relative;
+  overflow: hidden;
+}
+#sala-mitologia .card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #d4915a, transparent);
+  opacity: .65;
+}
+
