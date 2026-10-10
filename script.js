@@ -53,18 +53,21 @@ const Taverna = (() => {
 
   // ENTRAR
   function entrar() {
-    // Ativa a animação do sprite (runas acendendo)
-    const imgEntrada = document.querySelector('.entrada-imagem');
-    if (imgEntrada) imgEntrada.classList.add('ativando');
+    // Toca o vídeo da transição (runas acendendo + clarão)
+    const video = document.getElementById('portalVideo');
+    if (video) {
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    }
 
-    // Glow branco começa depois de 1,5s (final da animação do sprite)
+    // Glow branco começa no fim do vídeo (3s)
     setTimeout(() => {
       const glow = $('glowEntrada');
       if (glow) {
         glow.classList.add('ativo');
         setTimeout(() => glow.classList.remove('ativo'), 1700);
       }
-    }, 1500);
+    }, 2500);
 
     setTimeout(() => {
       const entrada = $('entrada');
@@ -98,7 +101,7 @@ const Taverna = (() => {
       setTimeout(() => {
         if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
       }, CONFIG.delays.musicaSubir);
-    }, 2200);
+    }, 3200);
   }
 
   function ativarHeroVideo() {

@@ -28,8 +28,11 @@
   <div class="entrada-overlay"></div>
   <div class="entrada-conteudo">
     <div class="entrada-kicker">TAVERNA FENRIR · A FRENTE NA NEVE</div>
-    <div class="entrada-imagem">
-      <div class="entrada-portal"><img src="assets/img/entrada-sprite.jpg" alt="Taverna Fenrir"></div>
+    <div class="entrada-imagem" id="entradaImagem">
+      <video id="portalVideo" poster="assets/img/entrada-taverna.jpg" muted playsinline preload="auto">
+        <source src="assets/video/entrada-taverna.webm" type="video/webm">
+        <source src="assets/video/entrada-taverna.mp4" type="video/mp4">
+      </video>
     </div>
     <p class="entrada-frase">O fogo está aceso e teu lugar está guardado. <strong>Entra.</strong></p>
     <button class="btn-entrar" onclick="Taverna.entrar()">ENTRAR NA TAVERNA</button>

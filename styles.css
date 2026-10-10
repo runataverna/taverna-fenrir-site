@@ -62,7 +62,7 @@ button { font-family: inherit; }
 .entrada-imagem {
   width: 100%; max-width: 480px;
   margin: 0 auto 24px;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1000 / 922;
   overflow: hidden;
   position: relative;
   border-radius: 14px;
@@ -71,27 +71,11 @@ button { font-family: inherit; }
   background: #0a0e14;
 }
 
-.entrada-portal {
+.entrada-imagem video {
   width: 100%;
   height: 100%;
-}
-
-.entrada-portal img {
-  width: 100%;
-  height: 800%;
+  object-fit: cover;
   display: block;
-  object-fit: fill;
-  transform: translateY(0);
-  will-change: transform;
-}
-
-.entrada-imagem.ativando .entrada-portal img {
-  animation: portalAnim 2s steps(7) forwards;
-}
-
-@keyframes portalAnim {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-87.5%); }
 }
 .entrada-imagem-placeholder {
   aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center;
