@@ -67,7 +67,7 @@ const Taverna = (() => {
         glow.classList.add('ativo');
         setTimeout(() => glow.classList.remove('ativo'), 1700);
       }
-    }, 4500);
+    }, 6500);
 
     setTimeout(() => {
       const entrada = $('entrada');
@@ -101,7 +101,7 @@ const Taverna = (() => {
       setTimeout(() => {
         if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
       }, CONFIG.delays.musicaSubir);
-    }, 5200);
+    }, 7200);
   }
 
   function ativarHeroVideo() {
