@@ -60,10 +60,10 @@ const PORTAS = [
   { id: 'sobre',       num: 2, titulo: 'Sobre a Runa',              tag: 'Ela mesma',     desc: 'A guerreira que trocou a espada pelo avental — a história completa na voz dela.', video: 's4RftBijF0Q', duracao: 8000,  img: 'runa-retrato.jpg' },
   { id: 'universo',    num: 3, titulo: 'Universo Viking',           tag: 'Mundo',         desc: 'Rotas, clãs, navios e costumes que moldaram a guerreira taberneira.', video: '1LZkHAPm5GQ', duracao: 13000, img: 'runa-viking.jpg' },
   { id: 'mitologia',   num: 4, titulo: 'Mitologia Nórdica',         tag: 'Mitos',         desc: 'Yggdrasil, os Nove Mundos, Fenrir e os deuses que observam a taverna.', video: '0Gs4CzPLMwM', duracao: 11000, img: 'runa-mitologia.jpg' },
-  { id: 'aneis',       num: 5, titulo: 'Anéis & Pingentes',         tag: 'Relíquias',     desc: 'Peças ligadas às histórias: o pingente da raiz, o ferro do fiorde.', video: 'kVn2eI32yyU', duracao: 8000,  img: 'runa-aneis.jpg' },
-  { id: 'facas',       num: 6, titulo: 'Facas & Utensílios',        tag: 'Do balcão',     desc: 'Ferro batido, fio firme — o kit da taverna.', video: 'WX1lHp6vH1c', duracao: 8000,  img: 'runa-facas.jpg' },
-  { id: 'casacos',     num: 7, titulo: 'Casacos',                   tag: 'Vestir',        desc: 'Contra a neve lá fora: camadas quentes com espírito do norte.', video: 'Z38aRgWU9Wg', duracao: 11000, img: 'runa-casacos.jpg' },
-  { id: 'heavymetal',  num: 8, titulo: 'Heavy Metal & Camisetas',   tag: 'Som & Vestir',  desc: 'A trilha da casa e as runas para vestir.', video: 'GLe-29BBcws', duracao: 8000,  img: 'runa-heavymetal.jpg' },
+  { id: 'aneis',       num: 5, titulo: 'Relíquias da Runa',         tag: 'Relíquias',     desc: 'Peças ligadas às histórias: o pingente da raiz, o ferro do fiorde.', video: 'kVn2eI32yyU', duracao: 8000,  img: 'runa-aneis.jpg' },
+  { id: 'facas',       num: 6, titulo: 'A Forja da Runa',        tag: 'Do balcão',     desc: 'Ferro batido, fio firme — o kit da taverna.', video: 'WX1lHp6vH1c', duracao: 8000,  img: 'runa-facas.jpg' },
+  { id: 'casacos',     num: 7, titulo: 'Peles do Norte',                   tag: 'Vestir',        desc: 'Contra a neve lá fora: camadas quentes com espírito do norte.', video: 'Z38aRgWU9Wg', duracao: 11000, img: 'runa-casacos.jpg' },
+  { id: 'heavymetal',  num: 8, titulo: 'O Som da Taverna',   tag: 'Som & Vestir',  desc: 'A trilha da casa e as runas para vestir.', video: 'GLe-29BBcws', duracao: 8000,  img: 'runa-heavymetal.jpg' },
   { id: 'arte',        num: 9, titulo: 'Arte Conceitual',           tag: 'Bastidores',    desc: 'Onde tudo começou. Esboços que nunca entraram nas histórias oficiais.', video: '49CYH2HEyoY', duracao: 12000, img: 'runa-arte.jpg' }
 ];
 
@@ -612,7 +612,7 @@ const SIMBOLOS = [
 // ============================================================
 const SALAS_VENDA = {
   facas: {
-    titulo: 'Facas & Utensílios',
+    titulo: 'A Forja da Runa',
     subtitulo: 'A cozinha da taverna.',
     imagem: 'runa-facas.jpg',
     propaganda: 'propaganda-facas.jpg',
@@ -633,7 +633,7 @@ Os utensílios que eu uso aqui seguem essa mesma lógica. Não é sobre ser boni
 Nada aqui é enfeite. Tudo aqui é pra estar na mão.`
   },
   aneis: {
-    titulo: 'Anéis & Pingentes',
+    titulo: 'Relíquias da Runa',
     subtitulo: 'O que se carrega no peito.',
     imagem: 'runa-aneis.jpg',
     propaganda: 'propaganda-aneis.jpg',
@@ -652,7 +652,7 @@ Não sei de quem era. Não sei se a pessoa que usava ele voltou pra casa. Nunca 
 Os que eu escolhi pra colocar aqui são peças que podem carregar algo. Nada muito cheio de detalhe — assim você pode gravar tua runa, ou o nome de alguém. Ou deixar como tá. E lembrar do que quiser lembrar.`
   },
   casacos: {
-    titulo: 'Casacos',
+    titulo: 'Peles do Norte',
     subtitulo: 'O frio que não perdoa.',
     imagem: 'runa-casacos.jpg',
     propaganda: 'propaganda-casacos.jpg',
@@ -673,7 +673,7 @@ Não é ciência complicada. É prática de quem viveu.
 Se você mora no frio, sabe do que eu tô falando. Se não mora, e vai passar por um inverno de verdade, leva a sério. Um casaco ruim é a diferença entre voltar pra casa e virar estátua de gelo na estrada.`
   },
   heavymetal: {
-    titulo: 'Heavy Metal & Camisetas',
+    titulo: 'O Som da Taverna',
     subtitulo: 'O que a gente veste e o que a gente canta.',
     imagem: 'runa-heavymetal.jpg',
     propaganda: 'propaganda-heavymetal.jpg',

@@ -1465,3 +1465,16 @@ body, #app {
   opacity: .65;
 }
 
+
+/* ============================================================
+   BOTÃO DE VENDA — vermelho translúcido
+   Aplicado em 09/10/2026
+   ============================================================ */
+.btn-venda {
+  background: rgba(139, 0, 0, .55);
+  border: 1px solid rgba(201, 162, 39, .7);
+}
+.btn-venda:hover {
+  background: rgba(139, 0, 0, .85);
+  border-color: #c9a227;
+}

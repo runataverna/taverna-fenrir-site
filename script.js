@@ -518,10 +518,10 @@ const Taverna = (() => {
     if (!el) return;
     el.innerHTML = '';
     const lojas = [
-      { id: 'aneis', nome: 'Anéis & Pingentes' },
-      { id: 'facas', nome: 'Facas & Utensílios' },
-      { id: 'casacos', nome: 'Casacos' },
-      { id: 'heavymetal', nome: 'Heavy Metal & Camisetas' },
+      { id: 'aneis', nome: 'Relíquias da Runa' },
+      { id: 'facas', nome: 'A Forja da Runa' },
+      { id: 'casacos', nome: 'Peles do Norte' },
+      { id: 'heavymetal', nome: 'O Som da Taverna' },
       { id: 'arte', nome: 'Arte Conceitual' }
     ];
     lojas.forEach(l => {
