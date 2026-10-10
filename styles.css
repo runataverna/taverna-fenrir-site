@@ -318,7 +318,7 @@ button { font-family: inherit; }
 
 /* HISTÓRIA NÃO CONTADA */
 .historia-nao-contada {
-  position: relative; margin: 70px auto 40px;
+  position: relative; margin: 70px auto 20px;
   max-width: 700px; padding: 50px 30px;
   background: linear-gradient(135deg, #050d14 0%, #0a1a26 50%, #050d14 100%);
   border: 1px solid rgba(0,229,255,.35);
@@ -682,7 +682,7 @@ button { font-family: inherit; }
    FOOTER GERAL
    ============================================================ */
 .footer-geral {
-  max-width: 1100px; margin: 60px auto 0;
+  max-width: 1100px; margin: 30px auto 0;
   padding: 40px 20px 30px;
   text-align: center;
 }
@@ -1711,4 +1711,13 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   color: #a8b8c8;
   font-size: .95rem;
   letter-spacing: .5px;
+}
+
+/* ============================================================
+   NEGRITO — markdown convertido
+   Aplicado em 10/10/2026
+   ============================================================ */
+.texto-negrito {
+  color: #c9a227;
+  font-weight: 600;
 }
