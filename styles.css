@@ -1478,3 +1478,12 @@ body, #app {
   background: rgba(139, 0, 0, .85);
   border-color: #c9a227;
 }
+
+/* ============================================================
+   SELOS — ícones arredondados (teste)
+   Aplicado em 09/10/2026
+   ============================================================ */
+.selo-footer img,
+.selo img {
+  border-radius: 50%;
+}
