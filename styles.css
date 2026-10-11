@@ -424,7 +424,12 @@ button { font-family: inherit; }
   background: linear-gradient(135deg, #1a0f08, #0d0806);
   box-shadow: 0 8px 40px rgba(0,0,0,.65);
 }
-.imagem-abertura img { width: 100%; display: block; height: auto; }
+.imagem-abertura img {
+  width: 100%;
+  display: block;
+  height: auto;
+  object-position: center top;
+}
 .imagem-abertura-placeholder {
   aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
   color: #6a5a45; font-style: italic; font-size: .88rem;
@@ -1592,7 +1597,7 @@ body, #app {
 
 .card-fechado-foto {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 4/5;
   background: linear-gradient(135deg, #1a0f08, #0d0806);
   display: flex;
   align-items: center;
@@ -1883,6 +1888,7 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
@@ -1930,7 +1936,7 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
 
 .conto-card-foto {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 4/5;
   background: linear-gradient(135deg, #1a0f08, #0d0806);
   border-bottom: 1px solid rgba(201,162,39,.15);
   overflow: hidden;
@@ -1940,6 +1946,7 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
