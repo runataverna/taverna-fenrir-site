@@ -105,9 +105,11 @@ const Taverna = (() => {
   }
 
   function ativarHeroVideo() {
-    const iframe = $('heroIframe');
-    if (iframe && !iframe.src) {
-      iframe.src = `https://www.youtube.com/embed/${CONFIG.heroHall}?autoplay=1&mute=1&loop=1&playlist=${CONFIG.heroHall}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3`;
+    // Vídeo local — já tem autoplay/muted/loop no HTML.
+    // Aqui só garante que ele está tocando ao entrar no salão.
+    const video = $('heroVideo');
+    if (video && video.paused) {
+      video.play().catch(() => {});
     }
   }
 
