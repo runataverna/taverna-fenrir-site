@@ -1263,7 +1263,3 @@ if (document.readyState === 'loading') {
   Taverna.init();
        }
 
-  // Tática para esconder a barra de endereço do navegador no Android
-  window.addEventListener('load', () => {
-    setTimeout(() => window.scrollTo(0, 1), 100);
-  });
