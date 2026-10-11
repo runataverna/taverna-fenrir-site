@@ -343,11 +343,17 @@ const Taverna = (() => {
       div.onclick = () => abrirHistoria(c.id);
       const preview = c.abas ? c.abas[0].texto : c.texto;
       const previewLimpo = preview.replace(/<[^>]+>/g, '').substring(0, 140).replace(/\n/g, ' ') + '...';
+      const fotoHTML = c.foto
+        ? '<img src="assets/img/' + c.foto + '" alt="' + c.titulo + '" loading="lazy">'
+        : '<div class="conto-card-placeholder">Imagem em produção</div>';
       div.innerHTML = `
-        <span class="conto-tag${c.microcontos ? ' tag-chamas' : ''}">${c.subtitulo}</span>
-        <h3>${c.titulo}</h3>
-        <p>${previewLimpo}</p>
-        <span class="ler-conto">${c.microcontos ? 'Abrir os microcontos →' : 'Ler o conto →'}</span>`;
+        <div class="conto-card-foto">${fotoHTML}</div>
+        <div class="conto-card-conteudo">
+          <span class="conto-tag${c.microcontos ? ' tag-chamas' : ''}">${c.subtitulo}</span>
+          <h3>${c.titulo}</h3>
+          <p>${previewLimpo}</p>
+          <span class="ler-conto">${c.microcontos ? 'Abrir os microcontos →' : 'Ler o conto →'}</span>
+        </div>`;
       lista.appendChild(div);
     });
   }

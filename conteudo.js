@@ -73,6 +73,7 @@ const PORTAS = [
 const CONTOS = [
 {
     id: 'abertura',
+    foto: 'abertura-capa.webp',
     titulo: 'As Runas da Porta',
     subtitulo: 'Abertura · Antes de entrar',
     imagemAbertura: 'runa-abertura.jpg',
@@ -103,6 +104,7 @@ Senta. A casa é sua.`,
   },
   {
     id: 'bando',
+    foto: 'bando-capa.webp',
     titulo: 'O Bando do Lobo Cinzento',
     subtitulo: 'Conto I · A família escolhida',
     imagemAbertura: 'runa-bando.jpg',
@@ -170,6 +172,7 @@ E ser escolhido, meu caro, é uma das poucas coisas na vida que valem a pena.`
   },
   {
     id: 'runas',
+    foto: 'runas-capa.webp',
     titulo: 'Como Runa aprendeu as runas',
     subtitulo: 'Conto II · A velha do bando',
     imagemAbertura: 'runa-runas.jpg',
@@ -267,6 +270,7 @@ Se você quiser começar, começa por onde eu comecei. Uma faca de entalhe, um p
   },
   {
     id: 'yggdrasil',
+    foto: 'yggdrasil-capa.webp',
     titulo: 'Juramento sob Yggdrasil',
     subtitulo: 'Conto III · A raiz',
     imagemAbertura: 'runa-yggdrasil.jpg',
@@ -312,6 +316,7 @@ Se você quer começar, começa pequeno. Terra boa, paciência, e a mão dispost
   },
   {
     id: 'caneca',
+    foto: 'caneca-capa.webp',
     titulo: 'A caneca que nunca esfria',
     subtitulo: 'Conto IV · Noite de neve',
     imagemAbertura: 'runa-caneca.jpg',
@@ -328,6 +333,7 @@ Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o f
   },
   {
     id: 'neve',
+    foto: 'neve-capa.webp',
     titulo: 'Neve e sangue na porta',
     subtitulo: 'Conto V · O inverno do lobo',
     imagemAbertura: 'runa-neve.jpg',
@@ -385,6 +391,7 @@ Se um dia você tiver uma casa sua, lembra disso: o cuidado com a mesa é cuidad
   },
   {
     id: 'halvar',
+    foto: 'halvar-capa.webp',
     titulo: 'O Homem Que Disse Ela Fica',
     subtitulo: 'Conto VI · O líder do bando',
     imagemAbertura: null,
@@ -433,6 +440,7 @@ A noite é longa. E eu tenho tempo.`,
   },
   {
     id: 'bardo',
+    foto: 'bardo-capa.webp',
     titulo: 'Bardo e a sua caneca',
     subtitulo: 'Conto VII · O cliente fiel',
     imagemAbertura: 'runa-bardo-conto.jpg',
