@@ -9,6 +9,7 @@ const Taverna = (() => {
   let salaAtual = null;
   let contoAtual = null;
   let abaAtual = 0;
+  let scrollHall = 0;
 
   const $ = id => document.getElementById(id);
   const $$ = sel => document.querySelectorAll(sel);
@@ -118,6 +119,9 @@ const Taverna = (() => {
     const menu = $('menuLista');
     if (menu) menu.classList.remove('aberto');
 
+    // Salva a posição do hall antes de sair
+    scrollHall = window.scrollY;
+
     if (salaAtual) {
       const el = $('sala-' + salaAtual);
       if (el) el.classList.remove('ativa');
@@ -166,7 +170,10 @@ const Taverna = (() => {
       audioRuna().pause(); audioRunaTocando = false;
       if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao);
     }
-    window.scrollTo(0, 0);
+    // Restaura a posição que o hall estava
+    requestAnimationFrame(() => {
+      window.scrollTo(0, scrollHall);
+    });
     history.pushState({ sala: null }, '', location.pathname);
   }
 
@@ -425,7 +432,10 @@ const Taverna = (() => {
     renderizarRedes('hncRedes');
 
     const modal = $('historiaModal');
-    if (modal) modal.classList.add('active');
+    if (modal) {
+      modal.classList.add('active');
+      modal.scrollTop = 0;
+    }
     history.pushState({ modal: id }, '', '#' + id);
   }
 
@@ -997,7 +1007,10 @@ const Taverna = (() => {
     atualizarCurtir('card-' + dados.id, $('cardCurtirIcone'), $('cardCurtir'), $('cardContador'), $('cardTexto'));
 
     const modal = $('modalCard');
-    if (modal) modal.classList.add('active');
+    if (modal) {
+      modal.classList.add('active');
+      modal.scrollTop = 0;
+    }
     document.body.style.overflow = 'hidden';
   }
 
