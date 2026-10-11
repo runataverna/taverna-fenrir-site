@@ -1960,3 +1960,17 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   flex-direction: column;
   flex-grow: 1;
 }
+
+/* ============================================================
+   SALA HEADER — versão de baixo (subtítulo + runas depois da foto)
+   Aplicado em 11/10/2026
+   ============================================================ */
+.sala-header-baixo {
+  padding-top: 0;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+.sala-header-baixo p {
+  margin-top: 0;
+}
