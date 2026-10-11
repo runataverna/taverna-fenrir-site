@@ -271,11 +271,10 @@
     <h2 id="historiaTitulo"></h2>
     <div class="historia-sub" id="historiaSub"></div>
 
-    <div class="historia-abas-nav" id="historiaAbasNav"></div>
-    <div class="historia-abas-bolinhas" id="historiaAbasBolinhas"></div>
-
     <div class="historia-texto" id="historiaTexto"></div>
     <div class="historia-rodape" id="historiaRodape"></div>
+
+    <div class="historia-abas-bolinhas" id="historiaAbasBolinhas"></div>
 
     <!-- BALÕES CURTIR / COMPARTILHAR -->
     <div class="historia-acoes">
@@ -291,6 +290,12 @@
       <p class="acao-texto" id="acaoTexto">Acenda essa história</p>
     </div>
 
+    <!-- NAVEGAÇÃO -->
+    <div class="historia-nav" id="historiaNav">
+      <button id="btnHistoriaAnterior" onclick="Taverna.fecharHistoria()">← Voltar ao Salão</button>
+      <button id="btnHistoriaProxima" onclick="Taverna.proximaAba()">Fechar ✕</button>
+    </div>
+
     <!-- PROPAGANDA -->
     <div class="imagem-propaganda" id="historiaPropaganda"></div>
 
@@ -303,12 +308,6 @@
     <div class="historia-audio" id="historiaAudioBox">
       <button id="historiaAudioBtn" onclick="Taverna.toggleHistoriaAudio()">▶</button>
       <span>Ouça a Runa contar esta história</span>
-    </div>
-
-    <!-- NAVEGAÇÃO -->
-    <div class="historia-nav" id="historiaNav">
-      <button id="btnHistoriaAnterior" onclick="Taverna.fecharHistoria()">← Voltar ao Salão</button>
-      <button id="btnHistoriaProxima" onclick="Taverna.proximaAba()">Fechar ✕</button>
     </div>
 
     <!-- SELOS -->
