@@ -54,14 +54,24 @@ const Taverna = (() => {
 
   // ENTRAR
   function entrar() {
-    // Toca o vídeo da transição (runas acendendo + clarão)
+    // 1. Toca o vídeo da transição
     const video = document.getElementById('portalVideo');
     if (video) {
       video.currentTime = 0;
       video.play().catch(() => {});
     }
 
-    // Glow branco começa no fim do vídeo (3s)
+    // 2. Música começa JUNTO com o clique (volume baixo)
+    desbloquearAudio();
+    restaurarMusica();
+    musicaLiberada = true;
+    if (musica()) {
+      musica().playbackRate = 1.0;
+      musica().volume = CONFIG.volumes.musicaBaixa;
+      musica().play().catch(e => console.log('mus:', e.name));
+    }
+
+    // 3. Glow branco no fim do vídeo
     setTimeout(() => {
       const glow = $('glowEntrada');
       if (glow) {
@@ -70,6 +80,7 @@ const Taverna = (() => {
       }
     }, 6500);
 
+    // 4. Ao fim do vídeo: mostra hall + toca boas-vindas
     setTimeout(() => {
       const entrada = $('entrada');
       if (entrada) entrada.classList.add('hidden');
@@ -82,22 +93,10 @@ const Taverna = (() => {
 
       ativarHeroVideo();
 
-      desbloquearAudio();
-      restaurarMusica();
-      musicaLiberada = true;
-
-      if (musica()) {
-        musica().playbackRate = 1.0;
-        musica().volume = CONFIG.volumes.musicaBaixa;
-        musica().play().catch(e => console.log('mus:', e.name));
+      if (boasVindas()) {
+        boasVindas().volume = CONFIG.volumes.boasVindas;
+        boasVindas().play().catch(e => console.log('bv:', e.name));
       }
-
-      setTimeout(() => {
-        if (boasVindas()) {
-          boasVindas().volume = CONFIG.volumes.boasVindas;
-          boasVindas().play().catch(e => console.log('bv:', e.name));
-        }
-      }, CONFIG.delays.fimIntro);
 
       setTimeout(() => {
         if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
