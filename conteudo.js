@@ -76,7 +76,7 @@ const CONTOS = [
     foto: 'abertura-capa.webp',
     titulo: 'As Runas da Porta',
     subtitulo: 'Abertura · Antes de entrar',
-    imagemAbertura: 'runa-abertura.jpg',
+    imagemAbertura: 'abertura-interna.webp',
     propaganda: null,
     texto: `Se você chegou até aqui, presta atenção numa coisa antes de entrar.
 
@@ -107,7 +107,7 @@ Senta. A casa é sua.`,
     foto: 'bando-capa.webp',
     titulo: 'O Bando do Lobo Cinzento',
     subtitulo: 'Conto I · A família escolhida',
-    imagemAbertura: 'runa-bando.jpg',
+    imagemAbertura: 'bando-interna.webp',
     propaganda: 'propaganda-presentes.jpg',
     abas: [
       {
@@ -175,7 +175,7 @@ E ser escolhido, meu caro, é uma das poucas coisas na vida que valem a pena.`
     foto: 'runas-capa.webp',
     titulo: 'Como Runa aprendeu as runas',
     subtitulo: 'Conto II · A velha do bando',
-    imagemAbertura: 'runa-runas.jpg',
+    imagemAbertura: 'runas-interna.webp',
     propaganda: 'propaganda-oficio.jpg',
     abas: [
       {
@@ -273,7 +273,7 @@ Se você quiser começar, começa por onde eu comecei. Uma faca de entalhe, um p
     foto: 'yggdrasil-capa.webp',
     titulo: 'Juramento sob Yggdrasil',
     subtitulo: 'Conto III · A raiz',
-    imagemAbertura: 'runa-yggdrasil.jpg',
+    imagemAbertura: 'yggdrasil-interna.webp',
     propaganda: 'propaganda-jardim.jpg',
     abas: [
       {
@@ -319,7 +319,7 @@ Se você quer começar, começa pequeno. Terra boa, paciência, e a mão dispost
     foto: 'caneca-capa.webp',
     titulo: 'A caneca que nunca esfria',
     subtitulo: 'Conto IV · Noite de neve',
-    imagemAbertura: 'runa-caneca.jpg',
+    imagemAbertura: 'caneca-interna.webp',
     propaganda: 'propaganda-caneca.jpg',
     texto: `A neve batia na porta como quem pede licença, e o viajante entrou a rir-se do frio. «Quentinho, dizes?»
 
@@ -336,7 +336,7 @@ Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o f
     foto: 'neve-capa.webp',
     titulo: 'Neve e sangue na porta',
     subtitulo: 'Conto V · O inverno do lobo',
-    imagemAbertura: 'runa-neve.jpg',
+    imagemAbertura: 'neve-interna.webp',
     propaganda: 'propaganda-mantas.jpg',
     abas: [
       {
@@ -394,7 +394,7 @@ Se um dia você tiver uma casa sua, lembra disso: o cuidado com a mesa é cuidad
     foto: 'halvar-capa.webp',
     titulo: 'O Homem Que Disse Ela Fica',
     subtitulo: 'Conto VI · O líder do bando',
-    imagemAbertura: null,
+    imagemAbertura: 'halvar-interna.webp',
     propaganda: null,
     texto: `Eu gosto quando ele aparece.
 
@@ -443,7 +443,7 @@ A noite é longa. E eu tenho tempo.`,
     foto: 'bardo-capa.webp',
     titulo: 'Bardo e a sua caneca',
     subtitulo: 'Conto VII · O cliente fiel',
-    imagemAbertura: 'runa-bardo-conto.jpg',
+    imagemAbertura: 'bardo-interna.webp',
     propaganda: 'propaganda-bardo.jpg',
     texto: `Senta. Essa história é sobre um velho cliente. O nome dele é Bardo. Não é anão, não é ferreiro, não é deus. É um velho teimoso que aparece aqui toda quinta-feira, senta no mesmo canto, e pede a mesma coisa: hidromel na caneca dele.
 
