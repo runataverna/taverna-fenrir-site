@@ -3,11 +3,14 @@
    ============================================================ */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: #0d0806; }
 
 body {
-  background:
-    radial-gradient(ellipse at 50% 0%, #2a1a10 0%, #1a0f08 45%, #0d0806 100%) fixed;
+  background-color: #0d0806;
+  background-image: radial-gradient(ellipse at 50% 0%, #2a1a10 0%, #1a0f08 45%, #0d0806 100%);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: 100% 100vh;
   color: #d8d4cc;
   font-family: 'Texturina', serif;
   font-size: 16px;
