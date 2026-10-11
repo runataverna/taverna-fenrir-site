@@ -71,7 +71,7 @@ const PORTAS = [
 // OS CONTOS (abertura + 7 principais)
 // ============================================================
 const CONTOS = [
-  {
+{
     id: 'abertura',
     titulo: 'As Runas da Porta',
     subtitulo: 'Abertura · Antes de entrar',
@@ -102,147 +102,9 @@ Senta. A casa é sua.`,
     imagens: null, video: null, link: null, linkTexto: null, abas: null, audio: null
   },
   {
-    id: 'caneca',
-    titulo: 'A caneca que nunca esfria',
-    subtitulo: 'Conto I · Noite de neve',
-    imagemAbertura: 'runa-caneca.jpg',
-    propaganda: 'propaganda-caneca.jpg',
-    texto: `A neve batia na porta como quem pede licença, e o viajante entrou a rir-se do frio. «Quentinho, dizes?»
-
-Runa não respondeu: pousou a caneca de carvalho no balcão e deixou o hidromel acender-se num sopro azul. Dizem que o fogo da Taverna Fenrir não queima a mão de quem chega em paz — só aquece a coragem.
-
-O viajante bebeu de um gole, tossiu, riu, e pediu outra. Runa, de braços cruzados, murmurou a frase que a casa inteira já conhece.
-
-Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o frio lá fora é real, mas o fogo aqui dentro é teimoso.`,
-    rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null, video: null, link: 'https://meli.la/1pQy38B', linkTexto: 'Obter essa relíquia', abas: null, audio: null
-  },
-  {
-    id: 'bardo',
-    titulo: 'Bardo e a sua caneca',
-    subtitulo: 'Conto V · O cliente fiel',
-    imagemAbertura: 'runa-bardo-conto.jpg',
-    propaganda: 'propaganda-bardo.jpg',
-    texto: `Senta. Essa história é sobre um velho cliente. O nome dele é Bardo. Não é anão, não é ferreiro, não é deus. É um velho teimoso que aparece aqui toda quinta-feira, senta no mesmo canto, e pede a mesma coisa: hidromel na caneca dele.
-
-E ele tem uma caneca específica. Não aceita outra.
-
-— Runa, essa caneca aqui tem história — ele diz. E tem. Ele comprou de um mercador que passou por aqui há uns dez invernos. Pagou caro.
-
-O que eu sei é que ele chega, senta, e a caneca já está esperando. Uma vez eu perguntei por que ele gostava tanto daquela caneca. Ele respondeu:
-
-— Porque ela é minha. E porque, quando eu seguro ela, eu lembro de quem eu era antes de ficar velho.
-
-Tem coisas que a gente carrega não pelo valor. Carrega pelo peso.`,
-    rodape: 'contado por Runa, atrás do balcão.',
-    imagens: null, video: null, link: 'https://meli.la/1TCwkER', linkTexto: 'Obter essa relíquia', abas: null, audio: null
-  },
-  {
-    id: 'yggdrasil',
-    titulo: 'Juramento sob Yggdrasil',
-    subtitulo: 'Conto IV · A raiz',
-    imagemAbertura: 'runa-yggdrasil.jpg',
-    propaganda: 'propaganda-jardim.jpg',
-    abas: [
-      {
-        titulo: 'O Juramento',
-        texto: `Antes da taverna, eu andava sem rumo. Sem casa, sem nome, sem pra onde voltar.
-
-Foi numa tarde de chuva que encontrei uma cabana em pedaços no meio da floresta. Queimada. Abandonada. Ninguém morava ali há muito tempo.
-
-E ao lado dela, no chão, uma raiz gigantesca. Yggdrasil partida. Queimada por um raio.
-
-Eu fiquei parada olhando aquilo por um tempo que nem sei medir. A árvore que sustenta os Nove Mundos — reduzida a um pedaço de madeira retorcida no meio do mato.
-
-Foi ali que eu decidi.
-
-Peguei a faca de entalhe, ajoelhei na terra molhada, e coloquei minha primeira runa após sair do bando do Lobo Cinzento. Algiz. Proteção.
-
-E jurei uma coisa que carrego até hoje: nenhum ferido fica lá fora.
-
-Do resto da árvore, fiz a porta da taverna. Você já passou por ela quando entrou aqui. É de raiz. Está lá até hoje, pesada, cheia de marcas. Cada vez que ela range ao abrir, eu lembro daquele dia.
-
-A taverna inteira é isso. É a lição que a floresta me ensinou quando eu mais precisava.`
-      },
-      {
-        titulo: 'O que a árvore me ensinou',
-        texto: `Você já parou pra olhar uma árvore de verdade?
-
-Não de passagem. Parar. Olhar. Entender o que ela faz.
-
-Yggdrasil sustenta Nove Mundos. A nossa árvore aqui na porta da taverna não sustenta mundos, mas sustenta a vida que passa por ela. Dá sombra pra quem senta. Dá madeira pra quem precisa. Dá ar pra quem respira.
-
-A raiz que eu encontrei naquele dia me ensinou uma coisa simples: quem não cuida, perde.
-
-Eu não sou boa com plantas. Mas aprendi a cuidar do que tenho. Um vaso, uma horta, um pedaço de terra. Não é sobre ter um jardim bonito. É sobre honrar a terra que te sustenta.
-
-Se você quer começar, começa pequeno. Terra boa, paciência, e a mão disposta a sujar. A floresta corrige quem tenta. E quem insiste, colhe.`
-      }
-    ],
-    rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null, video: null, link: 'https://meli.la/1xdP4cC', linkTexto: 'Conhecer o Kit de Jardinagem da Runa', audio: null
-  },
-  {
-    id: 'neve',
-    titulo: 'Neve e sangue na porta',
-    subtitulo: 'Conto III · O inverno do lobo',
-    imagemAbertura: 'runa-neve.jpg',
-    propaganda: 'propaganda-mantas.jpg',
-    abas: [
-      {
-        titulo: 'A noite em que o lobo uivou',
-        texto: `O uivo desceu da montanha e apagou as tochas do cais.
-
-Lá fora, os mercenários riram. Os pescadores rezaram. E eu sabia que a noite ia ser longa.
-
-Fenrir uivou — e quando Fenrir uiva, as pessoas lembram que são pequenas.
-
-Eu limpei o balcão. Pendurei a espada ao alcance da mão, do lado de dentro. E mantive a porta aberta.
-
-A primeira coisa que eu digo pra quem entra é sempre a mesma: "Quem entra com sangue na bota, limpa na esteira."
-
-Não é sobre limpeza. É sobre deixar lá fora o que não pertence aqui dentro.
-
-Naquela noite, entraram inimigos. Gente que se mataria na rua. Gente que tinha motivo de sobra pra não dividir a mesma mesa.
-
-Sentaram juntos. Comeram juntos. Bebaram juntos.
-
-Não porque viraram amigos. Porque aqui dentro, a trégua dura até a caneca esvaziar. E enquanto houver hidromel, ninguém levanta a mão.
-
-Quando o lobo calou, lá fora a neve cobria tudo. A soleira da porta, porém, estava limpa. O fogo tinha vencido outra vez.`
-      },
-      {
-        titulo: 'O que fica do lado de fora',
-        texto: `Tem uma coisa que eu nunca disse pra ninguém.
-
-Aprendi isso com o Halvar, na primeira noite em que dormi no abrigo do bando. Todo mundo ali tinha motivo pra matar alguém. Gente que tinha perdido irmão, mãe, filho. Gente que dormia com a faca na mão por medo de acordar no meio da noite com o aço de alguém na garganta.
-
-E, no entanto, naquela noite, todos sentaram à mesma fogueira. Comeram do mesmo pote. Beberam da mesma caneca passando de mão em mão.
-
-Halvar só disse uma coisa antes de todo mundo dormir. Palavras que eu carrego há vinte anos:
-
-"Lá fora é lá fora. Aqui dentro, todos comem do mesmo prato."
-
-Eu nunca esqueci.
-
-Quando abri a Taverna Fenrir, essa foi a única regra que eu gravei na porta. Não está em pedra. Não está em runa. Está no jeito que eu sirvo.
-
-Um prato para o mercenário. Um prato para o pescador. Um prato para o homem que ontem tentou matar o outro. Prato igual para todos.
-
-É por isso que eu escolho cada peça da minha cozinha com cuidado. Não é sobre ter a louça mais bonita. É sobre ter a louça que diz, sem palavras: aqui dentro, todos são iguais.
-
-A neve vai continuar caindo lá fora. O sangue vai continuar secando nas botas. Mas o que atravessa a soleira da minha porta encontra uma mesa posta. E uma mesa posta é o que separa a gente da barbárie.
-
-Se um dia você tiver uma casa sua, lembra disso: o cuidado com a mesa é cuidado com quem senta à mesa.`
-      }
-    ],
-    rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null, video: null, link: 'https://meli.la/1UxNvkB', linkTexto: 'Conhecer a mesa da Runa', audio: null
-  },
-  {
     id: 'bando',
     titulo: 'O Bando do Lobo Cinzento',
-    subtitulo: 'Conto II · A família escolhida',
+    subtitulo: 'Conto I · A família escolhida',
     imagemAbertura: 'runa-bando.jpg',
     propaganda: 'propaganda-presentes.jpg',
     abas: [
@@ -309,7 +171,7 @@ E ser escolhido, meu caro, é uma das poucas coisas na vida que valem a pena.`
   {
     id: 'runas',
     titulo: 'Como Runa aprendeu as runas',
-    subtitulo: 'Conto VI · A velha do bando',
+    subtitulo: 'Conto II · A velha do bando',
     imagemAbertura: 'runa-runas.jpg',
     propaganda: 'propaganda-oficio.jpg',
     abas: [
@@ -402,6 +264,192 @@ Se você quiser começar, começa por onde eu comecei. Uma faca de entalhe, um p
     ],
     rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
     imagens: null, video: null, link: 'https://meli.la/2CYf4XY', linkTexto: 'Conhecer o ofício da Runa', audio: null
+  },
+  {
+    id: 'yggdrasil',
+    titulo: 'Juramento sob Yggdrasil',
+    subtitulo: 'Conto III · A raiz',
+    imagemAbertura: 'runa-yggdrasil.jpg',
+    propaganda: 'propaganda-jardim.jpg',
+    abas: [
+      {
+        titulo: 'O Juramento',
+        texto: `Antes da taverna, eu andava sem rumo. Sem casa, sem nome, sem pra onde voltar.
+
+Foi numa tarde de chuva que encontrei uma cabana em pedaços no meio da floresta. Queimada. Abandonada. Ninguém morava ali há muito tempo.
+
+E ao lado dela, no chão, uma raiz gigantesca. Yggdrasil partida. Queimada por um raio.
+
+Eu fiquei parada olhando aquilo por um tempo que nem sei medir. A árvore que sustenta os Nove Mundos — reduzida a um pedaço de madeira retorcida no meio do mato.
+
+Foi ali que eu decidi.
+
+Peguei a faca de entalhe, ajoelhei na terra molhada, e coloquei minha primeira runa após sair do bando do Lobo Cinzento. Algiz. Proteção.
+
+E jurei uma coisa que carrego até hoje: nenhum ferido fica lá fora.
+
+Do resto da árvore, fiz a porta da taverna. Você já passou por ela quando entrou aqui. É de raiz. Está lá até hoje, pesada, cheia de marcas. Cada vez que ela range ao abrir, eu lembro daquele dia.
+
+A taverna inteira é isso. É a lição que a floresta me ensinou quando eu mais precisava.`
+      },
+      {
+        titulo: 'O que a árvore me ensinou',
+        texto: `Você já parou pra olhar uma árvore de verdade?
+
+Não de passagem. Parar. Olhar. Entender o que ela faz.
+
+Yggdrasil sustenta Nove Mundos. A nossa árvore aqui na porta da taverna não sustenta mundos, mas sustenta a vida que passa por ela. Dá sombra pra quem senta. Dá madeira pra quem precisa. Dá ar pra quem respira.
+
+A raiz que eu encontrei naquele dia me ensinou uma coisa simples: quem não cuida, perde.
+
+Eu não sou boa com plantas. Mas aprendi a cuidar do que tenho. Um vaso, uma horta, um pedaço de terra. Não é sobre ter um jardim bonito. É sobre honrar a terra que te sustenta.
+
+Se você quer começar, começa pequeno. Terra boa, paciência, e a mão disposta a sujar. A floresta corrige quem tenta. E quem insiste, colhe.`
+      }
+    ],
+    rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
+    imagens: null, video: null, link: 'https://meli.la/1xdP4cC', linkTexto: 'Conhecer o Kit de Jardinagem da Runa', audio: null
+  },
+  {
+    id: 'caneca',
+    titulo: 'A caneca que nunca esfria',
+    subtitulo: 'Conto IV · Noite de neve',
+    imagemAbertura: 'runa-caneca.jpg',
+    propaganda: 'propaganda-caneca.jpg',
+    texto: `A neve batia na porta como quem pede licença, e o viajante entrou a rir-se do frio. «Quentinho, dizes?»
+
+Runa não respondeu: pousou a caneca de carvalho no balcão e deixou o hidromel acender-se num sopro azul. Dizem que o fogo da Taverna Fenrir não queima a mão de quem chega em paz — só aquece a coragem.
+
+O viajante bebeu de um gole, tossiu, riu, e pediu outra. Runa, de braços cruzados, murmurou a frase que a casa inteira já conhece.
+
+Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o frio lá fora é real, mas o fogo aqui dentro é teimoso.`,
+    rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
+    imagens: null, video: null, link: 'https://meli.la/1pQy38B', linkTexto: 'Obter essa relíquia', abas: null, audio: null
+  },
+  {
+    id: 'neve',
+    titulo: 'Neve e sangue na porta',
+    subtitulo: 'Conto V · O inverno do lobo',
+    imagemAbertura: 'runa-neve.jpg',
+    propaganda: 'propaganda-mantas.jpg',
+    abas: [
+      {
+        titulo: 'A noite em que o lobo uivou',
+        texto: `O uivo desceu da montanha e apagou as tochas do cais.
+
+Lá fora, os mercenários riram. Os pescadores rezaram. E eu sabia que a noite ia ser longa.
+
+Fenrir uivou — e quando Fenrir uiva, as pessoas lembram que são pequenas.
+
+Eu limpei o balcão. Pendurei a espada ao alcance da mão, do lado de dentro. E mantive a porta aberta.
+
+A primeira coisa que eu digo pra quem entra é sempre a mesma: "Quem entra com sangue na bota, limpa na esteira."
+
+Não é sobre limpeza. É sobre deixar lá fora o que não pertence aqui dentro.
+
+Naquela noite, entraram inimigos. Gente que se mataria na rua. Gente que tinha motivo de sobra pra não dividir a mesma mesa.
+
+Sentaram juntos. Comeram juntos. Bebaram juntos.
+
+Não porque viraram amigos. Porque aqui dentro, a trégua dura até a caneca esvaziar. E enquanto houver hidromel, ninguém levanta a mão.
+
+Quando o lobo calou, lá fora a neve cobria tudo. A soleira da porta, porém, estava limpa. O fogo tinha vencido outra vez.`
+      },
+      {
+        titulo: 'O que fica do lado de fora',
+        texto: `Tem uma coisa que eu nunca disse pra ninguém.
+
+Aprendi isso com o Halvar, na primeira noite em que dormi no abrigo do bando. Todo mundo ali tinha motivo pra matar alguém. Gente que tinha perdido irmão, mãe, filho. Gente que dormia com a faca na mão por medo de acordar no meio da noite com o aço de alguém na garganta.
+
+E, no entanto, naquela noite, todos sentaram à mesma fogueira. Comeram do mesmo pote. Beberam da mesma caneca passando de mão em mão.
+
+Halvar só disse uma coisa antes de todo mundo dormir. Palavras que eu carrego há vinte anos:
+
+"Lá fora é lá fora. Aqui dentro, todos comem do mesmo prato."
+
+Eu nunca esqueci.
+
+Quando abri a Taverna Fenrir, essa foi a única regra que eu gravei na porta. Não está em pedra. Não está em runa. Está no jeito que eu sirvo.
+
+Um prato para o mercenário. Um prato para o pescador. Um prato para o homem que ontem tentou matar o outro. Prato igual para todos.
+
+É por isso que eu escolho cada peça da minha cozinha com cuidado. Não é sobre ter a louça mais bonita. É sobre ter a louça que diz, sem palavras: aqui dentro, todos são iguais.
+
+A neve vai continuar caindo lá fora. O sangue vai continuar secando nas botas. Mas o que atravessa a soleira da minha porta encontra uma mesa posta. E uma mesa posta é o que separa a gente da barbárie.
+
+Se um dia você tiver uma casa sua, lembra disso: o cuidado com a mesa é cuidado com quem senta à mesa.`
+      }
+    ],
+    rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
+    imagens: null, video: null, link: 'https://meli.la/1UxNvkB', linkTexto: 'Conhecer a mesa da Runa', audio: null
+  },
+  {
+    id: 'halvar',
+    titulo: 'O Homem Que Disse Ela Fica',
+    subtitulo: 'Conto VI · O líder do bando',
+    imagemAbertura: null,
+    propaganda: null,
+    texto: `Eu gosto quando ele aparece.
+
+Não é toda semana. Nem toda quinta. Mas quando ele empurra aquela porta, a taverna muda. Ele não fala alto, não pede atenção. Só senta no canto dele, e todo mundo sabe que chegou.
+
+O nome dele é Halvar.
+
+Ele foi líder do Bando do Lobo Cinzento. Não porque gritava mais alto. Porque quando ele dizia uma coisa, ninguém precisava perguntar duas vezes.
+
+Eu cheguei no bando com fome, com frio e com raiva. Ninguém ali queria uma menina de catorze invernos atrapalhando. Ele me olhou por um tempo que parecia um ano. Depois disse duas palavras.
+
+— Ela fica.
+
+E fiquei.
+
+Ele não me ensinou a lutar com espada. Me entregou um machado. Disse que era ferramenta, não arma. Que quem aprende com ferramenta aprende a construir. Quem aprende com arma aprende a destruir.
+
+Eu não entendi na época. Entendi depois.
+
+Esse machado que eu carrego na cintura é meu. Carrego porque foi a primeira ferramenta que aprendi a usar de verdade. Carrego porque me lembra que antes de qualquer outra coisa, alguém me disse que eu podia ficar.
+
+Ele tem mais invernos do que a maioria dos homens chega a ter. Já viu amigos morrerem. Já viu batalhas que ninguém devia ter vencido. Mas tá aqui. Ainda de pé.
+
+Não lidera mais o bando. Agora tem uma forja. Faz machados, facas, ferramentas. Troca o metal por pão e por histórias. Diz que o fogo não pergunta quem você foi. Só o que você vai forjar.
+
+Ele não teve filhos. A vida dele foi guerra demais pra isso. Mas toda vez que senta ali, eu sirvo hidromel sem ele pedir. E ele não precisa agradecer. Porque a gente já sabe.
+
+Tem uma coisa que a gente compartilha que pouca gente entende. A música.
+
+Ele trouxe do bando o gosto pelo som pesado. Aquele que faz o chão tremer. Não as canções de salão. As outras. As que vêm de dentro e não pedem licença.
+
+Aqui, quando ele pega o tambor, a taverna agita. Eu pego a caneca. Ele continua. A gente compõe junto.
+
+Ele traz as histórias do bando. Eu ponho a batida. Às vezes sai uma canção. Às vezes sai só barulho. Mas sai alguma coisa.
+
+A taverna é isso. Um lugar onde o passado não é enterrado. É cantado.
+
+Ele aparece aqui. E quando aparece, é pra isso. Pra cantar. Pra compor. Pra ficar.
+
+A noite é longa. E eu tenho tempo.`,
+    rodape: 'contado por Runa, atrás do balcão.',
+    imagens: null, video: null, link: null, linkTexto: null, abas: null, audio: null
+  },
+  {
+    id: 'bardo',
+    titulo: 'Bardo e a sua caneca',
+    subtitulo: 'Conto VII · O cliente fiel',
+    imagemAbertura: 'runa-bardo-conto.jpg',
+    propaganda: 'propaganda-bardo.jpg',
+    texto: `Senta. Essa história é sobre um velho cliente. O nome dele é Bardo. Não é anão, não é ferreiro, não é deus. É um velho teimoso que aparece aqui toda quinta-feira, senta no mesmo canto, e pede a mesma coisa: hidromel na caneca dele.
+
+E ele tem uma caneca específica. Não aceita outra.
+
+— Runa, essa caneca aqui tem história — ele diz. E tem. Ele comprou de um mercador que passou por aqui há uns dez invernos. Pagou caro.
+
+O que eu sei é que ele chega, senta, e a caneca já está esperando. Uma vez eu perguntei por que ele gostava tanto daquela caneca. Ele respondeu:
+
+— Porque ela é minha. E porque, quando eu seguro ela, eu lembro de quem eu era antes de ficar velho.
+
+Tem coisas que a gente carrega não pelo valor. Carrega pelo peso.`,
+    rodape: 'contado por Runa, atrás do balcão.',
+    imagens: null, video: null, link: 'https://meli.la/1TCwkER', linkTexto: 'Obter essa relíquia', abas: null, audio: null
   },
   {
     id: 'chamas',
