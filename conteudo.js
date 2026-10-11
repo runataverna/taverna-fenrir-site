@@ -138,63 +138,6 @@ Tem coisas que a gente carrega não pelo valor. Carrega pelo peso.`,
     imagens: null, video: null, link: 'https://meli.la/1TCwkER', linkTexto: 'Obter essa relíquia', abas: null, audio: null
   },
   {
-    id: 'brokkr',
-    titulo: 'Brokkr e Eitri',
-    subtitulo: 'O conto dos anões',
-    imagemAbertura: 'runa-brokkr.jpg',
-    propaganda: 'propaganda-ferramentas.jpg',
-    abas: [
-      {
-        titulo: 'O martelo que nasceu do fogo',
-        texto: `Senta que essa é antiga, de antes dos homens contarem o tempo direito.
-
-Você conhece o martelo do Thor? Aquele que racha montanha, que faz o céu trovejar? Pois é. Ele não caiu do céu. Foi feito. Por dois irmãos anões chamados Brokkr e Eitri — os melhores ferreiros que os Nove Mundos já viram.
-
-A história começa com uma aposta. Loki, sempre ele, apostou a própria cabeça com os irmãos que eles não conseguiam fazer três tesouros melhores que os que os deuses já tinham. E se perdessem? Loki ficava com a cabeça deles. Se ganhassem? Loki perdia a dele.
-
-Os irmãos aceitaram sem piscar.
-
-Eitri era quem moldava o metal. Brokkr era quem soprava o fole — o fole que mantém o fogo vivo. Um trabalhava na forja, o outro segurava a respiração do fogo. Os dois juntos, um só corpo.
-
-Começaram pelo javali de Frey. Depois veio o anel de Odin. E por fim, o martelo do Thor.
-
-No meio da forja do martelo, Loki se transformou num moscardo e começou a picar o pescoço e as pálpebras de Brokkr. Doía. Sangrava. Cada picada era um convite pra ele largar o fole — porque se o fole parasse, o martelo estragava.
-
-Brokkr não parou.
-
-Enxugou o sangue com o ombro e continuou soprando, soprando, soprando, até o metal estar pronto. O martelo saiu de cabo mais curto do que devia, por causa da provocação. Mas saiu perfeito — no peso, no equilíbrio, na força.
-
-Os deuses julgaram. O Mjolnir era o melhor tesouro dos três. Loki perdeu a aposta. E os irmãos anões entraram na história pra sempre.
-
-É por isso que eu carrego o pingente no peito. Não é enfeite. É lembrança de que coisa boa nasce no fogo, com teimosia, e com alguém do lado soprando o fole.`
-      },
-      {
-        titulo: 'Sobre ferramentas',
-        texto: `Agora deixa eu te contar uma coisa que ninguém pensa quando ouve essa história.
-
-Brokkr e Eitri não fizeram o Mjolnir com magia. Fizeram com ferramenta.
-
-Martelo. Bigorna. Tenaz. Fole. Não é a mão que forja o metal — é a ferramenta que dá forma ao que a mão quer. Sem elas, os irmãos eram só dois anões com boas intenções.
-
-Isso me faz pensar numa coisa que a gente esquece.
-
-Na minha época, ninguém sobrevivia sem ferramenta. A mesma foice que colhia o trigo em setembro era a que defendia a casa em outubro. O mesmo machado que rachava lenha rachava escudo. A mesma faca de entalhe que gravava runa na madeira era a que limpava o peixe do jantar.
-
-Não existia ferramenta de casa e ferramenta de guerra. Existia uma ferramenta que fazia o que precisava ser feito.
-
-Brokkr e Eitri entenderam isso antes de todo mundo. Não foram grandes porque eram fortes. Foram grandes porque sabiam usar o que tinham. E porque trabalhavam um com o outro. Eitri moldava, Brokkr soprava. Um sem o outro não fazia nada.
-
-Aprende isso, se puder levar uma coisa dessa história:
-
-Ferramenta boa não é a mais bonita. É a que você usa. É a que você cuida. É a que você conhece bem o suficiente pra saber quando ela precisa de afiação.
-
-E se tiver alguém do seu lado soprando o fole enquanto você trabalha — melhor ainda. Ninguém forja Mjolnir sozinho.`
-      }
-    ],
-    rodape: 'contado por Runa, atrás do balcão. ᛟ ᚾ ᛁ',
-    imagens: null, video: null, link: 'https://meli.la/32RTZd9', linkTexto: 'Conhecer as ferramentas da Runa', audio: null
-  },
-  {
     id: 'yggdrasil',
     titulo: 'Juramento sob Yggdrasil',
     subtitulo: 'Conto IV · A raiz',

@@ -515,6 +515,7 @@ const Taverna = (() => {
         setTimeout(() => {
           if (s.historia === 'historia') { abrirHistoriaNaoContada(); }
           else if (s.historia === 'sobre') { irParaPortal('sobre'); }
+          else if (s.historia === 'brokkr') { irParaPortal('mitologia'); }
           else { irParaPortal('contos'); setTimeout(() => abrirHistoria(s.historia), 600); }
         }, 300);
       };
@@ -533,6 +534,7 @@ const Taverna = (() => {
       div.onclick = () => {
         if (s.historia === 'historia') { abrirHistoriaNaoContada(); }
         else if (s.historia === 'sobre') { irParaPortal('sobre'); }
+        else if (s.historia === 'brokkr') { irParaPortal('mitologia'); }
         else { irParaPortal('contos'); setTimeout(() => abrirHistoria(s.historia), 600); }
       };
       el.appendChild(div);
