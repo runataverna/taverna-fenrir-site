@@ -24,7 +24,7 @@ const RUNAS_TEXTO = {
   'memória': 'mannaz', 'memoria': 'mannaz', 'alma': 'mannaz'
 };
 
-const CONTOS_ABERTURA = 'runa-contos.jpg';
+const CONTOS_ABERTURA = 'contos-hero.webp';
 
 // ============================================================
 // CONFIGURAÇÕES GERAIS
@@ -461,6 +461,7 @@ Tem coisas que a gente carrega não pelo valor. Carrega pelo peso.`,
   },
   {
     id: 'chamas',
+    foto: 'chamas-capa.webp',
     titulo: 'A Dança das Chamas',
     subtitulo: 'Microcontos · O que passa pelo balcão',
     imagemAbertura: null,
