@@ -905,6 +905,9 @@ const Taverna = (() => {
         b.classList.toggle('ativa', i === chamasIndex);
       });
     }
+    // Rola o modal pro topo ao trocar de slide
+    const modal = $('modalChamas');
+    if (modal) modal.scrollTop = 0;
   }
 
   function chamasAnterior() {
