@@ -212,10 +212,9 @@ button { font-family: inherit; }
 
 /* HERO */
 .hero-runa {
-  position: relative; height: 100vh; min-height: 640px; /* ← ALTERADO */
-  overflow: hidden; display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-end;
-  text-align: center; background: #000;
+  position: relative; height: 100vh; min-height: 640px;
+  overflow: hidden;
+  background: #000;
 }
 .hero-runa iframe {
   position: absolute; top: 50%; left: 50%;
@@ -1997,4 +1996,23 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   border: 0;
   z-index: 0;
   pointer-events: none;
+}
+
+/* ============================================================
+   HERO — conteúdo abaixo do vídeo (botão, frase, setas)
+   Aplicado em 11/10/2026
+   ============================================================ */
+.hero-conteudo-abaixo {
+  text-align: center;
+  padding: 40px 20px 20px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero-conteudo-abaixo .btn-historia {
+  margin-bottom: 20px;
+}
+
+.hero-conteudo-abaixo .hero-sub {
+  margin-bottom: 10px;
 }
