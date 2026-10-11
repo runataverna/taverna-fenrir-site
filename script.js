@@ -398,8 +398,10 @@ const Taverna = (() => {
     if (sub) sub.textContent = c.subtitulo;
 
     const navAbas = $('historiaAbasNav');
+    const navBolinhas = $('historiaAbasBolinhas');
     if (navAbas) {
       navAbas.innerHTML = '';
+      if (navBolinhas) navBolinhas.innerHTML = '';
       if (c.abas && c.abas.length > 1) {
         c.abas.forEach((aba, i) => {
           const b = document.createElement('button');
@@ -407,10 +409,19 @@ const Taverna = (() => {
           b.className = i === 0 ? 'ativa' : '';
           b.onclick = () => { abaAtual = i; renderizarAba(); };
           navAbas.appendChild(b);
+
+          if (navBolinhas) {
+            const bolinha = document.createElement('span');
+            if (i === 0) bolinha.className = 'ativa';
+            bolinha.onclick = () => { abaAtual = i; renderizarAba(); };
+            navBolinhas.appendChild(bolinha);
+          }
         });
         navAbas.style.display = 'flex';
+        if (navBolinhas) navBolinhas.style.display = 'flex';
       } else {
         navAbas.style.display = 'none';
+        if (navBolinhas) navBolinhas.style.display = 'none';
       }
     }
 
@@ -458,6 +469,13 @@ const Taverna = (() => {
     const navAbas = $('historiaAbasNav');
     if (navAbas) {
       navAbas.querySelectorAll('button').forEach((b, i) => {
+        b.classList.toggle('ativa', i === abaAtual);
+      });
+    }
+
+    const navBolinhas = $('historiaAbasBolinhas');
+    if (navBolinhas) {
+      navBolinhas.querySelectorAll('span').forEach((b, i) => {
         b.classList.toggle('ativa', i === abaAtual);
       });
     }

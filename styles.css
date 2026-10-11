@@ -2022,3 +2022,28 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
 .hero-conteudo-abaixo .hero-sub {
   margin-bottom: 10px;
 }
+
+/* ============================================================
+   ABAS DE CONTO — bolinhas indicadoras (padrão carrossel)
+   Aplicado em 11/10/2026
+   ============================================================ */
+.historia-abas-bolinhas {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.historia-abas-bolinhas span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(201,162,39,.25);
+  cursor: pointer;
+  transition: all .3s;
+}
+
+.historia-abas-bolinhas span.ativa {
+  background: #c9a227;
+  transform: scale(1.3);
+}
