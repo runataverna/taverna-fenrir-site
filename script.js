@@ -472,8 +472,7 @@ const Taverna = (() => {
     }
 
     const linkBox = $('historiaLinkBox');
-    const ultimaAba = !c.abas || abaAtual === c.abas.length - 1;
-    if (linkBox && c.link && c.linkTexto && ultimaAba) {
+    if (linkBox && c.link && c.linkTexto) {
       const link = $('historiaLink');
       if (link) { link.href = c.link; link.textContent = c.linkTexto + ' →'; }
       linkBox.classList.add('visivel');
@@ -777,13 +776,13 @@ const Taverna = (() => {
         html = html.split('\n\n').map(p => '<p>' + p + '</p>').join('');
         introEl.innerHTML = html;
 
-        // Link de livros abaixo do texto de introdução
+        // Link de livros logo abaixo do texto de introdução
         if (config.link2 && config.linkTexto2) {
           const blocoLink = document.createElement('div');
           blocoLink.className = 'centro';
           blocoLink.style.marginTop = '30px';
           blocoLink.innerHTML = '<a class="btn-venda" href="' + config.link2 + '" target="_blank" rel="noopener">' + config.linkTexto2 + ' →</a>';
-          introEl.parentElement.appendChild(blocoLink);
+          introEl.insertAdjacentElement('afterend', blocoLink);
         }
       }
     }
