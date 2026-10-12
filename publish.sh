@@ -22,28 +22,34 @@ log "Etapa 1/3 - Rodando builds"
 log "  -> build-chamas.js"
 node build-chamas.js 2>&1 | grep -E "OK|AVS|ERR" || true
 
-log "  -> build-historias.js"
-node build-historias.js 2>&1 | grep -E "OK|AVS|ERR|->" || true
+# DESATIVADO em 12/10/2026 pela Janela 1.4
+# Motivo: build-historias.js regenera conteudo-viking.js e
+# conteudo-mitologia.js do zero, apagando os campos foto e
+# fotoInterna adicionados à mão para as capas dos cards.
+# Esses 2 arquivos agora são editados manualmente.
+# NÃO REATIVAR sem antes adaptar o build pra preservar foto/fotoInterna.
+# log "  -> build-historias.js"
+# node build-historias.js 2>&1 | grep -E "OK|AVS|ERR|->" || true
 
 echo ""
 
 # ---------- GIT DIFF ----------
 log "Etapa 2/3 - Verificando mudancas"
 
-if git diff --quiet -- conteudo-viking.js conteudo-mitologia.js conteudo-chamas.js; then
+if git diff --quiet -- conteudo.js conteudo-viking.js conteudo-mitologia.js conteudo-chamas.js; then
   ok "Nada mudou nos conteudos gerados."
   log "publish.sh finalizado (sem alteracoes)"
   exit 0
 fi
 
-MUDANCAS=$(git diff --stat -- conteudo-viking.js conteudo-mitologia.js conteudo-chamas.js | tail -1)
+MUDANCAS=$(git diff --stat -- conteudo.js conteudo-viking.js conteudo-mitologia.js conteudo-chamas.js | tail -1)
 log "  Mudancas: $MUDANCAS"
 echo ""
 
 # ---------- COMMIT + PUSH ----------
 log "Etapa 3/3 - Publicando no GitHub"
 
-git add conteudo-viking.js conteudo-mitologia.js conteudo-chamas.js
+git add conteudo.js conteudo-viking.js conteudo-mitologia.js conteudo-chamas.js
 
 if git diff --cached --quiet; then
   ok "Nada novo pra commitar."
