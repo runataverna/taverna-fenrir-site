@@ -7,6 +7,7 @@ const VIKING = {
   imagem: "runa-viking.jpg",
   link: "https://meli.la/2YmDDte",
   linkTexto: "Explorar o Universo Viking",
+  propaganda: "propaganda-viking.jpg",
   grupos: [
     {
       id: "povo",

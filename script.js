@@ -709,10 +709,10 @@ const Taverna = (() => {
       else if (m.tipo === 'assinatura') html += `<p class="assinatura">${txt}</p>`;
     });
     html += `</div>`;
-    if (s.videoPropaganda) {
+    if (s.fotoPropaganda) {
       html += `
-        <div class="sobre-video-propaganda">
-          <iframe src="https://www.youtube.com/embed/${s.videoPropaganda}?autoplay=1&mute=1&loop=1&playlist=${s.videoPropaganda}&controls=0&modestbranding=1&playsinline=1&rel=0&fs=0&iv_load_policy=3" allow="autoplay; encrypted-media" title="Runa e o pingente"></iframe>
+        <div class="imagem-propaganda sobre-propaganda">
+          <img src="assets/img/${s.fotoPropaganda}" alt="Runa e o pingente" onerror="this.parentElement.innerHTML='<div class=imagem-propaganda-placeholder>Suba assets/img/${s.fotoPropaganda}</div>'">
         </div>
         <div class="sobre-link-centro">
           <a class="btn-venda" href="${s.linkPropaganda}" target="_blank" rel="noopener">${s.linkPropagandaTexto} →</a>
@@ -859,6 +859,14 @@ const Taverna = (() => {
     forjada.className = 'historia-forjada';
     forjada.innerHTML = '<div class="historia-forjada-titulo">A próxima história</div><div class="historia-forjada-sub">ainda está sendo forjada</div>';
     c.appendChild(forjada);
+
+    // Propaganda (opcional) — só aparece se config.propaganda existir
+    if (config.propaganda) {
+      const prop = document.createElement('div');
+      prop.className = 'imagem-propaganda';
+      prop.innerHTML = '<img src="assets/img/' + config.propaganda + '" alt="Propaganda" onerror="this.parentElement.innerHTML=\'<div class=imagem-propaganda-placeholder>Suba assets/img/' + config.propaganda + '</div>\'">';
+      c.appendChild(prop);
+    }
 
     const botao = document.createElement('div');
     botao.className = 'centro';

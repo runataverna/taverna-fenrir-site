@@ -500,7 +500,7 @@ const SOBRE_RUNA = {
     'Irônica quando apropriado', 'Sensível sem ser frágil'
   ],
   audio: 'assets/audio/runa-historia-completa-v1.mp3',
-  videoPropaganda: 'LW2SnwzstJM',
+  fotoPropaganda: 'propaganda-aneis.jpg',
   linkPropaganda: 'https://meli.la/2d46Yr4',
   linkPropagandaTexto: 'Conhecer o pingente da Runa',
   monologo: [
