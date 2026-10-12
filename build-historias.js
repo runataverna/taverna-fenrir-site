@@ -94,7 +94,10 @@ function parseMd(raw, debug = false) {
 function processar(pasta, config, debugPrimeiro = false) {
   if (!fs.existsSync(pasta)) { err(`Pasta nao encontrada: ${pasta}`); return null; }
 
-  const arquivos = fs.readdirSync(pasta).filter(f => f.endsWith('.md')).sort();
+  const arquivos = fs.readdirSync(pasta)
+    .filter(f => f.endsWith('.md'))
+    .filter(f => !/teste/i.test(f))
+    .sort();
   const grupos = config.grupos.map(g => ({ ...g, cards: [] }));
   const grupoPorTitulo = {};
   grupos.forEach(g => { grupoPorTitulo[g.titulo] = g; });

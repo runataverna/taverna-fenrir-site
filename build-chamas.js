@@ -50,7 +50,10 @@ function main() {
     process.exit(1);
   }
 
-  const arquivos = fs.readdirSync(PASTA_CHAMAS).filter(f => f.endsWith('.md')).sort();
+  const arquivos = fs.readdirSync(PASTA_CHAMAS)
+    .filter(f => f.endsWith('.md'))
+    .filter(f => !/teste/i.test(f))
+    .sort();
   log(`${arquivos.length} arquivo(s) .md encontrado(s)`);
 
   const itens = [];
