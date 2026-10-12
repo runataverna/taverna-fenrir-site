@@ -1,6 +1,5 @@
 // GERADO AUTOMATICAMENTE POR build-chamas.js
 // NAO EDITAR A MAO.
-// Gerado em: 2026-10-12T08:25:36.509Z
 
 const MICROCONTOS = [
   {

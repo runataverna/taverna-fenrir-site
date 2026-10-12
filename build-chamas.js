@@ -69,7 +69,8 @@ function main() {
   const L = [];
   L.push('// GERADO AUTOMATICAMENTE POR build-chamas.js');
   L.push('// NAO EDITAR A MAO.');
-  L.push(`// Gerado em: ${new Date().toISOString()}`);
+  // L.push(`// Gerado em: ${new Date().toISOString()}`);
+  // DESATIVADO em 12/10/2026 pela 1.2 - motivo: gerava commit inutil a cada publish
   L.push('');
   L.push('const MICROCONTOS = [');
   for (const it of itens) {
