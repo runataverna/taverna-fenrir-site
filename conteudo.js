@@ -436,7 +436,7 @@ Ele aparece aqui. E quando aparece, é pra isso. Pra cantar. Pra compor. Pra fic
 
 A noite é longa. E eu tenho tempo.`,
     rodape: 'contado por Runa, atrás do balcão.',
-    imagens: null, video: null, link: null, linkTexto: null, abas: null, audio: null
+    imagens: null, video: null, link: 'https://youtube.com/playlist?list=PLYtXIh2MSbP0', linkTexto: 'Ouvir as músicas da Runa', abas: null, audio: null
   },
   {
     id: 'bardo',
