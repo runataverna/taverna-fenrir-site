@@ -7,6 +7,8 @@ const MITOLOGIA = {
   imagem: "runa-contando-deuses.jpg",
   link: "https://meli.la/32RTZd9",
   linkTexto: "Conhecer as ferramentas da Runa",
+  link2: "https://meli.la/1oByRB2",
+  linkTexto2: "Conhecer os livros de mitologia",
   introTexto: "Os deuses não são estátuas.\n\nSão histórias. Do mesmo jeito que as outras — que a gente conta pra não esquecer quem é.\n\nTem o Thor, que o povo chama quando o céu fica preto. Tem o Odin, que cobra caro pelo que ensina. Tem a Freya, que escolhe antes de todo mundo. Tem o Loki, que a gente não chama mas aparece.\n\nTem o Fenrir, que mordeu a mão de um deus pra se libertar. Tem Huginn e Muninn, que voam e voltam. Tem Brokkr e Eitri, que forjaram o trovão. Tem a árvore que sustenta tudo, e os nove reinos que ela carrega.\n\nEu conto do jeito que me contaram. Com o que eu vi, o que eu ouvi, e o que ficou.\n\nSenta. A noite é longa. E eu tenho tempo.",
   grupos: [
     {

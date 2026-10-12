@@ -108,7 +108,7 @@ Senta. A casa é sua.`,
     titulo: 'O Bando do Lobo Cinzento',
     subtitulo: 'Conto I · A família escolhida',
     imagemAbertura: 'bando-interna.webp',
-    propaganda: 'propaganda-presentes.jpg',
+    propaganda: 'propaganda-bando.jpg',
     abas: [
       {
         titulo: 'Como eu entrei',
@@ -274,7 +274,7 @@ Se você quiser começar, começa por onde eu comecei. Uma faca de entalhe, um p
     titulo: 'Juramento sob Yggdrasil',
     subtitulo: 'Conto III · A raiz',
     imagemAbertura: 'yggdrasil-interna.webp',
-    propaganda: 'propaganda-jardim.jpg',
+    propaganda: 'propaganda-yggdrasil.jpg',
     abas: [
       {
         titulo: 'O Juramento',
@@ -337,7 +337,7 @@ Desde essa noite, ninguém duvida da caneca. E quem duvida, volta — porque o f
     titulo: 'Neve e sangue na porta',
     subtitulo: 'Conto V · O inverno do lobo',
     imagemAbertura: 'neve-interna.webp',
-    propaganda: 'propaganda-mantas.jpg',
+    propaganda: 'propaganda-neve.jpg',
     abas: [
       {
         titulo: 'A noite em que o lobo uivou',
@@ -395,7 +395,7 @@ Se um dia você tiver uma casa sua, lembra disso: o cuidado com a mesa é cuidad
     titulo: 'O Homem Que Disse Ela Fica',
     subtitulo: 'Conto VI · O líder do bando',
     imagemAbertura: 'halvar-interna.webp',
-    propaganda: null,
+    propaganda: 'propaganda-halvar.jpg',
     texto: `Eu gosto quando ele aparece.
 
 Não é toda semana. Nem toda quinta. Mas quando ele empurra aquela porta, a taverna muda. Ele não fala alto, não pede atenção. Só senta no canto dele, e todo mundo sabe que chegou.

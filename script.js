@@ -769,13 +769,22 @@ const Taverna = (() => {
     if (intro) intro.textContent = config.intro;
     renderizarImagemAbertura(prefixo + 'Abertura', config.imagem);
 
-    // Texto de introdução (só Mitologia tem)
+    // Texto de introdução (só Mitologia tem) + link de livros abaixo
     if (config.introTexto) {
       const introEl = $(prefixo + 'IntroTexto');
       if (introEl) {
         let html = aplicarRunasNoTexto(config.introTexto);
         html = html.split('\n\n').map(p => '<p>' + p + '</p>').join('');
         introEl.innerHTML = html;
+
+        // Link de livros abaixo do texto de introdução
+        if (config.link2 && config.linkTexto2) {
+          const blocoLink = document.createElement('div');
+          blocoLink.className = 'centro';
+          blocoLink.style.marginTop = '30px';
+          blocoLink.innerHTML = '<a class="btn-venda" href="' + config.link2 + '" target="_blank" rel="noopener">' + config.linkTexto2 + ' →</a>';
+          introEl.parentElement.appendChild(blocoLink);
+        }
       }
     }
 
