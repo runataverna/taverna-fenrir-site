@@ -4,7 +4,7 @@
 
 const VIKING = {
   intro: "Um povo novo a cada semana. O norte não cabe num só conto.",
-  imagem: "runa-viking.jpg",
+  imagem: "viking-hero.webp",
   link: "https://meli.la/2YmDDte",
   linkTexto: "Explorar o Universo Viking",
   propaganda: "propaganda-viking.jpg",
