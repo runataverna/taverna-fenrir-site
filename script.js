@@ -797,7 +797,8 @@ const Taverna = (() => {
     if (!c) return;
     c.innerHTML = '';
 
-    config.grupos.forEach(g => {
+    // Função auxiliar — renderiza um grupo
+    const renderizarGrupo = (g) => {
       const div = document.createElement('div');
       div.className = 'grupo-mae';
 
@@ -819,7 +820,6 @@ const Taverna = (() => {
         card.className = 'card card-fechado';
         card.style.setProperty('--cor-sala', cor);
 
-        // Gancho curto — primeiro parágrafo cortado
         const textoLimpo = (cd.texto || '').replace(/\*\*/g, '').replace(/\n\n/g, ' ');
         const primeiroP = textoLimpo.split(/\n/)[0] || '';
         const gancho = primeiroP.length > 130
@@ -858,12 +858,24 @@ const Taverna = (() => {
 
       div.appendChild(grid);
       c.appendChild(div);
-    });
+    };
 
+    // 1. Grupos normais (exceto grupoFinal)
+    const gruposNormais = config.grupos.filter(g => g.id !== config.grupoFinal);
+    const gruposFinal = config.grupoFinal
+      ? config.grupos.filter(g => g.id === config.grupoFinal)
+      : [];
+
+    gruposNormais.forEach(renderizarGrupo);
+
+    // 2. Placeholder "próxima história"
     const forjada = document.createElement('div');
     forjada.className = 'historia-forjada';
     forjada.innerHTML = '<div class="historia-forjada-titulo">A próxima história</div><div class="historia-forjada-sub">ainda está sendo forjada</div>';
     c.appendChild(forjada);
+
+    // 3. Grupo final (grupoFinal)
+    gruposFinal.forEach(renderizarGrupo);
 
     // Propaganda (opcional) — só aparece se config.propaganda existir
     if (config.propaganda) {
