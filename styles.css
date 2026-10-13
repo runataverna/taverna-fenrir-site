@@ -2064,3 +2064,12 @@ body {
 #hall .porta {
   background: #2a1f17;
 }
+
+/* ============================================================
+   PLACEHOLDER — gradiente do canto superior esquerdo
+   14/10/2026 — teste sutil
+   ============================================================ */
+.historia-forjada {
+  background:
+    linear-gradient(135deg, #2a1f17 0%, #1a1410 50%, #1a1410 100%);
+}
