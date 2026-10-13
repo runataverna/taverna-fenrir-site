@@ -1519,7 +1519,7 @@ body, #app {
 
 .card-modal-foto {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 4/5;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 20px;

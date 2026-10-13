@@ -1040,7 +1040,7 @@ const Taverna = (() => {
     const vs = $('cardModalVoceSabia');
     if (vs) {
       if (dados.voceSabia && dados.voceSabia !== '[A PREENCHER]') {
-        vs.innerHTML = '<strong>💡 VOCÊ SABIA?</strong>' + dados.voceSabia;
+        vs.innerHTML = '<strong>💡 VOCÊ SABIA?</strong>' + aplicarRunasNoTexto(dados.voceSabia);
         vs.style.display = 'block';
       } else {
         vs.style.display = 'none';
