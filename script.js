@@ -138,6 +138,12 @@ const Taverna = (() => {
       if (btn) btn.classList.add('visible');
       window.scrollTo(0, 0);
       popularSlots();
+
+      // Reassume a música depois da transição (YouTube do iframe pode ter roubado o áudio)
+      if (musicaLiberada && musica() && musica().paused) {
+        musica().play().catch(() => {});
+      }
+
       history.pushState({ sala: id }, '', '#' + id);
     };
 

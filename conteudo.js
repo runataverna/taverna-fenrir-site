@@ -33,7 +33,7 @@ const CONFIG = {
   intro: 'ma_aCbNxNQc',
   heroHall: 'odB5EuYGaCM',
   delays: { boasVindas: 900, fimIntro: 8000, musicaSubir: 25000, ducking: 500 },
-  volumes: { musicaPadrao: 0.20, musicaBaixa: 0.05, boasVindas: 0.85 },
+  volumes: { musicaPadrao: 0.20, musicaBaixa: 0.05, boasVindas: 0.45 },
   redes: {
     instagram: 'https://www.instagram.com/runataverna',
     facebook: 'https://www.facebook.com/61594517399917/',
