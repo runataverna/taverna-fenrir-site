@@ -2047,3 +2047,20 @@ body, #app, .sala, .hall, .navbar, .menu-lista {
   background: #c9a227;
   transform: scale(1.3);
 }
+
+/* ============================================================
+   PALETA — FUNDO MAIS QUENTE
+   14/10/2026
+   Testado no salão. Aprovado pra aplicar em todo o site.
+   ============================================================ */
+html {
+  background: #1f1710;
+}
+body {
+  background-color: #1f1710;
+  background-image: radial-gradient(ellipse at 50% 0%, #3e2a1a 0%, #251c14 45%, #1f1710 100%);
+  color: #d8ceb8;
+}
+#hall .porta {
+  background: #2a1f17;
+}
