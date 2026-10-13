@@ -576,7 +576,7 @@ const Taverna = (() => {
     lojas.forEach(l => {
       const div = document.createElement('div');
       div.className = 'footer-loja-item';
-      div.innerHTML = `<span>${l.nome}</span><span class="seta">→</span>`;
+      div.textContent = l.nome;
       div.onclick = () => irParaPortal(l.id);
       el.appendChild(div);
     });
