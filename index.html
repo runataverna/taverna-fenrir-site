@@ -35,9 +35,10 @@
       </video>
     </div>
     <p class="entrada-frase">O fogo está aceso e teu lugar está guardado. <strong>Entra.</strong></p>
-    <button class="btn-entrar" onclick="Taverna.entrar()">ENTRAR NA TAVERNA</button>
+    <button class="btn-entrar" id="btnEntrar" onclick="Taverna.entrar()">ENTRAR NA TAVERNA</button>
     <div class="entrada-hint">Toque para atravessar · a porta só abre ao teu chamado</div>
   </div>
+  <button class="btn-pular-entrada" id="btnPularEntrada" onclick="Taverna.pularEntrada()">Pular →</button>
 </div>
 
 <!-- EFEITO DE LUMINOSIDADE (transição da entrada para intro) -->
@@ -52,6 +53,7 @@
     <iframe id="transicaoIframe" allow="autoplay; encrypted-media" title="Transição"></iframe>
   </div>
   <div class="transicao-titulo" id="transicaoTitulo"></div>
+  <button class="btn-pular-transicao" id="btnPularTransicao" onclick="Taverna.pularTransicao()">Pular →</button>
 </div>
 
 <!-- APP -->

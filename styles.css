@@ -2087,3 +2087,51 @@ body {
 .historia-forjada {
   background: linear-gradient(135deg, #3a2a1c 0%, #1f1710 50%, #1f1710 100%) !important;
 }
+
+
+/* ============================================================
+   BOTÕES DE PULAR — entrada e transição de porta
+   14/10/2026
+   ============================================================ */
+.btn-pular-entrada {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: rgba(201,162,39,.55);
+  font-family: 'Cinzel', serif;
+  font-size: .8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 14px;
+  z-index: 1100;
+  transition: color .3s;
+}
+.btn-pular-entrada:hover {
+  color: #c9a227;
+}
+.entrada.hidden .btn-pular-entrada {
+  display: none;
+}
+
+.btn-pular-transicao {
+  position: absolute;
+  bottom: 30px;
+  right: 24px;
+  z-index: 3;
+  background: rgba(0,0,0,.7);
+  border: 1px solid var(--dourado);
+  color: var(--dourado);
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  display: none;
+}
+.overlay-video.active .btn-pular-transicao {
+  display: block;
+}
