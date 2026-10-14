@@ -38,7 +38,6 @@
     <button class="btn-entrar" id="btnEntrar" onclick="Taverna.entrar()">ENTRAR NA TAVERNA</button>
     <div class="entrada-hint">Toque para atravessar · a porta só abre ao teu chamado</div>
   </div>
-  <button class="btn-pular-entrada" id="btnPularEntrada" onclick="Taverna.pularEntrada()">Pular →</button>
 </div>
 
 <!-- EFEITO DE LUMINOSIDADE (transição da entrada para intro) -->
@@ -330,6 +329,10 @@
     <h2 class="hnc-modal-titulo">A HISTÓRIA NÃO CONTADA</h2>
     <p class="hnc-modal-sub">NÃO ABRA ESSA PORTA</p>
     <div class="historia-texto hnc-texto" id="hncTexto"></div>
+
+    <div class="hnc-imagem hnc-imagem-fim">
+      <img src="assets/img/hnc-hero.webp" alt="A História Não Contada" onerror="this.parentElement.innerHTML='<div class=hnc-imagem-placeholder>Suba assets/img/hnc-hero.webp</div>'">
+    </div>
 
     <div class="historia-acoes">
       <div class="historia-acoes-baloes">

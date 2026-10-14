@@ -2093,29 +2093,6 @@ body {
    BOTÕES DE PULAR — entrada e transição de porta
    14/10/2026
    ============================================================ */
-.btn-pular-entrada {
-  position: fixed;
-  bottom: 24px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  color: rgba(201,162,39,.55);
-  font-family: 'Cinzel', serif;
-  font-size: .8rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 10px 14px;
-  z-index: 1100;
-  transition: color .3s;
-}
-.btn-pular-entrada:hover {
-  color: #c9a227;
-}
-.entrada.hidden .btn-pular-entrada {
-  display: none;
-}
-
 .btn-pular-transicao {
   position: absolute;
   bottom: 30px;
