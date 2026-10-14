@@ -649,7 +649,7 @@ Nada aqui é enfeite. Tudo aqui é pra estar na mão.`
     subtitulo: 'O que se carrega no peito.',
     imagem: 'reliquias-hero.webp',
     propaganda: 'propaganda-aneis.jpg',
-    link: 'https://meli.la/2d46Yr4',
+    link: 'https://youtube.com/shorts/IIcBnM8ej5o',
     linkTexto: 'Conhecer as relíquias da Runa',
     texto: `Tem uma coisa que a gente esquece quando fala de anel e pingente: na minha época, ninguém usava joia por moda. Não existia vitrine. Não existia tendência. Se você via um homem com um anel, ele tinha uma história. Se você via uma mulher com um colar, ele carregava um nome. O metal era só o que segurava a memória no lugar.
 

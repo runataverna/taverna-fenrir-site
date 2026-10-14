@@ -10,6 +10,8 @@ const Taverna = (() => {
   let contoAtual = null;
   let abaAtual = 0;
   let scrollHall = 0;
+  let entrandoAgora = false;
+  let transicaoTimeout = null;
 
   const $ = id => document.getElementById(id);
   const $$ = sel => document.querySelectorAll(sel);
@@ -53,15 +55,40 @@ const Taverna = (() => {
   }
 
   // ENTRAR
+  function finalizarEntrada() {
+    const entrada = $('entrada');
+    if (entrada) entrada.classList.add('hidden');
+    const app = $('app');
+    if (app) app.classList.add('visible');
+    const nav = $('navbar');
+    if (nav) nav.classList.add('visible');
+    const player = $('playerMusicaBox');
+    if (player) player.classList.add('visible');
+
+    ativarHeroVideo();
+
+    if (boasVindas()) {
+      boasVindas().volume = CONFIG.volumes.boasVindas;
+      boasVindas().play().catch(e => console.log('bv:', e.name));
+    }
+
+    setTimeout(() => {
+      if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
+    }, CONFIG.delays.musicaSubir);
+
+    entrandoAgora = false;
+  }
+
   function entrar() {
-    // 1. Toca o vídeo da transição
+    if (entrandoAgora) return;
+    entrandoAgora = true;
+
     const video = document.getElementById('portalVideo');
     if (video) {
       video.currentTime = 0;
       video.play().catch(() => {});
     }
 
-    // 2. Música começa JUNTO com o clique (volume baixo)
     desbloquearAudio();
     restaurarMusica();
     musicaLiberada = true;
@@ -71,7 +98,6 @@ const Taverna = (() => {
       musica().play().catch(e => console.log('mus:', e.name));
     }
 
-    // 3. Glow branco no fim do vídeo
     setTimeout(() => {
       const glow = $('glowEntrada');
       if (glow) {
@@ -80,28 +106,51 @@ const Taverna = (() => {
       }
     }, 6500);
 
-    // 4. Ao fim do vídeo: mostra hall + toca boas-vindas
-    setTimeout(() => {
-      const entrada = $('entrada');
-      if (entrada) entrada.classList.add('hidden');
-      const app = $('app');
-      if (app) app.classList.add('visible');
-      const nav = $('navbar');
-      if (nav) nav.classList.add('visible');
-      const player = $('playerMusicaBox');
-      if (player) player.classList.add('visible');
+    setTimeout(finalizarEntrada, 7200);
+  }
 
-      ativarHeroVideo();
+  function pularEntrada() {
+    if (entrandoAgora) return;
+    entrandoAgora = true;
 
-      if (boasVindas()) {
-        boasVindas().volume = CONFIG.volumes.boasVindas;
-        boasVindas().play().catch(e => console.log('bv:', e.name));
+    desbloquearAudio();
+    restaurarMusica();
+    musicaLiberada = true;
+    if (musica()) {
+      musica().playbackRate = 1.0;
+      musica().volume = CONFIG.volumes.musicaBaixa;
+      musica().play().catch(e => console.log('mus:', e.name));
+    }
+
+    finalizarEntrada();
+  }
+
+  function pularTransicao() {
+    if (transicaoTimeout) {
+      clearTimeout(transicaoTimeout);
+      transicaoTimeout = null;
+    }
+    const wrap = $('transicaoWrap');
+    if (wrap) wrap.classList.remove('active');
+    const iframe = $('transicaoIframe');
+    if (iframe) iframe.src = '';
+
+    // Abre a sala que estava pendente
+    const salaPendente = window._salaPendente;
+    if (salaPendente) {
+      window._salaPendente = null;
+      const el = $('sala-' + salaPendente);
+      if (el) el.classList.add('ativa');
+      salaAtual = salaPendente;
+      const btn = $('btnVoltar');
+      if (btn) btn.classList.add('visible');
+      window.scrollTo(0, 0);
+      popularSlots();
+      if (musicaLiberada && musica() && musica().paused) {
+        musica().play().catch(() => {});
       }
-
-      setTimeout(() => {
-        if (musicaLiberada && musica()) fadeVolume(musica(), CONFIG.volumes.musicaPadrao, 2000);
-      }, CONFIG.delays.musicaSubir);
-    }, 7200);
+      history.pushState({ sala: salaPendente }, '', '#' + salaPendente);
+    }
   }
 
   function ativarHeroVideo() {
@@ -156,7 +205,10 @@ const Taverna = (() => {
     const wrap = $('transicaoWrap');
     if (wrap) wrap.classList.add('active');
 
-    setTimeout(() => {
+    window._salaPendente = id;
+    transicaoTimeout = setTimeout(() => {
+      transicaoTimeout = null;
+      window._salaPendente = null;
       if (wrap) wrap.classList.remove('active');
       if (iframe) iframe.src = '';
       abrirSala();
@@ -1279,7 +1331,7 @@ const Taverna = (() => {
   }
 
   return {
-    entrar, irParaPortal, voltarAoHall, toggleMenu,
+    entrar, pularEntrada, pularTransicao, irParaPortal, voltarAoHall, toggleMenu,
     abrirHistoria, fecharHistoria, toggleHistoriaAudio, ouvirHistoriaRuna,
     curtirConto, curtirHNC, compartilharConto, compartilharHNC,
     abrirHistoriaNaoContada, fecharHNC,
