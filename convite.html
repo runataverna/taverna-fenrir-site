@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1a1410">
+<title>Convite — Taverna Fenrir</title>
+<meta name="description" content="Uma taverna aberta no fim de uma estrada que ninguém sabe onde fica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Uncial+Antiqua&family=Texturina:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background-color: #1f1710;
+  background-image: radial-gradient(ellipse at 50% 0%, #3e2a1a 0%, #251c14 45%, #1f1710 100%);
+  color: #d8ceb8;
+  font-family: 'Texturina', serif;
+  font-size: 16px;
+  line-height: 1.8;
+  min-height: 100vh;
+  padding: 30px 20px 60px;
+}
+.wrap { max-width: 520px; margin: 0 auto; }
+.imagem {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  border: 1px solid rgba(201,162,39,.4);
+  background: linear-gradient(135deg, #1a0f08, #0d0806);
+  box-shadow: 0 8px 40px rgba(0,0,0,.7);
+}
+.imagem img { width: 100%; display: block; }
+.imagem-placeholder {
+  aspect-ratio: 4/5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6a5a45;
+  font-style: italic;
+  font-size: .9rem;
+  padding: 30px;
+  text-align: center;
+}
+h1 {
+  font-family: 'Uncial Antiqua', cursive;
+  color: #e8d5a0;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 26px;
+  line-height: 1.3;
+}
+p {
+  margin-bottom: 18px;
+  font-size: 1.02rem;
+}
+.cta {
+  text-align: center;
+  margin: 34px 0 20px;
+}
+.btn {
+  display: inline-block;
+  background: #c9a227;
+  color: #0a0a0a;
+  padding: 18px 44px;
+  border: none;
+  border-radius: 40px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all .3s;
+  box-shadow: 0 0 0 0 rgba(201,162,39,.7);
+  animation: pulse 2.2s infinite;
+}
+.btn:hover { background: #d4af37; transform: scale(1.03); }
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,162,39,.7); }
+  50% { box-shadow: 0 0 0 18px rgba(201,162,39,0); }
+}
+.nota {
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(201,162,39,.25);
+  font-size: .9rem;
+  color: #a89b85;
+  font-style: italic;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="imagem">
+    <img src="assets/img/convite-hero.webp" alt="Taverna Fenrir" onerror="this.parentElement.innerHTML='<div class=imagem-placeholder>Suba assets/img/convite-hero.webp</div>'">
+  </div>
+
+  <h1>Uma porta aberta no fim da estrada</h1>
+
+  <p>Eu tenho uma taverna aberta no fim de uma estrada que ninguém sabe onde fica.</p>
+
+  <p>Quem entra, senta. Quem senta, bebe. E quem bebe, ouve história até a caneca esvaziar.</p>
+
+  <p>Tem música aqui dentro. Tem conto, tem mitologia, tem o norte inteiro guardado num balcão.</p>
+
+  <p>A porta tá aberta.</p>
+
+  <div class="cta">
+    <a class="btn" href="index.html">Entrar na Taverna →</a>
+  </div>
+
+  <div class="nota">
+    Você gosta de música, mitologia, dark fantasy ou histórias do norte? Aqui tem tudo. Só não garanto que você sai igual.
+  </div>
+
+</div>
+</body>
+</html>
