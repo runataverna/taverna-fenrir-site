@@ -3,121 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1a1410">
+<meta name="theme-color" content="#0a1114">
 <title>Convite — Taverna Fenrir</title>
-<meta name="description" content="Uma taverna aberta no fim de uma estrada que ninguém sabe onde fica.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Uncial+Antiqua&family=Texturina:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IM+Fell+English:ital@0;1&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #1f1710;
-  background-image: radial-gradient(ellipse at 50% 0%, #3e2a1a 0%, #251c14 45%, #1f1710 100%);
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(40,120,120,.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 0%, rgba(20,50,80,.3) 0%, transparent 70%),
+    linear-gradient(to bottom, #0d181c 0%, #0a1114 40%, #050505 100%);
   color: #d8ceb8;
-  font-family: 'Texturina', serif;
-  font-size: 16px;
-  line-height: 1.8;
+  font-family: 'IM Fell English', serif;
   min-height: 100vh;
-  padding: 30px 20px 60px;
-}
-.wrap { max-width: 520px; margin: 0 auto; }
-.imagem {
-  width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 30px;
-  border: 1px solid rgba(201,162,39,.4);
-  background: linear-gradient(135deg, #1a0f08, #0d0806);
-  box-shadow: 0 8px 40px rgba(0,0,0,.7);
-}
-.imagem img { width: 100%; display: block; }
-.imagem-placeholder {
-  aspect-ratio: 4/5;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: #6a5a45;
-  font-style: italic;
-  font-size: .9rem;
-  padding: 30px;
+  padding: 24px 12px 40px;
+}
+
+.header-convite {
   text-align: center;
+  margin-bottom: 22px;
+  max-width: 500px;
+  width: 100%;
 }
-h1 {
-  font-family: 'Uncial Antiqua', cursive;
-  color: #e8d5a0;
-  font-size: 1.6rem;
-  letter-spacing: 2px;
-  text-align: center;
-  margin-bottom: 26px;
-  line-height: 1.3;
-}
-p {
-  margin-bottom: 18px;
-  font-size: 1.02rem;
-}
-.cta {
-  text-align: center;
-  margin: 34px 0 20px;
-}
-.btn {
-  display: inline-block;
-  background: #c9a227;
-  color: #0a0a0a;
-  padding: 18px 44px;
-  border: none;
-  border-radius: 40px;
+
+.header-convite .kicker {
   font-family: 'Cinzel', serif;
-  font-size: 1.02rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-decoration: none;
+  color: #7DE2FF;
+  font-size: .7rem;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  transition: all .3s;
-  box-shadow: 0 0 0 0 rgba(201,162,39,.7);
-  animation: pulse 2.2s infinite;
+  margin-bottom: 12px;
 }
-.btn:hover { background: #d4af37; transform: scale(1.03); }
-@keyframes pulse {
-  0%,100% { box-shadow: 0 0 0 0 rgba(201,162,39,.7); }
-  50% { box-shadow: 0 0 0 18px rgba(201,162,39,0); }
+
+.header-convite h1 {
+  font-family: 'UnifrakturCook', cursive;
+  color: #e8d5a0;
+  font-size: 2.6rem;
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(0,0,0,.9);
 }
-.nota {
-  margin-top: 36px;
-  padding-top: 24px;
-  border-top: 1px solid rgba(201,162,39,.25);
-  font-size: .9rem;
+
+.header-convite .subtitulo {
+  font-size: 1rem;
   color: #a89b85;
   font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* PERGAMINHO */
+.pergaminho-card {
+  position: relative;
+  width: 360px;
+  height: 659px;
+  flex: 0 0 auto;
+
+  background-image: url('assets/img/convite-pergaminho.webp');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.9);
+  margin-bottom: 28px;
+}
+
+/* AREA DE TEXTO */
+.caixa-texto {
+  position: absolute;
+  top: 36%;
+  left: 15%; /* Largura ajustada para não vazar */
+  right: 15%; 
+  bottom: 28%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  color: #18100a;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.caixa-texto p {
+  margin: 0 0 14px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+  
+  /* A MÁGICA ACONTECE AQUI */
+  text-align: left; /* Alinha à esquerda para a letra colar no texto */
+}
+
+.caixa-texto p:first-child {
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center; /* Mantém só o primeiro centralizado para impacto */
+  margin-bottom: 20px;
+}
+
+/* A CAPITULAR MAGNÉTICA */
+.capitular {
+  font-family: 'UnifrakturCook', cursive;
+  font-size: 2.8rem;
+  color: #7a0a0a; 
+  float: left; /* Faz o texto abraçar a letra */
+  line-height: 0.7; 
+  margin-right: 6px; /* Espaço entre a letra e a palavra */
+  margin-top: 5px;
+}
+
+.cta-container {
   text-align: center;
+  width: 100%;
+  margin-bottom: 42px;
+}
+
+.btn {
+  display: inline-block;
+  background: rgba(10,15,20,.6);
+  color: #c9a227;
+  border: 1px solid #c9a227;
+  padding: 16px 28px;
+  font-family: 'Cinzel', serif;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+  transition: all .3s;
+}
+
+.btn:hover {
+  background: #c9a227;
+  color: #0a0a0a;
+  box-shadow: 0 0 25px rgba(201,162,39,.4);
+}
+
+.rodape {
+  max-width: 500px;
+  width: 100%;
+  border-top: 1px solid rgba(201,162,39,.15);
+  padding-top: 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rodape h4 {
+  font-family: 'Cinzel', serif;
+  color: #c9a227;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+  font-size: .7rem;
+  text-transform: uppercase;
+}
+
+.pilares ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 20px;
+  margin-bottom: 28px;
+}
+
+.pilares li {
+  font-family: 'Cinzel', serif;
+  font-size: .75rem;
+  color: #8a765b;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nota-final {
+  text-align: center;
+  font-style: italic;
+  font-size: .95rem;
+  color: #81715e;
+  line-height: 1.6;
+}
+
+/* AJUSTE PARA TELAS ESTREITAS */
+@media (max-width: 384px) {
+  .pergaminho-card {
+    transform: scale(.92);
+    transform-origin: top center;
+    margin-bottom: -25px;
+  }
+
+  .header-convite h1 {
+    font-size: 2.3rem;
+  }
 }
 </style>
 </head>
+
 <body>
-<div class="wrap">
 
-  <div class="imagem">
-    <img src="assets/img/convite-hero.webp" alt="Taverna Fenrir" onerror="this.parentElement.innerHTML='<div class=imagem-placeholder>Suba assets/img/convite-hero.webp</div>'">
+<header class="header-convite">
+  <div class="kicker">Norte · Inverno · Lua Cheia</div>
+  <h1>Taverna Fenrir</h1>
+  <div class="subtitulo">Uma porta entre mundos</div>
+</header>
+
+<main class="pergaminho-card" aria-label="Convite em pergaminho">
+  <div class="caixa-texto">
+    <p>Você foi chamado. A aurora queima o céu do norte.</p>
+    <p><span class="capitular">O</span> fogo está aceso. O hidromel espera no balcão.</p>
+    <p><span class="capitular">A</span>qui dentro, todos comem do mesmo prato.</p>
+    <p><span class="capitular">A</span> mesa está posta. O Salão de Fenrir aguarda.</p>
   </div>
+</main>
 
-  <h1>Uma porta aberta no fim da estrada</h1>
-
-  <p>Eu tenho uma taverna aberta no fim de uma estrada que ninguém sabe onde fica.</p>
-
-  <p>Quem entra, senta. Quem senta, bebe. E quem bebe, ouve história até a caneca esvaziar.</p>
-
-  <p>Tem música aqui dentro. Tem conto, tem mitologia, tem o norte inteiro guardado num balcão.</p>
-
-  <p>A porta tá aberta.</p>
-
-  <div class="cta">
-    <a class="btn" href="index.html">Entrar na Taverna →</a>
-  </div>
-
-  <div class="nota">
-    Você gosta de música, mitologia, dark fantasy ou histórias do norte? Aqui tem tudo. Só não garanto que você sai igual.
-  </div>
-
+<div class="cta-container">
+  <a class="btn" href="index.html">Aceitar o Convite</a>
 </div>
+
+<footer class="rodape">
+  <h4>Os caminhos da Taverna</h4>
+
+  <div class="pilares">
+    <ul>
+      <li>Contos</li>
+      <li>Música</li>
+      <li>Dark Fantasy</li>
+      <li>Universo Viking</li>
+      <li>Mitologia Nórdica</li>
+    </ul>
+  </div>
+
+  <div class="nota-final">
+    Se você leu até aqui, já sabe o caminho.<br>
+    Não precisa de mapa. Só de coragem para bater.
+  </div>
+</footer>
+
 </body>
 </html>
