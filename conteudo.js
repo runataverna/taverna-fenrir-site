@@ -63,7 +63,7 @@ const PORTAS = [
   { id: 'aneis',       num: 5, titulo: 'Relíquias da Runa',         tag: 'Relíquias',     desc: 'Peças ligadas às histórias: o pingente da raiz, o ferro do fiorde.', video: 'kVn2eI32yyU', duracao: 8000,  img: 'reliquias-hero.webp' },
   { id: 'facas',       num: 6, titulo: 'A Forja da Runa',        tag: 'Do balcão',     desc: 'Ferro batido, fio firme — o kit da taverna.', video: 'WX1lHp6vH1c', duracao: 8000,  img: 'forja-hero.webp' },
   { id: 'casacos',     num: 7, titulo: 'Peles do Norte',                   tag: 'Vestir',        desc: 'Contra a neve lá fora: camadas quentes com espírito do norte.', video: 'Z38aRgWU9Wg', duracao: 11000, img: 'peles-hero.webp' },
-  { id: 'heavymetal',  num: 8, titulo: 'O Som da Taverna',   tag: 'Som & Vestir',  desc: 'A trilha da casa e as runas para vestir.', video: 'GLe-29BBcws', duracao: 8000,  img: 'som-hero.webp' },
+  { id: 'heavymetal',  num: 8, titulo: 'O Som da Taverna',   tag: 'Som & Vestir',  desc: 'A trilha da casa e as runas para vestir.', video: 'tNiCdJZhIWw', duracao: 8000,  img: 'som-hero.webp' },
   { id: 'arte',        num: 9, titulo: 'Arte Conceitual',           tag: 'Bastidores',    desc: 'Onde tudo começou. Esboços que nunca entraram nas histórias oficiais.', video: '49CYH2HEyoY', duracao: 12000, img: 'runa-arte.jpg' }
 ];
 
