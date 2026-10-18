@@ -247,5 +247,22 @@ body {
   </div>
 </footer>
 
+
+<script>
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const origem = params.get('origem');
+  if (origem) {
+    const formData = new FormData();
+    formData.append('entry.466673258', origem);
+    fetch('https://docs.google.com/forms/d/e/1FAIpQLSdtanLm30eK8V02J0QleL_vl-ef5BkgOOIBCNQTJoEAmuUjCA/formResponse', {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors'
+    }).catch(e => console.log('Tracking error', e));
+  }
+})();
+</script>
+
 </body>
 </html>
