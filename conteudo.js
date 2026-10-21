@@ -218,7 +218,7 @@ Ela olhou pra mim com aquele olhar que corta. Levou um tempo. Depois respondeu, 
 
 Eu não entendi. Levei meses pra entender.
 
-Passei três invernos sentada ao lado dela. Isa riscada no gelo. Algiz gravada na soleira de cada abrigo. Othala desenhada de memória antes que o vento apagasse.
+Ela não me ensinou as runas dos mercadores, aquelas que os guerreiros do tempo dela usavam pra marcar espada e negociar gado. Svala dizia que essas eram runas de moeda, de gente que troca o próprio nome por um punhado de prata. Ela me ensinou as runas antigas, as que os avós dos avós usavam antes de esquecerem o som da própria voz. Magia de raiz, não de comércio.\n\nPassei três invernos sentada ao lado dela. Isa riscada no gelo. Algiz gravada na soleira de cada abrigo. Othala desenhada de memória antes que o vento apagasse.
 
 Svala nunca explicava duas vezes. Apontava para a madeira, para o céu, para a cicatriz no próprio pulso, e dizia sempre a mesma coisa:
 
@@ -288,7 +288,7 @@ Eu fiquei parada olhando aquilo por um tempo que nem sei medir. A árvore que su
 
 Foi ali que eu decidi.
 
-Peguei a faca de entalhe, ajoelhei na terra molhada, e coloquei minha primeira runa após sair do bando do Lobo Cinzento. Algiz. Proteção.
+Peguei a faca de entalhe, ajoelhei na terra molhada, e coloquei a primeira runa da taverna. Algiz. Proteção.
 
 E jurei uma coisa que carrego até hoje: nenhum ferido fica lá fora.
 
@@ -369,7 +369,7 @@ Aprendi isso com o Halvar, na primeira noite em que dormi no abrigo do bando. To
 
 E, no entanto, naquela noite, todos sentaram à mesma fogueira. Comeram do mesmo pote. Beberam da mesma caneca passando de mão em mão.
 
-Halvar só disse uma coisa antes de todo mundo dormir. Palavras que eu carrego há vinte anos:
+Halvar só disse uma coisa antes de todo mundo dormir. Palavras que eu carrego há treze anos:
 
 "Lá fora é lá fora. Aqui dentro, todos comem do mesmo prato."
 
