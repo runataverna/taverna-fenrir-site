@@ -3,7 +3,7 @@
 // Gerado em: 2026-09-30T22:11:20.488Z
 
 const MITOLOGIA = {
-  intro: "Yggdrasil, Thor e Fenrir abrem as portas da casa. Novos deuses chegam toda semana.",
+  intro: "Os antigos contam que Yggdrasil, Thor e Fenrir abrem as portas. Novos deuses chegam toda semana.",
   imagem: "runa-contando-deuses.jpg",
   link: "https://meli.la/32RTZd9",
   linkTexto: "Conhecer as ferramentas da Runa",
